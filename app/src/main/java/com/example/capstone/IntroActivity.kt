@@ -23,6 +23,7 @@ class IntroActivity : AppCompatActivity() {
 
         auth = Firebase.auth
 
+
         val setting_btn = findViewById<ImageView>(R.id.setting_btn)
         setting_btn.setOnClickListener {
             val intent = Intent(this,SettingActivity::class.java)
