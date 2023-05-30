@@ -14,6 +14,7 @@
         <activity
             android:name=".CeoregisterActivity"
             android:exported="false" />
+
         <activity
             android:name=".CeoIntroActivity"
             android:exported="false" />
