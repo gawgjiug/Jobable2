@@ -18,25 +18,31 @@ class JobeduActivity : AppCompatActivity() {
         items.add(
             ContentsModel(
                 "제과제빵",
-            )
-        )
-
-        items.add(
-            ContentsModel(
-                "패션디자이너"
+                R.drawable.job1
 
             )
         )
 
         items.add(
             ContentsModel(
-                "사서보조"
+                "패션디자이너",
+                R.drawable.job2
+
             )
         )
 
         items.add(
             ContentsModel(
-                "사무보조"
+                "사서보조",
+                R.drawable.job3
+
+                )
+        )
+
+        items.add(
+            ContentsModel(
+                "사무보조",
+                R.drawable.job4
             )
         )
 
