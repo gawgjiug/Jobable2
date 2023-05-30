@@ -28,10 +28,9 @@ class RVAdapter(val List : MutableList<ContentsModel>) : RecyclerView.Adapter<RV
 
             val rv_text = itemView.findViewById<TextView>(R.id.text)
             val rv_image = itemView.findViewById<ImageView>(R.id.Img)
-//            val src = ContentsModel.img
 
             rv_text.text = item.titleText
-//            rv_image.setImageResource(R.drawable.src);
+            rv_image.setImageResource(item.img);
 
         }
     }
