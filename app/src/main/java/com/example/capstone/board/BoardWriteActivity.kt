@@ -33,6 +33,7 @@ class BoardWriteActivity : AppCompatActivity() {
             //board
             // -key
             //   -boardModel(title,content,uid,time)
+            // 푸시 연습
 
             FBRef.boardRef
                 .push() //랜덤한 key값 생성
