@@ -15,7 +15,7 @@ class ResumActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-// Region이 US일 경우
+        // Region이 US일 경우
         //val database = Firebase.database
         //val myRef = database.getReference("message")  예시1
         //myRef.setValue("Hello, World!")
@@ -111,3 +111,4 @@ class ResumActivity : AppCompatActivity() {
         readUserData("test")
     }
 }
+//////////dddd//////
