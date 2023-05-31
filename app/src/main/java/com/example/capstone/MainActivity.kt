@@ -58,6 +58,10 @@ class MainActivity : AppCompatActivity() {
                     for (userSnapshot in dataSnapshot.children) {
                         val user = userSnapshot.getValue(RegisterActivity.User::class.java)
                         if (user?.pw == password) {
+                            auth.currentUser?.let { currentUser ->
+                                val uid = currentUser.uid
+                                saveUserUid(userSnapshot.ref, uid)
+                            }
                             Toast.makeText(this@MainActivity, "로그인 성공", Toast.LENGTH_LONG).show()
                             val intent = Intent(this@MainActivity, IntroActivity::class.java)
                             startActivity(intent)
@@ -65,8 +69,6 @@ class MainActivity : AppCompatActivity() {
                             return
                         }
                     }
-                    // 로그인 실패 처리
-//                    Toast.makeText(this@MainActivity, "로그인 실패", Toast.LENGTH_LONG).show()
                 } else {
                     // Ceousers 테이블에서 이메일과 비밀번호 확인
                     checkCeoCredentials(email, password)
@@ -82,13 +84,17 @@ class MainActivity : AppCompatActivity() {
 
 
     private fun checkCeoCredentials(email: String, password: String) {
-        val ceoquery: Query = database.child("Ceousers").orderByChild("ceoemail").equalTo(email)
-        ceoquery.addListenerForSingleValueEvent(object : ValueEventListener {
+        val ceoQuery: Query = database.child("Ceousers").orderByChild("ceoemail").equalTo(email)
+        ceoQuery.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if (dataSnapshot.exists()) {
-                    for (userSnapshot in dataSnapshot.children) {
-                        val ceousers = userSnapshot.getValue(CeoregisterActivity.Ceouser::class.java)
+                    for (ceoSnapshot in dataSnapshot.children) {
+                        val ceousers = ceoSnapshot.getValue(CeoregisterActivity.Ceouser::class.java)
                         if (ceousers?.ceopw == password) {
+                            auth.currentUser?.let { currentUser ->
+                                val uid = currentUser.uid
+                                saveUserUid(ceoSnapshot.ref, uid)
+                            }
                             Toast.makeText(this@MainActivity, "로그인 성공", Toast.LENGTH_LONG).show()
                             val intent = Intent(this@MainActivity, CeoIntroActivity::class.java)
                             startActivity(intent)
@@ -96,17 +102,19 @@ class MainActivity : AppCompatActivity() {
                             return
                         }
                     }
-                }
-                else{
+                } else {
                     Toast.makeText(this@MainActivity, "아이디와 비밀번호가 존재하지 않습니다", Toast.LENGTH_LONG).show()
                 }
-// 로그인 실패 처리
-
             }
+
             override fun onCancelled(databaseError: DatabaseError) {
                 // 에러 처리
                 Toast.makeText(this@MainActivity, "로그인 실패", Toast.LENGTH_LONG).show()
             }
         })
+    }
+
+    private fun saveUserUid(ref: DatabaseReference, uid: String) {
+        ref.child("uid").setValue(uid)
     }
 }
