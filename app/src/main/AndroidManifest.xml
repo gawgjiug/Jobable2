@@ -12,9 +12,11 @@
         android:theme="@style/Theme.Capstone"
         tools:targetApi="31">
         <activity
+            android:name=".board.BoardWriteActivity"
+            android:exported="false" />
+        <activity
             android:name=".CeoregisterActivity"
             android:exported="false" />
-
         <activity
             android:name=".CeoIntroActivity"
             android:exported="false" />
