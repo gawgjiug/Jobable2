@@ -5,12 +5,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.example.capstone.databinding.ActivityMainBinding
+import com.example.capstone.utils.FBAuth
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
 import com.google.firebase.database.*
-
-
+import com.google.firebase.ktx.Firebase
 
 class MainActivity : AppCompatActivity() {
 
@@ -58,14 +57,28 @@ class MainActivity : AppCompatActivity() {
                     for (userSnapshot in dataSnapshot.children) {
                         val user = userSnapshot.getValue(RegisterActivity.User::class.java)
                         if (user?.pw == password) {
-                            auth.currentUser?.let { currentUser ->
-                                val uid = currentUser.uid
-                                saveUserUid(userSnapshot.ref, uid)
-                            }
-                            Toast.makeText(this@MainActivity, "로그인 성공", Toast.LENGTH_LONG).show()
-                            val intent = Intent(this@MainActivity, IntroActivity::class.java)
-                            startActivity(intent)
-                            finish()
+                            auth.signInWithEmailAndPassword(email, password)
+                                .addOnCompleteListener(this@MainActivity) { task ->
+                                    if (task.isSuccessful) {
+                                        val uid = auth.currentUser?.uid
+                                        saveUserUid(userSnapshot.ref, uid)
+                                        Toast.makeText(
+                                            this@MainActivity,
+                                            "로그인 성공",
+                                            Toast.LENGTH_LONG
+                                        ).show()
+                                        val intent =
+                                            Intent(this@MainActivity, IntroActivity::class.java)
+                                        startActivity(intent)
+                                        finish()
+                                    } else {
+                                        Toast.makeText(
+                                            this@MainActivity,
+                                            "로그인 실패",
+                                            Toast.LENGTH_LONG
+                                        ).show()
+                                    }
+                                }
                             return
                         }
                     }
@@ -82,28 +95,46 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-
     private fun checkCeoCredentials(email: String, password: String) {
         val ceoQuery: Query = database.child("Ceousers").orderByChild("ceoemail").equalTo(email)
         ceoQuery.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if (dataSnapshot.exists()) {
                     for (ceoSnapshot in dataSnapshot.children) {
-                        val ceousers = ceoSnapshot.getValue(CeoregisterActivity.Ceouser::class.java)
+                        val ceousers =
+                            ceoSnapshot.getValue(CeoregisterActivity.Ceouser::class.java)
                         if (ceousers?.ceopw == password) {
-                            auth.currentUser?.let { currentUser ->
-                                val uid = currentUser.uid
-                                saveUserUid(ceoSnapshot.ref, uid)
-                            }
-                            Toast.makeText(this@MainActivity, "로그인 성공", Toast.LENGTH_LONG).show()
-                            val intent = Intent(this@MainActivity, CeoIntroActivity::class.java)
-                            startActivity(intent)
-                            finish()
+                            auth.signInWithEmailAndPassword(email, password)
+                                .addOnCompleteListener(this@MainActivity) { task ->
+                                    if (task.isSuccessful) {
+                                        val uid = auth.currentUser?.uid
+                                        saveUserUid(ceoSnapshot.ref, uid)
+                                        Toast.makeText(
+                                            this@MainActivity,
+                                            "로그인 성공",
+                                            Toast.LENGTH_LONG
+                                        ).show()
+                                        val intent =
+                                            Intent(this@MainActivity, CeoIntroActivity::class.java)
+                                        startActivity(intent)
+                                        finish()
+                                    } else {
+                                        Toast.makeText(
+                                            this@MainActivity,
+                                            "로그인 실패",
+                                            Toast.LENGTH_LONG
+                                        ).show()
+                                    }
+                                }
                             return
                         }
                     }
                 } else {
-                    Toast.makeText(this@MainActivity, "아이디와 비밀번호가 존재하지 않습니다", Toast.LENGTH_LONG).show()
+                    Toast.makeText(
+                        this@MainActivity,
+                        "아이디와 비밀번호가 존재하지 않습니다",
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
             }
 
@@ -114,7 +145,7 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-    private fun saveUserUid(ref: DatabaseReference, uid: String) {
+    private fun saveUserUid(ref: DatabaseReference, uid: String?) {
         ref.child("uid").setValue(uid)
     }
 }
