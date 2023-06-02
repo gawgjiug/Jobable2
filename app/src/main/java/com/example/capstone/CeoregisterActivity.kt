@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.widget.Toast
 import com.example.capstone.databinding.ActivityCeoregisterBinding
 import com.example.capstone.databinding.ActivityRegisterBinding
-import com.example.capstone.utils.FBAuth
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference

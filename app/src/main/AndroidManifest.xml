@@ -11,14 +11,27 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Capstone"
         tools:targetApi="31">
+
         <activity
             android:name=".board.BoardWriteActivity"
             android:exported="false" />
+        <!--  제가 만든 액티비티 실행을 위한 main으로 바꿔주는 코드
+        <activity
+            android:name=".ResumActivity"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>   -->
+
+
         <activity
             android:name=".CeoregisterActivity"
             android:exported="false" />
         <activity
-            android:name=".ResumActivity"
+            android:name=".ResumeActivity"
             android:exported="false" />
         <activity
             android:name=".CeoIntroActivity"
