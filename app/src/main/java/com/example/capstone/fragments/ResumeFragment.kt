@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import com.example.capstone.R
@@ -214,6 +215,8 @@ class ResumeFragment : Fragment() {
             } else {
                 // 데이터 쓰기가 완료된 후에 실행되는 부분
                 println("Data written to Firebase successfully")
+                Toast.makeText(requireContext(), "이력서 정보가 저장되었습니다", Toast.LENGTH_SHORT).show()
+
 
                 //readUserData(user.userId)
             }
