@@ -22,7 +22,6 @@ class CeoregisterActivity : AppCompatActivity() {
         setContentView(R.layout.activity_ceoregister)
         auth = Firebase.auth
         database = FirebaseDatabase.getInstance().reference
-        //제발되라
 
         val binding = ActivityCeoregisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
