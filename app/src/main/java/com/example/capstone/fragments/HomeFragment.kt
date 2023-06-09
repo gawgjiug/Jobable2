@@ -6,12 +6,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import com.example.capstone.JobeduActivity
 import com.example.capstone.R
+import com.example.capstone.WelfareActivity
 import com.example.capstone.databinding.FragmentHomeBinding
 
 // TODO: Rename parameter arguments, choose names that match
@@ -44,9 +43,14 @@ class HomeFragment : Fragment() {
             val intent = Intent(binding.root.context, JobeduActivity::class.java)
             startActivity(intent)
         }
+        binding.homeInfo.setOnClickListener {
+            val intent = Intent(binding.root.context, WelfareActivity::class.java)
+            startActivity(intent)
+        }
 
 
         return binding.root
+        //
     }
 
 

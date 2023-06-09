@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".ResumeActivity">
+
+        <TextView
+            android:id="@+id/textView_resume"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:text="이력정보 입력"
+            android:textSize="25sp"
+            app:layout_constraintBottom_toTopOf="@+id/rs_Name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <EditText
+            android:id="@+id/rs_Name"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:ems="15"
+            android:inputType="textPersonName"
+            android:hint="이름을 입력해주세요"
+            app:layout_constraintBottom_toTopOf="@+id/rs_PhoneNum"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_resume" />
+
+
+        <EditText
+            android:id="@+id/rs_PhoneNum"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:ems="15"
+            android:hint="전화번호를 입력해주세요"
+            android:inputType="textPersonName"
+            app:layout_constraintBottom_toTopOf="@+id/rs_RegistrationNum"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.505"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rs_Name" />
+
+        <EditText
+            android:id="@+id/rs_RegistrationNum"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:ems="15"
+            android:inputType="textPersonName"
+            android:hint="주민번호를 입력해주세요"
+            app:layout_constraintBottom_toTopOf="@+id/rs_Gender"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rs_PhoneNum" />
+
+        <EditText
+            android:id="@+id/rs_Gender"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:ems="15"
+            android:inputType="textPersonName"
+            android:hint="성별을 입력해주세요"
+            app:layout_constraintBottom_toTopOf="@+id/rs_Address"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rs_RegistrationNum" />
+
+        <EditText
+            android:id="@+id/rs_Address"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:ems="15"
+            android:inputType="textPersonName"
+            android:hint="주소를 입력해주세요"
+            app:layout_constraintBottom_toTopOf="@+id/rs_DisabilityType"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rs_Gender" />
+
+        <EditText
+            android:id="@+id/rs_DisabilityType"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:ems="15"
+            android:inputType="textPersonName"
+            android:hint="장애유형을 입력해주세요"
+            app:layout_constraintBottom_toTopOf="@+id/rs_Education"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rs_Address" />
+
+        <EditText
+            android:id="@+id/rs_Education"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:ems="15"
+            android:inputType="textPersonName"
+            android:hint="교육여부를 입력해주세요"
+            app:layout_constraintBottom_toTopOf="@+id/rs_WhatEducation"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rs_DisabilityType" />
+
+        <EditText
+            android:id="@+id/rs_WhatEducation"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:ems="15"
+            android:inputType="textPersonName"
+            android:hint="무슨 교육인지 입력해주세요"
+            app:layout_constraintBottom_toTopOf="@+id/rs_submit"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rs_Education" />
+
+        <Button
+            android:id="@+id/rs_submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/mainColor"
+            android:text="입력하기"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.248"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rs_WhatEducation"
+            app:layout_constraintVertical_bias="0.67" />
+
+        <Button
+            android:id="@+id/rs_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/mainColor"
+            android:text="수정하기"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/rs_submit"
+            app:layout_constraintTop_toBottomOf="@+id/rs_WhatEducation"
+            app:layout_constraintVertical_bias="0.67" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

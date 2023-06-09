@@ -33,6 +33,7 @@ class CeoregisterActivity : AppCompatActivity() {
             val Ceo_pw2 = binding.edCeopw2.text.toString()
             val Ceo_name = binding.edCeoname.text.toString()
             val Ceo_phone = binding.edCeophone.text.toString()
+
             if(Ceo_name.isEmpty()){
                 Toast.makeText(this@CeoregisterActivity,"기업명을 입력해주세요",Toast.LENGTH_SHORT).show()
                 CeoJoin = false
@@ -87,6 +88,7 @@ class CeoregisterActivity : AppCompatActivity() {
         val ceoemail : String = " ",
         val ceophone : String = " ",
         val ceopw : String = " "
+
     )
 
 

@@ -46,6 +46,27 @@ class JobeduActivity : AppCompatActivity() {
             )
         )
 
+        items.add(
+            ContentsModel(
+                "바리스타",
+                R.drawable.job5
+            )
+        )
+
+        items.add(
+            ContentsModel(
+                "요리사",
+                R.drawable.job6
+            )
+        )
+
+        items.add(
+            ContentsModel(
+                "방송관련",
+                R.drawable.job7
+            )
+        )
+
         val recyclerview = findViewById<RecyclerView>(R.id.rv_job)
         val rvAdapter = RVAdapter(items)
         recyclerview.adapter = rvAdapter
