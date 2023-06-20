@@ -4,7 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.ImageView
+import com.example.capstone.board.BoardInsideActivity
 import com.example.capstone.board.BoardListLVAdapter
 import com.example.capstone.board.BoardModel
 import com.example.capstone.board.BoardWriteActivity
@@ -30,11 +30,23 @@ class CeoIntroActivity : AppCompatActivity() {
         binding = ActivityCeoIntroBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-//        val boardList = mutableListOf<BoardModel>()
-//        boardList.add(BoardModel("a","b","c","d"))
+
+        //첫번째 방법은 listView에 있는 데이터 title content time 다 다른 액티비티로 전달해줘서 만들기
+
+        //두번째 방법은 Firebase에 있는 board에 대한 데이터의 id를 기반으로 다시 데이터를 받아오는 방법.
+
+
+
 
         boardRVAdapter = BoardListLVAdapter(boardDataList)
         binding.boardListView.adapter = boardRVAdapter
+        binding.boardListView.setOnItemClickListener { parent, view, position, id ->
+            val intent = Intent(this, BoardInsideActivity::class.java)
+            intent.putExtra("title",boardDataList[position].title)
+            intent.putExtra("content",boardDataList[position].content)
+            intent.putExtra("time",boardDataList[position].time)
+            startActivity(intent)
+        }
 
         auth = Firebase.auth
 
@@ -57,12 +69,16 @@ class CeoIntroActivity : AppCompatActivity() {
     private fun getFBBoardData(){
         val postListener = object : ValueEventListener{
             override fun onDataChange(dataSnapshot: DataSnapshot) {
+
+                boardDataList.clear() //기존 데이터 초기화 하고 다시 받아옴
+
                 for (dataModel in dataSnapshot.children){
                     Log.d(TAG,dataModel.toString())
                     val item = dataModel.getValue(BoardModel::class.java)
                     boardDataList.add(item!!)
 
                 }
+                boardDataList.reverse() //글을 최신순으로 보여주기 위해 list를 뒤집어줌
                 boardRVAdapter.notifyDataSetChanged()
                 Log.d(TAG,boardDataList.toString())
 
