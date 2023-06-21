@@ -24,6 +24,7 @@ class CeoIntroActivity : AppCompatActivity() {
     private val TAG = CeoIntroActivity::class.java.simpleName
     private val boardDataList = mutableListOf<BoardModel>()
     private lateinit var boardRVAdapter: BoardListLVAdapter
+    private val boardKeyList = mutableListOf<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,10 +43,11 @@ class CeoIntroActivity : AppCompatActivity() {
         binding.boardListView.adapter = boardRVAdapter
         binding.boardListView.setOnItemClickListener { parent, view, position, id ->
             val intent = Intent(this, BoardInsideActivity::class.java)
-            intent.putExtra("title",boardDataList[position].title)
-            intent.putExtra("content",boardDataList[position].content)
-            intent.putExtra("time",boardDataList[position].time)
+            intent.putExtra("key",boardKeyList[position])
             startActivity(intent)
+
+
+
         }
 
         auth = Firebase.auth
@@ -74,10 +76,13 @@ class CeoIntroActivity : AppCompatActivity() {
 
                 for (dataModel in dataSnapshot.children){
                     Log.d(TAG,dataModel.toString())
+//                    dataModel.key
                     val item = dataModel.getValue(BoardModel::class.java)
                     boardDataList.add(item!!)
+                    boardKeyList.add(dataModel.key.toString())
 
                 }
+                boardKeyList.reverse()
                 boardDataList.reverse() //글을 최신순으로 보여주기 위해 list를 뒤집어줌
                 boardRVAdapter.notifyDataSetChanged()
                 Log.d(TAG,boardDataList.toString())
