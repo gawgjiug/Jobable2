@@ -1,10 +1,14 @@
 package com.example.capstone.board
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import com.bumptech.glide.Glide
 import com.example.capstone.R
@@ -22,6 +26,7 @@ class BoardInsideActivity : AppCompatActivity() {
     private val TAG = BoardInsideActivity::class.java.simpleName
 
     private lateinit var binding : ActivityBoardInsideBinding
+    private lateinit var key: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -29,38 +34,62 @@ class BoardInsideActivity : AppCompatActivity() {
 
 
         binding = DataBindingUtil.setContentView(this,R.layout.activity_board_inside)
-
-//        val title = intent.getStringExtra("title").toString()
-//        val content = intent.getStringExtra("content").toString()
-//        val time = intent.getStringExtra("time").toString()
-//
-//
-//        binding.titleArea.text = title
-//        binding.textAread.text = content
-//        binding.timeArea.text = time
+        binding.boardSettingicon.setOnClickListener {
+            showDialog()
+        }
 
 
 
-        val key = intent.getStringExtra("key")
-
-        getBoardData(key.toString())
-        getImageData(key.toString())
 
 
 
+        key = intent.getStringExtra("key").toString()
+
+        getBoardData(key)
+        getImageData(key)
+
+
+
+    }
+    private fun showDialog(){
+        val mDialogView = LayoutInflater.from(this).inflate(R.layout.custom_dialog,null)
+        val mBuilder = AlertDialog.Builder(this)
+            .setView(mDialogView)
+            .setTitle("게시글 수정/삭제")
+
+        val alertDialog = mBuilder.show()
+        alertDialog.findViewById<Button>(R.id.editBtn)?.setOnClickListener {
+            Toast.makeText(this,"수정 버튼을 눌렀습니다",Toast.LENGTH_LONG).show()
+            val intent = Intent(this,BoardEditActivity::class.java)
+            intent.putExtra("key",key) //edit으로 intent를 넘겨줄 때 key값을 같이 넘겨줄수 있도록 함
+            //수정 페이지이기 때문에 수정버튼 을 눌렀을때 key값을 바탕으로 기존의 제목과 내용을 포함하고 있어야 함.
+            startActivity(intent)
+        }
+        alertDialog.findViewById<Button>(R.id.removeBtn)?.setOnClickListener {
+
+            FBRef.boardRef.child(key).removeValue() //board테이블의 대한 정보를 가져와서 key값을 찾아 remove해줌
+            Toast.makeText(this,"삭제완료",Toast.LENGTH_SHORT).show()
+            finish() //삭제하고 activity가 닫히도록 finish선언
+        }
     }
     private fun getBoardData(key : String){
         val postListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
 
+                try{
+                    val dataModel = dataSnapshot.getValue(BoardModel::class.java)
+                    Log.d(TAG,dataModel!!.title)
+
+                    binding.titleArea.text = dataModel!!.title
+                    binding.textAread.text = dataModel!!.content
+                    binding.timeArea.text = dataModel!!.time
+                    //try에서 에러가 나면 catch를 실행하라 예외처리
+
+                }catch (e:java.lang.Exception){
+                    Log.d(TAG,"삭제완료")
+                }
 
 
-               val dataModel = dataSnapshot.getValue(BoardModel::class.java)
-                Log.d(TAG,dataModel!!.title)
-
-                binding.titleArea.text = dataModel!!.title
-                binding.textAread.text = dataModel!!.content
-                binding.timeArea.text = dataModel!!.time
 
 
             }

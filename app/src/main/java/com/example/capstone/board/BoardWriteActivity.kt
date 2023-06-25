@@ -61,7 +61,8 @@ class BoardWriteActivity : AppCompatActivity() {
 
 
 
-            finish()//게시글 입력이 완료되면 화면이 이전화면으로 돌아감
+            finish()
+        //게시글 입력이 완료되면 화면이 이전화면으로 돌아감
 
         }
 
