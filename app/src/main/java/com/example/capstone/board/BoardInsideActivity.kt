@@ -9,10 +9,12 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import com.bumptech.glide.Glide
 import com.example.capstone.R
 import com.example.capstone.databinding.ActivityBoardInsideBinding
+import com.example.capstone.utils.FBAuth
 import com.example.capstone.utils.FBRef
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.database.DataSnapshot
@@ -83,6 +85,15 @@ class BoardInsideActivity : AppCompatActivity() {
                     binding.titleArea.text = dataModel!!.title
                     binding.textAread.text = dataModel!!.content
                     binding.timeArea.text = dataModel!!.time
+
+                    val myUid = FBAuth.getUid() //로그인 한 uid
+                    val writerUid = dataModel.uid //글쓴사용자의 uid
+                    if (myUid.equals(writerUid)){
+                        binding.boardSettingicon.isVisible = true
+                    }else{
+
+                    }
+
                     //try에서 에러가 나면 catch를 실행하라 예외처리
 
                 }catch (e:java.lang.Exception){
