@@ -13,12 +13,16 @@ import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import com.bumptech.glide.Glide
 import com.example.capstone.R
+import com.example.capstone.RegisterActivity
 import com.example.capstone.databinding.ActivityBoardInsideBinding
 import com.example.capstone.utils.FBAuth
 import com.example.capstone.utils.FBRef
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.Query
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
@@ -29,6 +33,7 @@ class BoardInsideActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityBoardInsideBinding
     private lateinit var key: String
+    private lateinit var database : DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -46,6 +51,8 @@ class BoardInsideActivity : AppCompatActivity() {
 
 
         key = intent.getStringExtra("key").toString()
+
+        database = FirebaseDatabase.getInstance().reference
 
         getBoardData(key)
         getImageData(key)
@@ -80,19 +87,30 @@ class BoardInsideActivity : AppCompatActivity() {
 
                 try{
                     val dataModel = dataSnapshot.getValue(BoardModel::class.java)
+                    val userdataModel = dataSnapshot.getValue(RegisterActivity.User::class.java)
                     Log.d(TAG,dataModel!!.title)
 
                     binding.titleArea.text = dataModel!!.title
                     binding.textAread.text = dataModel!!.content
                     binding.timeArea.text = dataModel!!.time
 
+
+
+
                     val myUid = FBAuth.getUid() //로그인 한 uid
                     val writerUid = dataModel.uid //글쓴사용자의 uid
+
+
+                    val userQuery : Query = database.child("users").orderByChild("uid").equalTo(myUid)
+
                     if (myUid.equals(writerUid)){
                         binding.boardSettingicon.isVisible = true
                     }else{
 
                     }
+                    checkUserExists(myUid)
+
+
 
                     //try에서 에러가 나면 catch를 실행하라 예외처리
 
@@ -105,6 +123,7 @@ class BoardInsideActivity : AppCompatActivity() {
 
             }
 
+
             override fun onCancelled(databaseError: DatabaseError) {
                 Log.w(TAG,"loadPost:onCancellde",databaseError.toException())
 
@@ -113,6 +132,26 @@ class BoardInsideActivity : AppCompatActivity() {
         }
         FBRef.boardRef.child(key).addValueEventListener(postListener)
     }
+
+    private fun checkUserExists(uid: String) {
+        val userQuery: Query = database.child("users").orderByChild("uid").equalTo(uid)
+        userQuery.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    // 사용자가 존재하는 경우
+                    binding.applyjobBtn.isVisible = true
+                } else {
+                    // 사용자가 존재하지 않는 경우
+                    binding.applyjobBtn.isVisible = false
+                }
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                Log.w(TAG, "checkUserExists:onCancelled", databaseError.toException())
+            }
+        })
+    }
+
     private fun getImageData(key :String){
         // Reference to an image file in Cloud Storage
         val storageReference = Firebase.storage.reference.child(key + ".jpg")

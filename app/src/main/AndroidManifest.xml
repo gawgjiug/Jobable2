@@ -14,11 +14,13 @@
         android:theme="@style/Theme.Capstone"
         tools:targetApi="31">
         <activity
-            android:name=".board.BoardEditActivity"
+            android:name=".UserBoardActivity"
             android:exported="false" />
-<!--        <activity-->
-<!--            android:name=".BoardInsideActivity"-->
-<!--            android:exported="false" />-->
+        <activity
+            android:name=".board.BoardEditActivity"
+            android:exported="false" /> <!-- <activity -->
+        <!-- android:name=".BoardInsideActivity" -->
+        <!-- android:exported="false" /> -->
         <activity
             android:name=".board.BoardInsideActivity"
             android:exported="false" />

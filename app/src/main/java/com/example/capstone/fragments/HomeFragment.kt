@@ -10,6 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import com.example.capstone.JobeduActivity
 import com.example.capstone.R
+import com.example.capstone.UserBoardActivity
 import com.example.capstone.WelfareActivity
 import com.example.capstone.databinding.FragmentHomeBinding
 
@@ -45,6 +46,10 @@ class HomeFragment : Fragment() {
         }
         binding.homeInfo.setOnClickListener {
             val intent = Intent(binding.root.context, WelfareActivity::class.java)
+            startActivity(intent)
+        }
+        binding.homeSearch.setOnClickListener {
+            val intent = Intent(binding.root.context,UserBoardActivity::class.java)
             startActivity(intent)
         }
 

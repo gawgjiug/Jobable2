@@ -75,7 +75,6 @@
                         android:text="이력정보 입력"
                         android:textSize="25sp"
                         android:layout_gravity="center"
-                        app:layout_constraintBottom_toTopOf="@+id/rs_Name"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="parent"
@@ -92,8 +91,7 @@
                         android:layout_gravity="center"
                         app:layout_constraintBottom_toTopOf="@+id/rs_PhoneNum"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView_resume" />
+                        app:layout_constraintStart_toStartOf="parent" />
 
 
                     <EditText

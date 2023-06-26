@@ -9,6 +9,8 @@ class FBRef {
         private val database = Firebase.database
 
         val boardRef = database.getReference("board")
+//        val usersRef = database.getReference("users")
+//        val CeousersRef = database.getReference("Ceousers")
     }
 
 }
