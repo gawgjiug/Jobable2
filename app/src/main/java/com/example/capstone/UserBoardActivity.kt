@@ -103,6 +103,9 @@ class UserBoardActivity : AppCompatActivity() {
                 if (item.title.toLowerCase(Locale.getDefault()).contains(searchQuery)) {
                     filteredBoardDataList.add(item)
                 }
+                else if(item.content.toLowerCase(Locale.getDefault()).contains(searchQuery)){
+                    filteredBoardDataList.add(item)
+                }
             }
         }
 
