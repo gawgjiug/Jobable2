@@ -8,10 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
-import com.example.capstone.JobeduActivity
 import com.example.capstone.R
 import com.example.capstone.UserBoardActivity
-import com.example.capstone.WelfareActivity
 import com.example.capstone.databinding.FragmentHomeBinding
 
 // TODO: Rename parameter arguments, choose names that match
@@ -40,14 +38,14 @@ class HomeFragment : Fragment() {
         binding.resumeTap.setOnClickListener{
             it.findNavController().navigate(R.id.action_homeFragment_to_resumeFragment)
         }
-        binding.homeVideo.setOnClickListener {
-            val intent = Intent(binding.root.context, JobeduActivity::class.java)
-            startActivity(intent)
-        }
-        binding.homeInfo.setOnClickListener {
-            val intent = Intent(binding.root.context, WelfareActivity::class.java)
-            startActivity(intent)
-        }
+//        binding.homeVideo.setOnClickListener {
+//            val intent = Intent(binding.root.context, JobeduActivity::class.java)
+//            startActivity(intent)
+//        }
+//        binding.homeInfo.setOnClickListener {
+//            val intent = Intent(binding.root.context, WelfareActivity::class.java)
+//            startActivity(intent)
+//        }
         binding.homeSearch.setOnClickListener {
             val intent = Intent(binding.root.context,UserBoardActivity::class.java)
             startActivity(intent)

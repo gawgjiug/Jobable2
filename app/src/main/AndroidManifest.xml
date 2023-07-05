@@ -3,6 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!-- 인터넷 권한 설정   -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- 인터넷 연결 확인-->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application
         android:allowBackup="true"
@@ -24,9 +28,7 @@
         <activity
             android:name=".board.BoardInsideActivity"
             android:exported="false" />
-        <activity
-            android:name=".WelfareActivity"
-            android:exported="false" />
+
         <activity
             android:name=".board.BoardWriteActivity"
             android:exported="false" />
@@ -51,9 +53,7 @@
         <activity
             android:name=".CeoIntroActivity"
             android:exported="false" />
-        <activity
-            android:name=".JobeduActivity"
-            android:exported="false" />
+
         <activity
             android:name=".setting.SettingActivity"
             android:exported="false" />

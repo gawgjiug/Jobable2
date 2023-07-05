@@ -2,15 +2,21 @@
 <layout xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+
+
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".fragments.ResumeFragment">
 
+
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            >
+            android:layout_height="match_parent">
 
 
 
@@ -34,6 +40,7 @@
 
 
             </LinearLayout>
+
 
 
             <LinearLayout
@@ -63,162 +70,112 @@
             </LinearLayout>
 
 
-                <LinearLayout
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="660dp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+
+                <ImageView
+                    android:id="@+id/resumeImage"
+                    android:layout_width="100dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="20dp"
+                    android:src="@drawable/resume_profile"/>
+
+                <EditText
+                    android:id="@+id/resumeName"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-                    <TextView
-                        android:id="@+id/textView_resume"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="90dp"
-                        android:text="이력정보 입력"
-                        android:textSize="25sp"
-                        android:layout_gravity="center"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.5"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                    android:layout_height="50dp"
+                    android:layout_margin="10dp"
+                    android:hint="이름"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
 
 
-                    <EditText
-                        android:id="@+id/rs_Name"
-                        android:layout_width="wrap_content"
-                        android:layout_height="50dp"
-                        android:ems="15"
-                        android:inputType="textPersonName"
-                        android:hint="이름을 입력해주세요"
-                        android:layout_gravity="center"
-                        app:layout_constraintBottom_toTopOf="@+id/rs_PhoneNum"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent" />
+                <EditText
+                    android:id="@+id/resumeSex"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_margin="10dp"
+                    android:hint="성별"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/resumeAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_margin="10dp"
+                    android:hint="주소"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/resumeDetail"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_margin="10dp"
+                    android:hint="상세주소"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/resumeType"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_margin="10dp"
+                    android:hint="장애 유형"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/resumeBirth"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_margin="10dp"
+                    android:hint="생년월일"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/resumeIntroduce"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_margin="10dp"
+                    android:hint="소개"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/resumeWrite"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:backgroundTint="@color/mainColor"
+                    android:text="입력하기"/>
 
 
-                    <EditText
-                        android:id="@+id/rs_PhoneNum"
-                        android:layout_width="wrap_content"
-                        android:layout_height="50dp"
-                        android:ems="15"
-                        android:hint="전화번호를 입력해주세요"
-                        android:inputType="textPersonName"
-                        android:layout_gravity="center"
-                        app:layout_constraintBottom_toTopOf="@+id/rs_RegistrationNum"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.505"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/rs_Name" />
 
-                    <EditText
-                        android:id="@+id/rs_RegistrationNum"
-                        android:layout_width="wrap_content"
-                        android:layout_height="50dp"
-                        android:ems="15"
-                        android:inputType="textPersonName"
-                        android:hint="주민번호를 입력해주세요"
-                        android:layout_gravity="center"
-                        app:layout_constraintBottom_toTopOf="@+id/rs_Gender"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/rs_PhoneNum" />
 
-                    <EditText
-                        android:id="@+id/rs_Gender"
-                        android:layout_width="wrap_content"
-                        android:layout_height="50dp"
-                        android:ems="15"
-                        android:inputType="textPersonName"
-                        android:hint="성별을 입력해주세요"
-                        android:layout_gravity="center"
-                        app:layout_constraintBottom_toTopOf="@+id/rs_Address"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/rs_RegistrationNum" />
+            </LinearLayout>
 
-                    <EditText
-                        android:id="@+id/rs_Address"
-                        android:layout_width="wrap_content"
-                        android:layout_height="50dp"
-                        android:ems="15"
-                        android:inputType="textPersonName"
-                        android:hint="주소를 입력해주세요"
-                        android:layout_gravity="center"
-                        app:layout_constraintBottom_toTopOf="@+id/rs_DisabilityType"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/rs_Gender" />
-
-                    <EditText
-                        android:id="@+id/rs_DisabilityType"
-                        android:layout_width="wrap_content"
-                        android:layout_height="50dp"
-                        android:ems="15"
-                        android:inputType="textPersonName"
-                        android:hint="장애유형을 입력해주세요"
-                        android:layout_gravity="center"
-                        app:layout_constraintBottom_toTopOf="@+id/rs_Education"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/rs_Address" />
-
-                    <EditText
-                        android:id="@+id/rs_Education"
-                        android:layout_width="wrap_content"
-                        android:layout_height="50dp"
-                        android:ems="15"
-                        android:inputType="textPersonName"
-                        android:hint="교육여부를 입력해주세요"
-                        android:layout_gravity="center"
-                        app:layout_constraintBottom_toTopOf="@+id/rs_WhatEducation"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/rs_DisabilityType" />
-
-                    <EditText
-                        android:id="@+id/rs_WhatEducation"
-                        android:layout_width="wrap_content"
-                        android:layout_height="50dp"
-                        android:ems="15"
-                        android:inputType="textPersonName"
-                        android:hint="무슨 교육인지 입력해주세요"
-                        android:layout_gravity="center"
-                        app:layout_constraintBottom_toTopOf="@+id/rs_submit"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/rs_Education" />
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
-
-                        <Button
-                            android:id="@+id/rs_edit"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="60dp"
-                            android:backgroundTint="@color/mainColor"
-                            android:text="수정하기"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@id/rs_submit"
-                            app:layout_constraintTop_toBottomOf="@+id/rs_WhatEducation"
-                            app:layout_constraintVertical_bias="0.67" />
-
-                        <Button
-                            android:id="@+id/rs_submit"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="110dp"
-                            android:backgroundTint="@color/mainColor"
-                            android:text="입력하기"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.248"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/rs_WhatEducation"
-                            app:layout_constraintVertical_bias="0.67" />
-                    </LinearLayout>
-                </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </FrameLayout>
+         </FrameLayout>
 </layout>
