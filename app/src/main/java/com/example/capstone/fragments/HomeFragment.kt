@@ -1,6 +1,7 @@
 package com.example.capstone.fragments
 
 import android.content.Intent
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.provider.MediaStore.Video
 import androidx.fragment.app.Fragment
@@ -25,6 +26,7 @@ class HomeFragment : Fragment() {
     // TODO: Rename and change types of parameters
 
     private lateinit var binding : FragmentHomeBinding
+    private var mediaplayer : MediaPlayer?= null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +39,7 @@ class HomeFragment : Fragment() {
     ): View? {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
+        mediaplayer = MediaPlayer.create(requireContext(),R.raw.search_mp3)
 
         binding.resumeTap.setOnClickListener{
             it.findNavController().navigate(R.id.action_homeFragment_to_resumeFragment)
@@ -52,6 +55,15 @@ class HomeFragment : Fragment() {
         binding.homeSearch.setOnClickListener {
             val intent = Intent(binding.root.context,UserBoardActivity::class.java)
             startActivity(intent)
+        }
+        binding.searchmp3.setOnClickListener {
+            mediaplayer?.start()
+        }
+        binding.quizmp3.setOnClickListener {
+            mediaplayer?.start()
+        }
+        binding.welfaremp3.setOnClickListener {
+            mediaplayer?.start()
         }
 
 
