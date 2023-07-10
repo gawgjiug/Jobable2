@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.provider.ContactsContract.CommonDataKinds.Im
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import androidx.navigation.findNavController
 import com.example.capstone.databinding.ActivityWelfareBinding
 
 class WelfareActivity : AppCompatActivity() {
@@ -18,6 +19,7 @@ class WelfareActivity : AppCompatActivity() {
         binding = ActivityWelfareBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
         val welfareMap = mapOf(
             binding.WelfareSuwon to "https://www.suwonrehab.or.kr/bbs/content.php?co_id=bussiness5",
             binding.WelfareSeoul to "https://wis.seoul.go.kr/handicap/findWelfareService.do",
@@ -27,7 +29,9 @@ class WelfareActivity : AppCompatActivity() {
             binding.WelfareWonju to "https://www.wonju.go.kr/welfare/contents.do?key=2252&",
             binding.WelfareGwangju to "https://gjdsc.or.kr/kor/menu?menuId=71_110",
             binding.WelfareIncheon to "https://www.incheon.go.kr/welfare/WE010201",
-            binding.elseIcon to "https://www.ablejob.co.kr/eduEvent/edu-event.php"
+            binding.elseIcon to "https://www.ablejob.co.kr/eduEvent/edu-event.php",
+            binding.welfarebottom to "https://kfpd.org/36/3827?amp;sop=and&page=2"
+
         )
 
         welfareMap.forEach { (imageView, url) ->
@@ -35,6 +39,15 @@ class WelfareActivity : AppCompatActivity() {
                 showWebView(url)
             }
         }
+
+
+
+
+
+
+
+
+
     }
 
     private fun showWebView(url: String) {

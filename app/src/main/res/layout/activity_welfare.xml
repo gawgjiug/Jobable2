@@ -39,36 +39,39 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
+        android:layout_marginTop="60dp"
+        android:id="@+id/linearLayout4"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="70dp"
-        android:orientation="vertical">
-        
+        android:orientation="vertical"
+        tools:layout_editor_absoluteY="70dp">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="150dp">
 
             <ImageView
                 android:id="@+id/WelfareSeoul"
-                android:src="@drawable/seoul"
                 android:layout_width="120dp"
+                android:layout_height="120dp"
                 android:layout_weight="1"
-                android:layout_height="120dp"></ImageView>
+                android:src="@drawable/seoul"></ImageView>
 
             <ImageView
                 android:id="@+id/WelfareSuwon"
-                android:src="@drawable/suwon"
                 android:layout_width="120dp"
+                android:layout_height="120dp"
                 android:layout_weight="1"
-                android:layout_height="120dp"></ImageView>
+                android:src="@drawable/suwon"></ImageView>
+
             <ImageView
                 android:id="@+id/WelfareSiheung"
-                android:src="@drawable/siheung"
                 android:layout_width="120dp"
+                android:layout_height="120dp"
                 android:layout_weight="1"
-                android:layout_height="120dp">
+                android:src="@drawable/siheung">
 
-        </ImageView>
+            </ImageView>
 
 
         </LinearLayout>
@@ -79,51 +82,54 @@
 
             <ImageView
                 android:id="@+id/WelfareWonju"
-                android:src="@drawable/wonju"
                 android:layout_width="120dp"
+                android:layout_height="120dp"
                 android:layout_weight="1"
-                android:layout_height="120dp"></ImageView>
+                android:src="@drawable/wonju"></ImageView>
 
             <ImageView
                 android:id="@+id/WelfareDaegu"
-                android:src="@drawable/daegu"
                 android:layout_width="120dp"
+                android:layout_height="120dp"
                 android:layout_weight="1"
-                android:layout_height="120dp"></ImageView>
+                android:src="@drawable/daegu"></ImageView>
+
             <ImageView
                 android:id="@+id/WelfareGwangju"
-                android:src="@drawable/gwangju"
                 android:layout_width="120dp"
+                android:layout_height="120dp"
                 android:layout_weight="1"
-                android:layout_height="120dp">
+                android:src="@drawable/gwangju">
 
             </ImageView>
 
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="150dp">
 
             <ImageView
                 android:id="@+id/WelfareAnsan"
-                android:src="@drawable/ansan"
                 android:layout_width="120dp"
+                android:layout_height="120dp"
                 android:layout_weight="1"
-                android:layout_height="120dp"></ImageView>
+                android:src="@drawable/ansan"></ImageView>
 
             <ImageView
                 android:id="@+id/WelfareIncheon"
-                android:src="@drawable/incheon"
                 android:layout_width="120dp"
+                android:layout_height="120dp"
                 android:layout_weight="1"
-                android:layout_height="120dp"></ImageView>
+                android:src="@drawable/incheon"></ImageView>
+
             <ImageView
                 android:id="@+id/elseIcon"
-                android:src="@drawable/main_icon_else"
                 android:layout_width="120dp"
+                android:layout_height="120dp"
                 android:layout_weight="1"
-                android:layout_height="120dp">
+                android:src="@drawable/main_icon_else">
 
             </ImageView>
 
@@ -131,6 +137,26 @@
         </LinearLayout>
 
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="280dp"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout4"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:src="@drawable/welfarebottom"
+        android:id="@+id/welfarebottom"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout4"
+        app:layout_constraintStart_toStartOf="parent">
+
+    </ImageView>
+
+
+
+
 
 
 
