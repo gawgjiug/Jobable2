@@ -121,7 +121,7 @@
 
     <ImageView
         android:src="@drawable/video_seoul"
-        android:id="@+id/welfarebottom"
+        android:id="@+id/video_seoul"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         app:layout_constraintBottom_toBottomOf="@+id/linearLayout4"

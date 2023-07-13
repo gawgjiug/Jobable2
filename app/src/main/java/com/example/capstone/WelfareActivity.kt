@@ -43,11 +43,6 @@ class WelfareActivity : AppCompatActivity() {
 
 
 
-
-
-
-
-
     }
 
     private fun showWebView(url: String) {
