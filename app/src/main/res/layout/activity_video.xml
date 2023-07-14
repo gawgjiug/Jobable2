@@ -81,7 +81,8 @@
                 android:layout_weight="1"
                 android:src="@drawable/library"></ImageView>
             <ImageView
-
+                android:src="@drawable/video_interview"
+                android:id="@+id/video_interview"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:layout_weight="1">
@@ -90,6 +91,8 @@
             </ImageView>
 
             <ImageView
+                android:src="@drawable/video_parents"
+                android:id="@+id/video_parents"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:layout_weight="1">
@@ -105,6 +108,23 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="150dp">
+
+            <ImageView
+                android:layout_weight="1"
+                android:src="@drawable/damoa"
+                android:id="@+id/video_damoa"
+                android:layout_width="200dp"
+                android:layout_height="match_parent">
+
+            </ImageView>
+            <ImageView
+                android:src="@drawable/bodacenter"
+                android:id="@+id/video_bodacenter"
+                android:layout_weight="1"
+                android:layout_width="200dp"
+                android:layout_height="match_parent">
+
+            </ImageView>
 
 
 

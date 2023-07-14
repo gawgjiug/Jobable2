@@ -1,10 +1,15 @@
 package com.example.capstone
 
+
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import android.widget.ImageView
 import com.example.capstone.databinding.ActivityVideoBinding
+import com.example.capstone.video.ClothActivity
+
 
 class VideoActivity : AppCompatActivity() {
     private lateinit var binding : ActivityVideoBinding
@@ -16,13 +21,23 @@ class VideoActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val videoMap = mapOf(
-            binding.videoSeoul to " https://www.broso.or.kr/seoul/mainPage.do"
+            binding.videoSeoul to " https://www.broso.or.kr/seoul/mainPage.do",
+            binding.videoDamoa to " https://www.damoa.or.kr/main/inner.php?sMenu=A0000&category=%EC%83%9D%ED%99%9C%EC%A0%95%EB%B3%B4",
+            binding.videoBodacenter to " https://xn--2j1bv4q8pej3e.xn--3e0b707e/?menucode=10000&tmenu=wonder"
         )
         videoMap.forEach { (imageView, url) ->
             imageView.setOnClickListener {
                 showWebView(url)
             }
         }
+
+        val video_cloth = findViewById<ImageView>(R.id.video_cloth)
+        video_cloth.setOnClickListener {
+            val intent = Intent(this, ClothActivity::class.java)
+            startActivity(intent)
+        }
+
+
 
 
 

@@ -16,17 +16,16 @@
         android:theme="@style/Theme.Capstone"
         tools:targetApi="31">
         <activity
-            android:name=".welfarewebview.WelfareSeoulActivity"
+            android:name=".video.ClothActivity"
             android:exported="false" />
+
         <activity
             android:name=".WelfareActivity"
             android:exported="false" />
         <activity
             android:name=".VideoActivity"
             android:exported="false" />
-        <activity
-            android:name=".SearchActivity"
-            android:exported="false" />
+
         <activity
             android:name=".UserBoardActivity"
             android:exported="false" />
