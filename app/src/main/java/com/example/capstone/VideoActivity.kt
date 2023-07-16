@@ -8,6 +8,7 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.ImageView
 import com.example.capstone.databinding.ActivityVideoBinding
+import com.example.capstone.video.BakeryActivity
 import com.example.capstone.video.ClothActivity
 import com.example.capstone.video.OfficeActivity
 
@@ -40,6 +41,11 @@ class VideoActivity : AppCompatActivity() {
         val video_office = findViewById<ImageView>(R.id.video_office)
         video_office.setOnClickListener {
             val intent = Intent(this,OfficeActivity::class.java)
+            startActivity(intent)
+        }
+        val video_bakery = findViewById<ImageView>(R.id.video_bakery)
+        video_bakery.setOnClickListener {
+            val intent =Intent(this,BakeryActivity::class.java)
             startActivity(intent)
         }
 
