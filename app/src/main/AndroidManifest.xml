@@ -16,6 +16,9 @@
         android:theme="@style/Theme.Capstone"
         tools:targetApi="31">
         <activity
+            android:name=".Office_QuizActivity"
+            android:exported="false" />
+        <activity
             android:name=".Bakery_QuizActivity"
             android:exported="false" />
         <activity

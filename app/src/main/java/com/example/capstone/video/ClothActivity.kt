@@ -35,5 +35,8 @@ class ClothActivity : AppCompatActivity() {
                 }
             }
         })
+
+
+
     }
 }

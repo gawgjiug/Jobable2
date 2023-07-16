@@ -1,9 +1,11 @@
 package com.example.capstone.video
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import com.example.capstone.R
+import com.example.capstone.video_quiz.Cloth_QuizActivity
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerCallback
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
@@ -25,11 +27,16 @@ class OfficeActivity : AppCompatActivity() {
                 nextButton.setOnClickListener {
                     currentVideoIndex++
                     if (currentVideoIndex >= videoIds.size) {
-                        currentVideoIndex = 0
+                        // 전환할 액티비티로 화면 전환
+                        val intent = Intent(this@OfficeActivity, Cloth_QuizActivity::class.java)
+                        startActivity(intent)
+                        return@setOnClickListener
                     }
                     youTubePlayer.loadVideo(videoIds[currentVideoIndex], 0F)
                 }
             }
         })
+
+
     }
 }
