@@ -83,7 +83,7 @@
 
 
                 <ImageView
-                    android:id="@+id/resumeImage"
+                    android:id="@+id/resumeProfile"
                     android:layout_width="100dp"
                     android:layout_height="60dp"
                     android:layout_gravity="center"

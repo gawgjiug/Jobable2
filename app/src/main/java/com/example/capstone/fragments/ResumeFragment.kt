@@ -1,7 +1,14 @@
 package com.example.capstone.fragments
 
+import android.app.Activity
+import android.content.Intent
 import android.content.SharedPreferences
+import android.graphics.Bitmap
+import android.graphics.ImageDecoder
+import android.net.Uri
+import android.os.Build
 import android.os.Bundle
+import android.provider.MediaStore
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,10 +16,17 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
+import com.bumptech.glide.Glide
 import com.example.capstone.R
 import com.example.capstone.databinding.FragmentResumeBinding
+import com.google.android.gms.tasks.OnFailureListener
+import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
+import java.io.ByteArrayOutputStream
+import java.io.IOException
 
 class ResumeFragment : Fragment() {
 
@@ -20,6 +34,8 @@ class ResumeFragment : Fragment() {
     private lateinit var database: DatabaseReference
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var auth: FirebaseAuth
+    private lateinit var storageReference: StorageReference
+    private val PICK_IMAGE_REQUEST = 1
 
     private var resumewrite = true
 
@@ -28,6 +44,7 @@ class ResumeFragment : Fragment() {
         database = FirebaseDatabase.getInstance().reference
         sharedPreferences = requireActivity().getSharedPreferences("ResumeData", 0)
         auth = FirebaseAuth.getInstance()
+        storageReference = FirebaseStorage.getInstance().reference
     }
 
     override fun onCreateView(
@@ -100,6 +117,10 @@ class ResumeFragment : Fragment() {
             }
         }
 
+        binding.resumeProfile.setOnClickListener {
+            openGallery()
+        }
+
         // 저장된 이력서 정보 불러오기
         val resumeRef = database.child("resume").child(auth.currentUser?.uid ?: "")
         resumeRef.addListenerForSingleValueEvent(object : ValueEventListener {
@@ -123,7 +144,72 @@ class ResumeFragment : Fragment() {
             }
         })
 
+        // Load and display the profile image if it exists
+        val profileImageRef = storageReference.child("images/${auth.currentUser?.uid}")
+        profileImageRef.downloadUrl.addOnSuccessListener { uri ->
+            // Use Glide to load the image from the URI and set it to the ImageView
+            Glide.with(requireContext())
+                .load(uri)
+                .into(binding.resumeProfile)
+        }.addOnFailureListener {
+            // Handle the failure to load the profile image
+        }
+
         return binding.root
+    }
+
+    private fun openGallery() {
+        val intent = Intent()
+        intent.type = "image/*"
+        intent.action = Intent.ACTION_GET_CONTENT
+        startActivityForResult(Intent.createChooser(intent, "사진 선택"), PICK_IMAGE_REQUEST)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null && data.data != null) {
+            val imageUri: Uri = data.data!!
+            try {
+                val bitmap = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                    val source = ImageDecoder.createSource(requireActivity().contentResolver, imageUri)
+                    ImageDecoder.decodeBitmap(source)
+                } else {
+                    MediaStore.Images.Media.getBitmap(requireActivity().contentResolver, imageUri)
+                }
+                uploadImage(bitmap)
+            } catch (e: IOException) {
+                e.printStackTrace()
+            }
+        }
+    }
+
+    private fun uploadImage(bitmap: Bitmap) {
+        val baos = ByteArrayOutputStream()
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
+        val data: ByteArray = baos.toByteArray()
+
+        val imageRef = storageReference.child("images/${auth.currentUser?.uid}")
+        val uploadTask = imageRef.putBytes(data)
+        uploadTask.addOnSuccessListener(OnSuccessListener {
+            imageRef.downloadUrl.addOnSuccessListener { uri ->
+                val imageURL = uri.toString()
+                // Save the imageURL in the database
+                database.child("resume").child(auth.currentUser?.uid ?: "").child("profileImageURL")
+                    .setValue(imageURL)
+                    .addOnSuccessListener {
+                        Toast.makeText(requireContext(), "프로필 사진이 업로드되었습니다.", Toast.LENGTH_SHORT).show()
+                        // Load and display the uploaded profile image
+                        Glide.with(requireContext())
+                            .load(imageURL)
+                            .into(binding.resumeProfile)
+                    }
+                    .addOnFailureListener {
+                        Toast.makeText(requireContext(), "프로필 사진 업로드에 실패했습니다.", Toast.LENGTH_SHORT).show()
+                    }
+            }
+        }).addOnFailureListener(OnFailureListener {
+            Toast.makeText(requireContext(), "프로필 사진 업로드에 실패했습니다.", Toast.LENGTH_SHORT).show()
+        })
     }
 
     data class Resume(
