@@ -91,8 +91,8 @@
             </ImageView>
 
             <ImageView
-                android:src="@drawable/video_parents"
-                android:id="@+id/video_parents"
+                android:src="@drawable/video_cashier"
+                android:id="@+id/video_cashier"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:layout_weight="1">
