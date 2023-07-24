@@ -17,4 +17,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageView
+        android:visibility="invisible"
+        android:id="@+id/resume_search"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:src="@drawable/resume_search"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+    </ImageView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

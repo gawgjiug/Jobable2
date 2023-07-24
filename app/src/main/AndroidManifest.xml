@@ -16,6 +16,9 @@
         android:theme="@style/Theme.Capstone"
         tools:targetApi="31">
         <activity
+            android:name=".ResumecheckActivity"
+            android:exported="false" />
+        <activity
             android:name=".video_quiz.Cashier_QuizActivity"
             android:exported="false" />
         <activity
