@@ -16,6 +16,9 @@
         android:theme="@style/Theme.Capstone"
         tools:targetApi="31">
         <activity
+            android:name=".DetailedResumeActivity"
+            android:exported="false" />
+        <activity
             android:name=".ResumecheckActivity"
             android:exported="false" />
         <activity
