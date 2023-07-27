@@ -1,42 +1,19 @@
 <!-- res/layout/activity_resume_check.xml -->
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    tools:context=".ResumecheckActivity">
 
-    <!-- 프로필 사진을 표시할 ImageView -->
-    <ImageView
-        android:id="@+id/imageViewProfile"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_gravity="center"
-        android:src="@drawable/resume_profile" />
 
-    <!-- 이름, 나이를 표시할 TextView -->
-    <TextView
-        android:id="@+id/textViewName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp" />
 
-    <TextView
-        android:id="@+id/textViewAge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:layout_gravity="center"
-        android:layout_marginTop="5dp" />
-
-    <!-- 사용자 정보를 표시할 ListView -->
     <ListView
-        android:id="@+id/listViewUsers"
+        android:id="@+id/applyUserListView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:divider="@null"
-        android:dividerHeight="0dp" />
+        android:layout_height="700dp"/>
+
+
+
 
 </LinearLayout>

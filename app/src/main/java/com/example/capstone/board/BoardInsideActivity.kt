@@ -18,6 +18,7 @@ import com.example.capstone.databinding.CustomDialogBinding
 import com.example.capstone.utils.FBAuth
 import com.example.capstone.utils.FBRef
 import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -50,14 +51,6 @@ class BoardInsideActivity : AppCompatActivity() {
         // Check if the current user has a resume and show/hide the apply job button accordingly
         checkUserHasResume()
 
-        // Set an onClickListener to apply job button
-        binding.applyjobBtn.setOnClickListener {
-            // Get the selected user's data from the database and pass it to ResumecheckActivity
-            val selectedUserId = key // This key is used as the user's unique ID
-            val intent = Intent(this, ResumecheckActivity::class.java)
-            intent.putExtra("selectedUserId", selectedUserId)
-            startActivity(intent)
-        }
     }
 
     private fun showDialog() {
@@ -134,13 +127,7 @@ class BoardInsideActivity : AppCompatActivity() {
                         // If the user has a resume, show the apply job button
                         binding.applyjobBtn.isVisible = true
                         // Set an onClickListener to apply job button
-                        binding.applyjobBtn.setOnClickListener {
-                            // Get the selected user's data from the database and pass it to ResumecheckActivity
-                            val selectedUserId = key // This key is used as the user's unique ID
 
-                            intent.putExtra("selectedUserId", selectedUserId)
-
-                        }
                     } else {
                         // If the user does not have a resume, hide the apply job button
                         binding.applyjobBtn.isVisible = false
