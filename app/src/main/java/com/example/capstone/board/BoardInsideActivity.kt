@@ -13,6 +13,7 @@ import com.bumptech.glide.Glide
 import com.example.capstone.R
 import com.example.capstone.RegisterActivity
 import com.example.capstone.ResumecheckActivity
+import com.example.capstone.applyjob.ResumeListAdapter
 import com.example.capstone.databinding.ActivityBoardInsideBinding
 import com.example.capstone.databinding.CustomDialogBinding
 import com.example.capstone.utils.FBAuth
@@ -43,6 +44,8 @@ class BoardInsideActivity : AppCompatActivity() {
             showDialog()
         }
 
+
+
         key = intent.getStringExtra("key").toString()
         database = FirebaseDatabase.getInstance().reference
 
@@ -51,12 +54,23 @@ class BoardInsideActivity : AppCompatActivity() {
         // Check if the current user has a resume and show/hide the apply job button accordingly
         checkUserHasResume()
 
+        // ResumeListAdapter를 사용하여 리스트 뷰에 이력서 정보를 보여줌
+
+
+
         binding.applyjobBtn.setOnClickListener {
             // Get the selected user's ID and the key (게시글의 ID) from the intent
-            val selectedUserId = FBAuth.getUid() // This is the ID of the current user (개인회원)
+            val selectedUserId1 = FBAuth.getUid() // This is the ID of the current user (개인회원)
             Toast.makeText(this, "지원 접수가 완료되었습니다", Toast.LENGTH_LONG).show()
-            intent.putExtra("selectedUserId", selectedUserId)
+            val intent = Intent(this,ResumecheckActivity::class.java)
+            intent.putExtra("selectedUserId2", selectedUserId1)
             intent.putExtra("boardKey", key) // key is the ID of the selected board (게시글의 ID)
+
+
+
+
+            Log.d("BoardInsideActivity", "selectedUserId: $selectedUserId1, boardKey: $key")
+
 
         }
 

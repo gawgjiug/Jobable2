@@ -18,10 +18,25 @@ class ResumecheckActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityResumcheckBinding
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityResumcheckBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
+
+
+
+
+
+        val selectedUserId1 = intent.getStringExtra("selectedUserId2")
+        val boardKey = intent.getStringExtra("boardKey")
+
+
+        Log.d("ResumecheckActivity", "selectedUserId: $selectedUserId1, boardKey: $boardKey")
+
+
 
         val myRef = FirebaseDatabase.getInstance().getReference("resume")
 
@@ -29,15 +44,23 @@ class ResumecheckActivity : AppCompatActivity() {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 val resumeDataList = mutableListOf<ResumeData>()
                 for (dataModel in dataSnapshot.children) {
+                    val uid = dataModel.key
                     val name = dataModel.child("name").getValue(String::class.java)
                     val sex = dataModel.child("sex").getValue(String::class.java)
                     val type = dataModel.child("type").getValue(String::class.java)
                     val profileImageURL = dataModel.child("profileImageURL").getValue(String::class.java)
 
 
-                    if (name != null && sex != null && type != null && profileImageURL != null) {
+
+                    if (selectedUserId1 == uid && uid != null && name != null && sex != null && type != null && profileImageURL != null ) {
                         val resumeData = ResumeData(name, sex, type, profileImageURL)
                         resumeDataList.add(resumeData)
+                        Log.d("ResumecheckActivity", "selectedUserId: $selectedUserId1, uid: $uid")
+
+                    }
+                    else{
+                        Log.d("ResumecheckActivity", "selectedUserId: $selectedUserId1, uid: $uid")
+
                     }
                 }
 
