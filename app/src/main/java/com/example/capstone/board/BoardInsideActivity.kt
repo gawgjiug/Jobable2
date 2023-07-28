@@ -51,7 +51,20 @@ class BoardInsideActivity : AppCompatActivity() {
         // Check if the current user has a resume and show/hide the apply job button accordingly
         checkUserHasResume()
 
+        binding.applyjobBtn.setOnClickListener {
+            // Get the selected user's ID and the key (게시글의 ID) from the intent
+            val selectedUserId = FBAuth.getUid() // This is the ID of the current user (개인회원)
+            Toast.makeText(this, "지원 접수가 완료되었습니다", Toast.LENGTH_LONG).show()
+            intent.putExtra("selectedUserId", selectedUserId)
+            intent.putExtra("boardKey", key) // key is the ID of the selected board (게시글의 ID)
+
+        }
+
+
+
+
     }
+
 
     private fun showDialog() {
         // Create a custom dialog using custom_dialog.xml

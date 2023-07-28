@@ -117,7 +117,7 @@
                     android:layout_height="50dp"
                     android:layout_margin="10dp"
                     android:hint="주소"
-                    android:focusable="false"
+                    android:focusable="true"
                     android:textColor="@color/black"
                     android:textSize="15sp"
 

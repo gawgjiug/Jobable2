@@ -32,9 +32,11 @@ class ResumecheckActivity : AppCompatActivity() {
                     val name = dataModel.child("name").getValue(String::class.java)
                     val sex = dataModel.child("sex").getValue(String::class.java)
                     val type = dataModel.child("type").getValue(String::class.java)
+                    val profileImageURL = dataModel.child("profileImageURL").getValue(String::class.java)
 
-                    if (name != null && sex != null && type != null) {
-                        val resumeData = ResumeData(name, sex, type)
+
+                    if (name != null && sex != null && type != null && profileImageURL != null) {
+                        val resumeData = ResumeData(name, sex, type, profileImageURL)
                         resumeDataList.add(resumeData)
                     }
                 }

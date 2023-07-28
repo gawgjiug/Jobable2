@@ -6,22 +6,42 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
+
+    <ImageView
+        android:src="@drawable/resume_profile"
+        android:id="@+id/profileImageView"
+        android:layout_width="52dp"
+        android:layout_height="52dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"/>
+
+
     <TextView
-        android:text="안녕하세요"
+
         android:id="@+id/nameTextView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="곽지욱"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <TextView
-
+        android:textSize="16sp"
         android:id="@+id/sexTextView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
     <TextView
-
+        android:textSize="16sp"
         android:id="@+id/typeTextView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
+
+
 
 </LinearLayout>

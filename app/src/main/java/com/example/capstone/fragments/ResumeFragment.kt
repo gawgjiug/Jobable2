@@ -97,6 +97,8 @@ class ResumeFragment : Fragment() {
             }
 
             if (resumewrite) {
+                val user = auth.currentUser
+                val userId = user?.uid
                 val resume = Resume(name, address, detail, birth, introduce, sex, type)
                 val resumeRef = database.child("resume").child(auth.currentUser?.uid ?: "")
                 resumeRef.setValue(resume)
@@ -220,5 +222,6 @@ class ResumeFragment : Fragment() {
         val introduce: String = "",
         val sex: String = "",
         val type: String = ""
+
     )
 }
