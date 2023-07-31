@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.capstone.applyjob.ResumeData
 import com.example.capstone.applyjob.ResumeListAdapter
 import com.example.capstone.databinding.ActivityResumcheckBinding
+import com.example.capstone.utils.FBAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -41,6 +42,7 @@ class ResumecheckActivity : AppCompatActivity() {
 
 
         val myRef = FirebaseDatabase.getInstance().getReference("applyusers")
+        val myUid = FBAuth.getUid()
 
         val postListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -51,10 +53,11 @@ class ResumecheckActivity : AppCompatActivity() {
                     val sex = dataModel.child("sex").getValue(String::class.java)
                     val type = dataModel.child("type").getValue(String::class.java)
                     val profileImageURL = dataModel.child("profilePhotoURL").getValue(String::class.java)
+                    val boardid = dataModel.child("boardid").getValue(String::class.java)
 
 
 
-                    if ( uid != null && name != null && sex != null && type != null && profileImageURL != null ) {
+                    if (boardid == myUid && uid != null && name != null && sex != null && type != null && profileImageURL != null ) {
                         val resumeData = ResumeData(name, sex, type, profileImageURL)
                         resumeDataList.add(resumeData)
                         Log.d("ResumecheckActivity", "selectedUserId: $selectedUserId, uid: $uid")

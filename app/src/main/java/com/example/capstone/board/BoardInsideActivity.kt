@@ -39,6 +39,9 @@ class BoardInsideActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private var resumewrite = true
 
+    private lateinit var boardid: String
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -78,6 +81,8 @@ class BoardInsideActivity : AppCompatActivity() {
                         val dataModel = dataSnapshot.getValue(BoardModel::class.java)
 
 
+
+
                         // "applyusers" 테이블에 프로필 이미지 URL 저장하기
                         val applyusersData = applyusers(
                             name = resumeData?.name ?: "",
@@ -87,7 +92,7 @@ class BoardInsideActivity : AppCompatActivity() {
                             introduce = resumeData?.introduce ?: "",
                             sex = resumeData?.sex ?: "",
                             type = resumeData?.type ?: "",
-                            boardid = dataModel?.uid ?: " ",
+                            boardid = boardid ?: " ",
                             profilePhotoURL = profileImageURL
                         )
 
@@ -164,6 +169,9 @@ class BoardInsideActivity : AppCompatActivity() {
 
                     val myUid = FBAuth.getUid()
                     val writerUid = dataModel.uid
+
+                    boardid = writerUid
+
 
 
                     val userQuery: Query =
