@@ -221,7 +221,8 @@ class ResumeFragment : Fragment() {
         val birth: String = "",
         val introduce: String = "",
         val sex: String = "",
-        val type: String = ""
+        val type: String = "",
+        val profileImageURL : String = " "
 
     )
 }

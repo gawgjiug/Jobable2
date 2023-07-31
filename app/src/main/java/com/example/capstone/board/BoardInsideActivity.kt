@@ -12,10 +12,10 @@ import androidx.databinding.DataBindingUtil
 import com.bumptech.glide.Glide
 import com.example.capstone.R
 import com.example.capstone.RegisterActivity
-import com.example.capstone.ResumecheckActivity
 import com.example.capstone.applyjob.ResumeListAdapter
 import com.example.capstone.databinding.ActivityBoardInsideBinding
 import com.example.capstone.databinding.CustomDialogBinding
+import com.example.capstone.fragments.ResumeFragment
 import com.example.capstone.utils.FBAuth
 import com.example.capstone.utils.FBRef
 import com.google.android.gms.tasks.OnCompleteListener
@@ -33,9 +33,12 @@ class BoardInsideActivity : AppCompatActivity() {
 
     private val TAG = BoardInsideActivity::class.java.simpleName
 
-    private lateinit var binding : ActivityBoardInsideBinding
+    private lateinit var binding: ActivityBoardInsideBinding
     private lateinit var key: String
-    private lateinit var database : DatabaseReference
+    private lateinit var database: DatabaseReference
+    private lateinit var auth: FirebaseAuth
+    private var resumewrite = true
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,10 +47,15 @@ class BoardInsideActivity : AppCompatActivity() {
             showDialog()
         }
 
+        auth = FirebaseAuth.getInstance()
+
+
 
 
         key = intent.getStringExtra("key").toString()
         database = FirebaseDatabase.getInstance().reference
+        val currentUserId = auth.currentUser?.uid
+
 
         getBoardData(key)
         getImageData(key)
@@ -57,26 +65,61 @@ class BoardInsideActivity : AppCompatActivity() {
         // ResumeListAdapter를 사용하여 리스트 뷰에 이력서 정보를 보여줌
 
 
-
         binding.applyjobBtn.setOnClickListener {
-            // Get the selected user's ID and the key (게시글의 ID) from the intent
-            val selectedUserId1 = FBAuth.getUid() // This is the ID of the current user (개인회원)
-            Toast.makeText(this, "지원 접수가 완료되었습니다", Toast.LENGTH_LONG).show()
-            val intent = Intent(this,ResumecheckActivity::class.java)
-            intent.putExtra("selectedUserId2", selectedUserId1)
-            intent.putExtra("boardKey", key) // key is the ID of the selected board (게시글의 ID)
+            val currentUserId = auth.currentUser?.uid
+
+            // "resume" 테이블에서 프로필 이미지 URL 가져오기
+            val resumeRef = database.child("resume").child(currentUserId ?: "")
+            resumeRef.addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    if (dataSnapshot.exists()) {
+                        val resumeData = dataSnapshot.getValue(ResumeFragment.Resume::class.java)
+                        val profileImageURL = resumeData?.profileImageURL ?: ""
+                        val dataModel = dataSnapshot.getValue(BoardModel::class.java)
 
 
+                        // "applyusers" 테이블에 프로필 이미지 URL 저장하기
+                        val applyusersData = applyusers(
+                            name = resumeData?.name ?: "",
+                            address = resumeData?.address ?: "",
+                            detail = resumeData?.detail ?: "",
+                            birth = resumeData?.birth ?: "",
+                            introduce = resumeData?.introduce ?: "",
+                            sex = resumeData?.sex ?: "",
+                            type = resumeData?.type ?: "",
+                            boardid = dataModel?.uid ?: " ",
+                            profilePhotoURL = profileImageURL
+                        )
 
+                        val applyusersRef = database.child("applyusers").child(currentUserId ?: "")
+                        applyusersRef.setValue(applyusersData)
+                            .addOnSuccessListener {
+                                Toast.makeText(
+                                    this@BoardInsideActivity,
+                                    "이력서 접수가 완료되었습니다.",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                                Log.d("BoardInsideActivity", "boardid: $key")
+                            }
+                            .addOnFailureListener {
+                                Toast.makeText(
+                                    this@BoardInsideActivity,
+                                    "이력서 접수에 실패하였습니다",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
+                    } else {
+                        // "resume" 테이블에 사용자 정보가 없을 경우 처리 (예: 이력서 작성 안 함 등)
+                    }
+                }
 
-            Log.d("BoardInsideActivity", "selectedUserId: $selectedUserId1, boardKey: $key")
-
-
+                override fun onCancelled(databaseError: DatabaseError) {
+                    Log.w(TAG, "getUserResumeData:onCancelled", databaseError.toException())
+                }
+            })
         }
 
-
-
-
+        // (기존 코드와 동일)
     }
 
 
@@ -122,7 +165,9 @@ class BoardInsideActivity : AppCompatActivity() {
                     val myUid = FBAuth.getUid()
                     val writerUid = dataModel.uid
 
-                    val userQuery: Query = database.child("users").orderByChild("uid").equalTo(myUid)
+
+                    val userQuery: Query =
+                        database.child("users").orderByChild("uid").equalTo(myUid)
                     if (myUid.equals(writerUid)) {
                         binding.boardSettingicon.isVisible = true
                     } else {
@@ -147,7 +192,8 @@ class BoardInsideActivity : AppCompatActivity() {
     private fun checkUserHasResume() {
         val myUid = FBAuth.getUid()
         if (myUid != null) {
-            val resumeReference = FirebaseDatabase.getInstance().reference.child("resume").child(myUid)
+            val resumeReference =
+                FirebaseDatabase.getInstance().reference.child("resume").child(myUid)
             resumeReference.addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
                     if (dataSnapshot.exists()) {
@@ -172,7 +218,7 @@ class BoardInsideActivity : AppCompatActivity() {
         }
     }
 
-    private fun getImageData(key :String){
+    private fun getImageData(key: String) {
         // Reference to an image file in Cloud Storage
         val storageReference = Firebase.storage.reference.child("$key.jpg")
 
@@ -180,13 +226,29 @@ class BoardInsideActivity : AppCompatActivity() {
         val imageViewFromFB = binding.getImageArea
 
         storageReference.downloadUrl.addOnCompleteListener(OnCompleteListener { task ->
-            if(task.isSuccessful){
+            if (task.isSuccessful) {
                 Glide.with(this)
                     .load(task.result)
                     .into(imageViewFromFB)
-            }else{
+            } else {
                 // Handle the failure to load the image
             }
         })
     }
+
+    data class applyusers(
+        val name: String = "",
+        val address: String = "",
+        val detail: String = "",
+        val birth: String = "",
+        val introduce: String = "",
+        val sex: String = "",
+        val type: String = "",
+        val boardid: String = "",
+        val profilePhotoURL: String = "" // Include profileImageURL in the data class properties
+    ) {
+        // Add a setter for profileImageURL
+        fun setProfileImageURL(profileImageURL: String) = copy(profilePhotoURL = profileImageURL)
+    }
 }
+

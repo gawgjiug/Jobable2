@@ -17,6 +17,8 @@ import com.google.firebase.storage.ktx.storage
 class ResumecheckActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityResumcheckBinding
+    private lateinit var selectedUserId : String
+    private lateinit var boardKey : String
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,15 +32,15 @@ class ResumecheckActivity : AppCompatActivity() {
 
 
 
-        val selectedUserId1 = intent.getStringExtra("selectedUserId2")
-        val boardKey = intent.getStringExtra("boardKey")
+         selectedUserId = intent.getStringExtra("selectedUserId2").toString()
+         boardKey = intent.getStringExtra("boardKey").toString()
 
 
-        Log.d("ResumecheckActivity", "selectedUserId: $selectedUserId1, boardKey: $boardKey")
+        Log.d("ResumecheckActivity", "selectedUserId: $selectedUserId, boardKey: $boardKey")
 
 
 
-        val myRef = FirebaseDatabase.getInstance().getReference("resume")
+        val myRef = FirebaseDatabase.getInstance().getReference("applyusers")
 
         val postListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -48,18 +50,18 @@ class ResumecheckActivity : AppCompatActivity() {
                     val name = dataModel.child("name").getValue(String::class.java)
                     val sex = dataModel.child("sex").getValue(String::class.java)
                     val type = dataModel.child("type").getValue(String::class.java)
-                    val profileImageURL = dataModel.child("profileImageURL").getValue(String::class.java)
+                    val profileImageURL = dataModel.child("profilePhotoURL").getValue(String::class.java)
 
 
 
-                    if (selectedUserId1 == uid && uid != null && name != null && sex != null && type != null && profileImageURL != null ) {
+                    if ( uid != null && name != null && sex != null && type != null && profileImageURL != null ) {
                         val resumeData = ResumeData(name, sex, type, profileImageURL)
                         resumeDataList.add(resumeData)
-                        Log.d("ResumecheckActivity", "selectedUserId: $selectedUserId1, uid: $uid")
+                        Log.d("ResumecheckActivity", "selectedUserId: $selectedUserId, uid: $uid")
 
                     }
                     else{
-                        Log.d("ResumecheckActivity", "selectedUserId: $selectedUserId1, uid: $uid")
+                        Log.d("ResumecheckActivity", "selectedUserId: $selectedUserId, uid: $uid")
 
                     }
                 }
