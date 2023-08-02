@@ -26,9 +26,11 @@ class ResumeListAdapter(
         val typeTextView = view.findViewById<TextView>(R.id.typeTextView)
         val profileImageView = view.findViewById<ImageView>(R.id.profileImageView)
 
+
         nameTextView.text = resumeData?.name
         sexTextView.text = resumeData?.sex
         typeTextView.text = resumeData?.type
+
 
         Glide.with(context)
             .load(resumeData?.profileImageURL)

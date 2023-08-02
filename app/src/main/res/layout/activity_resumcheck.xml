@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal"
-    tools:context=".ResumecheckActivity">
+    tools:context=".applyjob.ResumecheckActivity">
 
 
 

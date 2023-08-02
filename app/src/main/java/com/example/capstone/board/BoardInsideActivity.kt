@@ -93,7 +93,9 @@ class BoardInsideActivity : AppCompatActivity() {
                             sex = resumeData?.sex ?: "",
                             type = resumeData?.type ?: "",
                             boardid = boardid ?: " ",
-                            profilePhotoURL = profileImageURL
+                            profilePhotoURL = profileImageURL,
+                            userid = FBAuth.getUid()
+
                         )
 
                         val applyusersRef = database.child("applyusers").child(currentUserId ?: "")
@@ -253,7 +255,8 @@ class BoardInsideActivity : AppCompatActivity() {
         val sex: String = "",
         val type: String = "",
         val boardid: String = "",
-        val profilePhotoURL: String = "" // Include profileImageURL in the data class properties
+        val profilePhotoURL: String = "", // Include profileImageURL in the data class properties
+        val userid : String = " "
     ) {
         // Add a setter for profileImageURL
         fun setProfileImageURL(profileImageURL: String) = copy(profilePhotoURL = profileImageURL)

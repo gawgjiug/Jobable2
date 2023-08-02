@@ -9,7 +9,7 @@ import android.widget.Toast
 import androidx.core.view.isVisible
 import com.example.capstone.MainActivity
 import com.example.capstone.R
-import com.example.capstone.ResumecheckActivity
+import com.example.capstone.applyjob.ResumecheckActivity
 import com.example.capstone.databinding.ActivitySettingBinding
 import com.example.capstone.utils.FBAuth
 import com.google.firebase.auth.FirebaseAuth
