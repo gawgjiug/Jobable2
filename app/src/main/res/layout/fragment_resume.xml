@@ -37,6 +37,12 @@
                     android:layout_weight="1"
                     android:background="@color/mainColor" />
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+
+
 
 
             </LinearLayout>
@@ -48,7 +54,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:background="@color/white"
-                android:weightSum="2"
+                android:weightSum="3"
                 app:layout_constraintBottom_toBottomOf="parent">
 
                 <ImageView
@@ -67,6 +73,13 @@
 
                 </ImageView>
 
+                <ImageView
+                    android:id="@+id/locationTap"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:src="@drawable/bottom_location"/>
+
             </LinearLayout>
 
 
@@ -74,7 +87,7 @@
             <LinearLayout
                 android:layout_marginTop="61dp"
                 android:layout_width="match_parent"
-                android:layout_height="635dp"
+                android:layout_height="625dp"
                 android:orientation="vertical"
                 app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
                 app:layout_constraintEnd_toEndOf="parent"

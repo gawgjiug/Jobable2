@@ -41,6 +41,10 @@ class HomeFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
         mediaplayer = MediaPlayer.create(requireContext(),R.raw.search_mp3)
 
+        binding.locationTap.setOnClickListener {
+            it.findNavController().navigate(R.id.action_homeFragment_to_myLocationFragment)
+        }
+
         binding.resumeTap.setOnClickListener{
             it.findNavController().navigate(R.id.action_homeFragment_to_resumeFragment)
         }

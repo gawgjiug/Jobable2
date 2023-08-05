@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_homeFragment_to_resumeFragment"
             app:destination="@id/resumeFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_myLocationFragment"
+            app:destination="@id/myLocationFragment" />
     </fragment>
     <fragment
         android:id="@+id/resumeFragment"
@@ -25,5 +28,20 @@
         <action
             android:id="@+id/action_resumeFragment_to_homeFragment2"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_resumeFragment_to_myLocationFragment"
+            app:destination="@id/myLocationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/myLocationFragment"
+        android:name="com.example.capstone.fragments.MyLocationFragment"
+        android:label="fragment_my_location"
+        tools:layout="@layout/fragment_my_location" >
+        <action
+            android:id="@+id/action_myLocationFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_myLocationFragment_to_resumeFragment"
+            app:destination="@id/resumeFragment" />
     </fragment>
 </navigation>

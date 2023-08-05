@@ -57,6 +57,9 @@ class ResumeFragment : Fragment() {
         binding.homeTap.setOnClickListener {
             it.findNavController().navigate(R.id.action_resumeFragment_to_homeFragment)
         }
+        binding.locationTap.setOnClickListener {
+            it.findNavController().navigate(R.id.action_resumeFragment_to_myLocationFragment)
+        }
 
         binding.resumeWrite.setOnClickListener {
             val name = binding.resumeName.text.toString()
