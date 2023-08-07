@@ -94,7 +94,9 @@ class BoardInsideActivity : AppCompatActivity() {
                             type = resumeData?.type ?: "",
                             boardid = boardid ?: " ",
                             profilePhotoURL = profileImageURL,
-                            userid = FBAuth.getUid()
+                            userid = FBAuth.getUid(),
+                            tel = resumeData?.tel ?: " "
+
 
                         )
 
@@ -256,10 +258,10 @@ class BoardInsideActivity : AppCompatActivity() {
         val type: String = "",
         val boardid: String = "",
         val profilePhotoURL: String = "", // Include profileImageURL in the data class properties
-        val userid : String = " "
+        val userid : String = " ",
+        val tel : String = " "
     ) {
         // Add a setter for profileImageURL
         fun setProfileImageURL(profileImageURL: String) = copy(profilePhotoURL = profileImageURL)
     }
 }
-

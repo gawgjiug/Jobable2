@@ -69,43 +69,35 @@ class ResumeFragment : Fragment() {
             val introduce = binding.resumeIntroduce.text.toString()
             val sex = binding.resumeSex.text.toString()
             val type = binding.resumeType.text.toString()
+            val tel = binding.resumeTel.text.toString() // 이 부분이 누락되어 있었습니다.
 
-            if (name.isEmpty()) {
-                Toast.makeText(requireContext(), "이름을 입력해주세요", Toast.LENGTH_SHORT).show()
+
+            if (name.isEmpty() || address.isEmpty() || detail.isEmpty() || sex.isEmpty() ||
+                birth.isEmpty() || type.isEmpty() || introduce.isEmpty()|| tel.isEmpty()) {
+                Toast.makeText(requireContext(), "모든 정보를 입력해주세요", Toast.LENGTH_SHORT).show()
                 resumewrite = false
-            }
-            if (address.isEmpty()) {
-                Toast.makeText(requireContext(), "주소를 입력해주세요", Toast.LENGTH_SHORT).show()
-                resumewrite = false
-            }
-            if (detail.isEmpty()) {
-                Toast.makeText(requireContext(), "상세주소를 입력해주세요", Toast.LENGTH_SHORT).show()
-                resumewrite = false
-            }
-            if (sex.isEmpty()) {
-                Toast.makeText(requireContext(), "성별을 입력해주세요", Toast.LENGTH_SHORT).show()
-                resumewrite = false
-            }
-            if (birth.isEmpty()) {
-                Toast.makeText(requireContext(), "생년월일을 입력해주세요", Toast.LENGTH_SHORT).show()
-                resumewrite = false
-            }
-            if (type.isEmpty()) {
-                Toast.makeText(requireContext(), "장애 유형을 입력해주세요", Toast.LENGTH_SHORT).show()
-                resumewrite = false
-            }
-            if (introduce.isEmpty()) {
-                Toast.makeText(requireContext(), "소개를 입력해주세요", Toast.LENGTH_SHORT).show()
-                resumewrite = false
+            } else {
+                resumewrite = true
             }
 
             if (resumewrite) {
                 val user = auth.currentUser
                 val userId = user?.uid
-                val resume = Resume(name, address, detail, birth, introduce, sex, type)
+
+                val resume = Resume(name, address, detail, birth, introduce, sex, type,tel)
+
                 val resumeRef = database.child("resume").child(auth.currentUser?.uid ?: "")
                 resumeRef.setValue(resume)
                     .addOnSuccessListener {
+                        // 업로드되어 있는 이미지 URL을 가져와서 저장
+                        val profileImageRef = storageReference.child("images/${auth.currentUser?.uid}")
+                        profileImageRef.downloadUrl.addOnSuccessListener { uri ->
+                            val imageURL = uri.toString()
+                            resumeRef.child("profileImageURL").setValue(imageURL)
+                        }.addOnFailureListener {
+                            Toast.makeText(requireContext(), "프로필 사진 URL을 가져오는데 실패했습니다.", Toast.LENGTH_SHORT).show()
+                        }
+
                         Toast.makeText(requireContext(), "이력서가 저장되었습니다.", Toast.LENGTH_SHORT).show()
                         // 이력서가 성공적으로 저장되면 입력한 데이터를 프래그먼트에 표시
                         binding.resumeName.setText(name)
@@ -115,12 +107,14 @@ class ResumeFragment : Fragment() {
                         binding.resumeSex.setText(sex)
                         binding.resumeType.setText(type)
                         binding.resumeIntroduce.setText(introduce)
+                        binding.resumeTel.setText(tel)
                     }
                     .addOnFailureListener {
                         Toast.makeText(requireContext(), "저장에 실패했습니다.", Toast.LENGTH_SHORT).show()
                     }
             }
         }
+
 
         binding.resumeProfile.setOnClickListener {
             openGallery()
@@ -140,6 +134,7 @@ class ResumeFragment : Fragment() {
                         binding.resumeSex.setText(it.sex)
                         binding.resumeType.setText(it.type)
                         binding.resumeIntroduce.setText(it.introduce)
+                        binding.resumeTel.setText(it.tel)
                     }
                 }
             }
@@ -225,7 +220,9 @@ class ResumeFragment : Fragment() {
         val introduce: String = "",
         val sex: String = "",
         val type: String = "",
-        val profileImageURL : String = " "
+        val tel : String = " ",
+        val profileImageURL : String = ""
+
 
     )
 }

@@ -40,6 +40,7 @@ class ResumeDetailActivity : AppCompatActivity() {
                 val introduce = dataSnapshot.child("introduce").getValue(String::class.java)
                 val birth = dataSnapshot.child("birth").getValue(String::class.java)
                 val detail = dataSnapshot.child("detail").getValue(String::class.java)
+                val tel = dataSnapshot.child("tel").getValue(String::class.java)
 
                 // Populate the UI components with the retrieved data
                 binding.Detailsex.text = sex
@@ -49,6 +50,7 @@ class ResumeDetailActivity : AppCompatActivity() {
                 binding.Detailaddress2.text = detail
                 binding.Detailintroduce.text = introduce
                 binding.Detailtype.text = type
+                binding.Detailtel.text = tel
 
                 // ... (populate other UI components similarly)
 

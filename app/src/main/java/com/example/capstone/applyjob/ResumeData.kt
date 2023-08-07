@@ -10,8 +10,8 @@ class ResumeData(
     val introduce: String?, // Add the introduce field
     val birth: String?, // Add the birth field
     val detail: String?, // Add the detail field
-    val userid :String?
-
+    val userid :String?,
+    val tel : String?
 ) {
     // Getter methods for the fields (as you have already implemented)
 }

@@ -55,8 +55,8 @@ class ResumecheckActivity : AppCompatActivity() {
 
 
 
-         selectedUserId = intent.getStringExtra("selectedUserId2").toString()
-         boardKey = intent.getStringExtra("boardKey").toString()
+        selectedUserId = intent.getStringExtra("selectedUserId2").toString()
+        boardKey = intent.getStringExtra("boardKey").toString()
 
 
         Log.d("ResumecheckActivity", "selectedUserId: $selectedUserId, boardKey: $boardKey")
@@ -81,13 +81,14 @@ class ResumecheckActivity : AppCompatActivity() {
                     val birth = dataModel.child("birth").getValue(String::class.java)
                     val detail = dataModel.child("detail").getValue(String::class.java)
                     val userid = dataModel.child("userid").getValue(String::class.java)
+                    val tel = dataModel.child("tel").getValue(String::class.java)
 
 
 
 
 
                     if (boardid == myUid && uid != null && name != null && sex != null && type != null && profileImageURL != null ) {
-                        val resumeData = ResumeData(name, sex, type, profileImageURL,introduce,address,birth,detail,userid)
+                        val resumeData = ResumeData(name, sex, type, profileImageURL,introduce,address,birth,detail,userid,tel)
                         resumeDataList.add(resumeData)
                         Log.d("ResumecheckActivity", "selectedUserId: $selectedUserId, uid: $uid")
 
