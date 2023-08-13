@@ -18,6 +18,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
+        android:id="@+id/googlemapBtn"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:src="@drawable/bottom_location"
+        app:layout_constraintBottom_toTopOf="@+id/resume_search" />
+
+    <ImageView
         android:visibility="invisible"
         android:id="@+id/resume_search"
         android:layout_width="match_parent"

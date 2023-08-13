@@ -11,6 +11,7 @@ import com.example.capstone.MainActivity
 import com.example.capstone.R
 import com.example.capstone.applyjob.ResumecheckActivity
 import com.example.capstone.databinding.ActivitySettingBinding
+import com.example.capstone.maps.GoogleMapsActivity
 import com.example.capstone.utils.FBAuth
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -49,6 +50,11 @@ class SettingActivity : AppCompatActivity() {
         val resumechk: ImageView = findViewById(R.id.resume_search)
         resumechk.setOnClickListener {
             val intent = Intent(this, ResumecheckActivity::class.java)
+            startActivity(intent)
+        }
+        val googlemapBtn : ImageView = findViewById(R.id.googlemapBtn)
+        googlemapBtn.setOnClickListener {
+            val intent = Intent(this,GoogleMapsActivity::class.java)
             startActivity(intent)
         }
 
