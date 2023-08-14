@@ -3,8 +3,9 @@ package com.example.capstone.fragments
 import android.Manifest
 import android.annotation.SuppressLint
 import android.content.pm.PackageManager
+import android.content.pm.PackageManager.PERMISSION_GRANTED
+import android.location.Geocoder
 import android.location.Location
-import android.os.Build
 import android.os.Bundle
 import android.os.Looper
 import android.util.Log
@@ -15,25 +16,37 @@ import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.capstone.R
 import com.example.capstone.databinding.FragmentMyLocationBinding
 
+import com.example.capstone.fragments.data.Rehab
 import com.google.android.gms.location.*
 import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.LatLngBounds
 import com.google.android.gms.maps.model.MarkerOptions
+import retrofit2.*
+import retrofit2.converter.gson.GsonConverterFactory
 
 class MyLocationFragment : Fragment(), OnMapReadyCallback {
+
+    //5a7a4e6a676b776a3132335444706b79
 
     private lateinit var mMap: GoogleMap
     private lateinit var binding: FragmentMyLocationBinding
 
-    lateinit var locationPermission: ActivityResultLauncher<Array<String>>
+    private lateinit var locationPermission: ActivityResultLauncher<Array<String>>
 
-    lateinit var fusedLocationClient: FusedLocationProviderClient
-    lateinit var locationCallback: LocationCallback
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
+    private lateinit var locationCallback: LocationCallback
+    private val permission = arrayOf(
+        Manifest.permission.ACCESS_COARSE_LOCATION,
+        Manifest.permission.ACCESS_FINE_LOCATION
+    )
+    private val PERMFLAG = 99
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,9 +54,6 @@ class MyLocationFragment : Fragment(), OnMapReadyCallback {
     ): View? {
         binding = FragmentMyLocationBinding.inflate(inflater, container, false)
         val rootView = binding.root
-
-        val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
-        mapFragment.getMapAsync(this)
 
         locationPermission = registerForActivityResult(
             ActivityResultContracts.RequestMultiplePermissions()
@@ -59,75 +69,189 @@ class MyLocationFragment : Fragment(), OnMapReadyCallback {
             }
         }
 
-        locationPermission.launch(
-            arrayOf(
-                Manifest.permission.ACCESS_COARSE_LOCATION,
-                Manifest.permission.ACCESS_FINE_LOCATION
-            )
-        )
+        if (isPermitted()) {
+            startProcess()
+        } else {
+            locationPermission.launch(permission)
+        }
 
         return rootView
     }
 
     private fun startProcess() {
-        val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
+        val mapFragment =
+            childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
     }
 
-    override fun onMapReady(googleMap: GoogleMap) {
-        mMap = googleMap
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireContext())
-
-        // 강남역의 위도와 경도를 설정
-        val gangnamLatLng = LatLng(37.498180, 127.027626)
-
-        val cameraPosition = CameraPosition.Builder()
-            .target(gangnamLatLng)
-            .zoom(15.0f)
-            .build()
-
-        mMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition))
-
-        updateLocation()
+    private fun isPermitted(): Boolean {
+        for (perm in permission) {
+            if (ContextCompat.checkSelfPermission(
+                    requireContext(),
+                    perm
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
+                return false
+            }
+        }
+        return true
     }
 
     @SuppressLint("MissingPermission")
-    private fun updateLocation() {
-        val locationRequest = LocationRequest.create().apply {
-            priority = LocationRequest.PRIORITY_HIGH_ACCURACY
-            interval = 1000
+    override fun onMapReady(googleMap: GoogleMap) {
+        mMap = googleMap
+        fusedLocationClient =
+            LocationServices.getFusedLocationProviderClient(requireContext())
+
+        // 내 위치로 카메라 이동
+        fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? ->
+            location?.let {
+                val myLocation = LatLng(location.latitude, location.longitude)
+                val cameraOption = CameraPosition.builder()
+                    .target(myLocation)
+                    .zoom(15.0f)
+                    .build()
+
+                val camera = CameraUpdateFactory.newCameraPosition(cameraOption)
+                mMap.moveCamera(camera)
+            }
         }
 
+        loadLibraries()
+    }
+
+
+    fun loadLibraries() {
+        val retrofit = Retrofit.Builder()
+            .baseUrl(SeoulOpenApi.DOMAIN)
+            .addConverterFactory(GsonConverterFactory.create()) // Gson 변환기 추가
+            .build()
+        val service = retrofit.create(SeoulOpenService::class.java)
+        service.getLibraries(SeoulOpenApi.APIKEY,200)
+            .enqueue(object  : Callback<Rehab>{
+                override fun onResponse(
+                    call: Call<Rehab>,
+                    response: Response<Rehab>
+                ) {
+                   val result = response.body()
+                    showLibraries(result)
+                }
+
+                override fun onFailure(call: Call<Rehab>, t: Throwable) {
+                   Toast.makeText(requireContext(),"데이터를 가져올 수 없습니다",Toast.LENGTH_SHORT).show()
+                }
+
+            })
+    }
+
+    fun showLibraries(result: Rehab?) {
+        result?.let {
+            val latlngbounds = LatLngBounds.builder()
+            val geocoder = Geocoder(requireContext())
+
+            for (rehab in it.fcltOpenInfo_OWSI.row) {
+                val address = rehab.FCLT_ADDR
+
+                try {
+                    val locationList = geocoder.getFromLocationName(address, 1)
+
+                    if (locationList != null && locationList.isNotEmpty()) {
+                        val location = locationList[0]
+                        val latitude = location.latitude
+                        val longitude = location.longitude
+
+                        val marker = MarkerOptions()
+                            .position(LatLng(latitude, longitude))
+                            .title(rehab.FCLT_NM)
+
+                        mMap.addMarker(marker)
+
+                        // 마커 위치를 영역에 포함
+                        latlngbounds.include(LatLng(latitude, longitude))
+                    } else {
+                        // 주소를 찾을 수 없는 경우 처리
+                        Log.d("Geocoder", "No location found for address: $address")
+                    }
+                } catch (e: Exception) {
+                    Log.e("Geocoder", "Error converting address to coordinates: $address", e)
+                }
+            }
+
+            val bound = latlngbounds.build()
+            val padding = 0
+            // 카메라를 조정하여 모든 마커가 영역 내에 표시되도록 합니다.
+            val cameraUpdate = CameraUpdateFactory.newLatLngBounds(latlngbounds.build(), padding)
+
+            mMap.moveCamera(cameraUpdate)
+        }
+    }
+
+
+
+
+
+
+    // 내 위치를 가져오는 코드
+    @SuppressLint("MissingPermission")
+    private fun setUpdateLocationListener() {
+        val locationRequest = LocationRequest.create().apply {
+            priority = LocationRequest.PRIORITY_HIGH_ACCURACY
+            interval = 1000 // 1초에 한 번씩 좌표 값을 가져옴
+        }
         locationCallback = object : LocationCallback() {
             override fun onLocationResult(locationResult: LocationResult?) {
                 locationResult?.let {
-                    for (location in it.locations) {
-                        Log.d("위치정보", "위도: ${location.latitude} 경도: ${location.longitude}")
+                    for ((i, location) in it.locations.withIndex()) {
+                        Log.d("로케이션", "$i ${location.latitude},${location.longitude}")
                         setLastLocation(location)
                     }
+
                 }
             }
         }
 
-        fusedLocationClient.requestLocationUpdates(
-            locationRequest, locationCallback, Looper.myLooper()
-        )
+        // 로케이션 요청 함수 호출 (locationRequest , locationCallback)
+        fusedLocationClient.requestLocationUpdates(locationRequest,locationCallback,Looper.myLooper())
     }
 
-    private fun setLastLocation(lastLocation: Location) {
-        val latLng = LatLng(lastLocation.latitude, lastLocation.longitude)
-        val markerOptions = MarkerOptions()
-            .position(latLng)
-            .title("I am here")
-
-        val cameraPosition = CameraPosition.Builder()
-            .target(latLng)
+    fun setLastLocation(location : Location){
+        val myLocation = LatLng(location.latitude,location.longitude)
+        val marker = MarkerOptions()
+            .position(myLocation)
+            .title("im here!")
+        val cameraOption = CameraPosition.builder()
+            .target(myLocation)
             .zoom(15.0f)
             .build()
 
+
+        val camera = CameraUpdateFactory.newCameraPosition(cameraOption)
         mMap.clear()
-        mMap.addMarker(markerOptions)
-        mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition))
+
+        mMap.addMarker(marker)
+        mMap.moveCamera(camera)
+
+
     }
 
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        when (requestCode) {
+            PERMFLAG -> {
+                val check = grantResults.all { it == PERMISSION_GRANTED }
+                if (check) {
+                    startProcess()
+                } else {
+                    Toast.makeText(
+                        requireContext(),
+                        "권한을 승인해야지만 앱을 사용할 수 있습니다",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+        }
+    }
 }
