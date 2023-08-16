@@ -61,13 +61,16 @@ class HomeFragment : Fragment() {
             startActivity(intent)
         }
         binding.searchmp3.setOnClickListener {
-            mediaplayer?.start()
+            val mediaPlayer = MediaPlayer.create(requireContext(), R.raw.search_mp3)
+            mediaPlayer.start()
         }
         binding.quizmp3.setOnClickListener {
-            mediaplayer?.start()
+            val mediaPlayer = MediaPlayer.create(requireContext(), R.raw.quiz_mp3)
+            mediaPlayer.start()
         }
         binding.welfaremp3.setOnClickListener {
-            mediaplayer?.start()
+            val mediaPlayer = MediaPlayer.create(requireContext(),R.raw.welfare_mp3)
+            mediaPlayer.start()
         }
 
 
