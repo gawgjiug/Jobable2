@@ -60,12 +60,13 @@ class BoardWriteActivity : AppCompatActivity() {
             val content = binding.boardContents.text.toString()
             val uid = FBAuth.getUid()
             val time = FBAuth.getTime()
+            val job = binding.boardWriteSpinner.selectedItem as String // 사용자가 선택한 직무
 
             val key = FBRef.boardRef.push().key.toString()
 
             FBRef.boardRef
                 .child(key)
-                .setValue(BoardModel(title, content, uid, time))
+                .setValue(BoardModel(title, content, uid, time, job)) // 'job' 필드 추가
 
             Toast.makeText(this, "게시글 입력 완료", Toast.LENGTH_LONG).show()
 
@@ -75,6 +76,7 @@ class BoardWriteActivity : AppCompatActivity() {
 
             finish()
         }
+
 
         binding.imageArea.setOnClickListener {
             val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)

@@ -3,6 +3,9 @@ package com.example.capstone.board
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.bumptech.glide.Glide
@@ -36,13 +39,45 @@ class BoardEditActivity : AppCompatActivity() {
             editBoardData(key)
         }
 
+        //Spinner 부분 코드
+
+        val categoryList = listOf(
+            "직무를 선택하세요", "사무보조", "편의점", "도서관 사서", "의류 매장 보조", "빵집 보조"
+        )
+
+        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, categoryList)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        binding.boardEditSpinner.adapter = adapter
+
+        binding.boardEditSpinner.onItemSelectedListener =
+            object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(
+                    parent: AdapterView<*>?, view: View?, position: Int, id: Long
+                ) {
+                    if (position != 0) {
+                        val selectedItem = categoryList[position]
+                        Toast.makeText(
+                            this@BoardEditActivity, selectedItem, Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>?) {
+                }
+            }
+
+        //Spinner 부분 코드
+
+
+
+
 
 
     }
     private fun editBoardData(key:String){
         FBRef.boardRef
             .child(key)
-            .setValue(BoardModel(binding.boardTitle.text.toString(), binding.boardContents.text.toString(),writerUid,FBAuth.getTime()
+            .setValue(BoardModel(binding.boardTitle.text.toString(), binding.boardContents.text.toString(),writerUid,FBAuth.getTime(), binding.boardEditSpinner.selectedItem as String
             ))
         Toast.makeText(this,"수정완료",Toast.LENGTH_SHORT).show()
         finish()
