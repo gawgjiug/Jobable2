@@ -82,6 +82,8 @@ class MyLocationFragment : Fragment(), OnMapReadyCallback {
         val mapFragment =
             childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
+
+
     }
 
     private fun isPermitted(): Boolean {
@@ -103,19 +105,22 @@ class MyLocationFragment : Fragment(), OnMapReadyCallback {
         fusedLocationClient =
             LocationServices.getFusedLocationProviderClient(requireContext())
 
-        // 내 위치로 카메라 이동
-        fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? ->
-            location?.let {
-                val myLocation = LatLng(location.latitude, location.longitude)
-                val cameraOption = CameraPosition.builder()
-                    .target(myLocation)
-                    .zoom(15.0f)
-                    .build()
 
-                val camera = CameraUpdateFactory.newCameraPosition(cameraOption)
-                mMap.moveCamera(camera)
-            }
-        }
+//        setUpdateLocationListener()
+
+        // 내 위치로 카메라 이동
+//        fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? ->
+//            location?.let {
+//                val myLocation = LatLng(location.latitude, location.longitude)
+//                val cameraOption = CameraPosition.builder()
+//                    .target(myLocation)
+//                    .zoom(15.0f)
+//                    .build()
+//
+//                val camera = CameraUpdateFactory.newCameraPosition(cameraOption)
+//                mMap.moveCamera(camera)
+//            }
+//        }
 
         loadLibraries()
     }
@@ -133,12 +138,12 @@ class MyLocationFragment : Fragment(), OnMapReadyCallback {
                     call: Call<Rehab>,
                     response: Response<Rehab>
                 ) {
-                   val result = response.body()
+                    val result = response.body()
                     showLibraries(result)
                 }
 
                 override fun onFailure(call: Call<Rehab>, t: Throwable) {
-                   Toast.makeText(requireContext(),"데이터를 가져올 수 없습니다",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(),"데이터를 가져올 수 없습니다",Toast.LENGTH_SHORT).show()
                 }
 
             })

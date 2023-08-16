@@ -51,11 +51,6 @@ class SettingActivity : AppCompatActivity() {
             val intent = Intent(this, ResumecheckActivity::class.java)
             startActivity(intent)
         }
-        val googlemapBtn : ImageView = findViewById(R.id.googlemapBtn)
-        googlemapBtn.setOnClickListener {
-            val intent = Intent(this,GoogleMapsActivity::class.java)
-            startActivity(intent)
-        }
 
         // Check if the user's data exists in the "ceouser" table
         ceouserRef.child(myUid).addListenerForSingleValueEvent(object : ValueEventListener {
