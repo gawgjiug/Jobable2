@@ -1,6 +1,7 @@
 package com.example.capstone.board
 
 import android.content.Intent
+import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -40,6 +41,8 @@ class BoardInsideActivity : AppCompatActivity() {
     private var resumewrite = true
 
     private lateinit var boardid: String
+
+    private var mediaPlayer: MediaPlayer? = null
 
 
 
@@ -128,6 +131,10 @@ class BoardInsideActivity : AppCompatActivity() {
             })
         }
 
+        binding.boardMp3Btn.setOnClickListener {
+            checkjobfield()
+        }
+
         // (기존 코드와 동일)
     }
 
@@ -211,11 +218,13 @@ class BoardInsideActivity : AppCompatActivity() {
                     if (dataSnapshot.exists()) {
                         // If the user has a resume, show the apply job button
                         binding.applyjobBtn.isVisible = true
+                        binding.boardMp3Btn.isVisible = true
                         // Set an onClickListener to apply job button
 
                     } else {
                         // If the user does not have a resume, hide the apply job button
                         binding.applyjobBtn.isVisible = false
+                        binding.boardMp3Btn.isVisible = false
                     }
                 }
 
@@ -244,6 +253,37 @@ class BoardInsideActivity : AppCompatActivity() {
                     .into(imageViewFromFB)
             } else {
                 // Handle the failure to load the image
+            }
+        })
+    }
+
+    private fun checkjobfield() {
+        val databaseReference: DatabaseReference = FirebaseDatabase.getInstance().getReference("board").child(key)
+        databaseReference.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    val job = dataSnapshot.child("job").getValue(String::class.java)
+                    if (job == "의류 매장 보조") {
+                        // Release any existing MediaPlayer resources
+                        mediaPlayer?.release()
+
+                        // Create and start the MediaPlayer with the cloth_introduce_mp3 audio file
+                        mediaPlayer = MediaPlayer.create(this@BoardInsideActivity, R.raw.cloth_introduce_mp3)
+                        mediaPlayer?.start()
+
+                        // Set a listener to release MediaPlayer resources when playback is complete
+                        mediaPlayer?.setOnCompletionListener {
+                            mediaPlayer?.release()
+                            mediaPlayer = null
+                        }
+                    } else {
+                        // Handle other cases if needed
+                    }
+                }
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                // Handle errors here
             }
         })
     }

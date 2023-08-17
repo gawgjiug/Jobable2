@@ -79,15 +79,34 @@
             android:layout_height="300dp"
             android:layout_margin="30dp"/>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:weightSum="2">
+
         <Button
+            android:id="@+id/board_mp3_btn"
+            android:text="설명 듣기"
+            android:backgroundTint="@color/mainColor"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:layout_margin="15dp"
+            android:visibility="invisible"
+            />
+
+
+        <Button
+            android:layout_margin="15dp"
             android:visibility="invisible"
             android:text="지원 접수"
             android:backgroundTint="@color/mainColor"
             android:id="@+id/applyjobBtn"
-            android:layout_marginRight="150dp"
-            android:layout_marginLeft="150dp"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"/>
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 </layout>
