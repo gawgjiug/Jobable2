@@ -132,7 +132,7 @@ class BoardInsideActivity : AppCompatActivity() {
         }
 
         binding.boardMp3Btn.setOnClickListener {
-            checkjobfield()
+            checkJobField()
         }
 
         // (기존 코드와 동일)
@@ -257,27 +257,32 @@ class BoardInsideActivity : AppCompatActivity() {
         })
     }
 
-    private fun checkjobfield() {
+    private fun checkJobField() {
         val databaseReference: DatabaseReference = FirebaseDatabase.getInstance().getReference("board").child(key)
+
+        val jobSoundMap = mapOf(
+            "의류 매장 보조" to R.raw.cloth_introduce_mp3,
+            "편의점" to R.raw.convenience_introduce_mp3,
+            "사무보조" to R.raw.office_introduce_mp3,
+            "빵집 보조" to R.raw.bakery_introduce_mp3,
+            "도서관 사서" to R.raw.library_introduce_mp3
+        )
+
         databaseReference.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if (dataSnapshot.exists()) {
                     val job = dataSnapshot.child("job").getValue(String::class.java)
-                    if (job == "의류 매장 보조") {
-                        // Release any existing MediaPlayer resources
-                        mediaPlayer?.release()
+                    val soundResource = jobSoundMap[job]
 
-                        // Create and start the MediaPlayer with the cloth_introduce_mp3 audio file
-                        mediaPlayer = MediaPlayer.create(this@BoardInsideActivity, R.raw.cloth_introduce_mp3)
+                    soundResource?.let { resource ->
+                        mediaPlayer?.release()
+                        mediaPlayer = MediaPlayer.create(this@BoardInsideActivity, resource)
                         mediaPlayer?.start()
 
-                        // Set a listener to release MediaPlayer resources when playback is complete
                         mediaPlayer?.setOnCompletionListener {
                             mediaPlayer?.release()
                             mediaPlayer = null
                         }
-                    } else {
-                        // Handle other cases if needed
                     }
                 }
             }
@@ -287,6 +292,7 @@ class BoardInsideActivity : AppCompatActivity() {
             }
         })
     }
+
 
     data class applyusers(
         val name: String = "",
