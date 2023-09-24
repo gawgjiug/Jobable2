@@ -9,4 +9,12 @@
     <string name="qustion">질문</string>
     <string name="count_label">%d/%d</string>
     <string name="submit">%s</string>
+
+    <string name="jobable">
+            JOBABLE
+        </string>
+
+    <string name="some_id">
+\u00EC\u00A7\u0081\u00EC\u0097\u0085\u00ED\u009B\u0088\u00EB\u00A0\u00A8 \u00EB\u00B6\u0080\u00ED\u0084\u00B0 \u00EA\u00B5\u00AC\u00EC\u00A7\u0081\u00ED\u0099\u009C\u00EB\u008F\u0099 \u00EA\u00B9\u008C\u00EC\u00A7\u0080 \u00ED\u0095\u009C\u00EB\u00B2\u0088\u00EC\u0097\u0090 \u00E2\u0080\u00A8\u00EC\u0095\u008C\u00EC\u0095\u0084\u00EB\u00B3\u00B4\u00EC\u0084\u00B8\u00EC\u009A\u0094!
+</string>
 </resources>
