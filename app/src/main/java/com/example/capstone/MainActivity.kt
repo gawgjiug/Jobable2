@@ -31,5 +31,19 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        binding.btRegister.setOnClickListener {
+            if(binding.checkCeoregi.isChecked){
+                val intent =Intent(this,CeoregisterActivity::class.java)
+                startActivity(intent)
+            }
+            else{
+                val intent = Intent(this,RegisterActivity::class.java)
+                startActivity(intent)
+            }
+
+        }
+
+
+
     }
 }

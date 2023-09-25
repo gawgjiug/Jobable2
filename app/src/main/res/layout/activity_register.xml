@@ -7,80 +7,98 @@
     tools:context=".RegisterActivity">
 
 
-    <EditText
-        android:id="@+id/regi_pw1"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="비밀번호를 입력하세요"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="회원가입"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.506"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.086" />
 
-    <Button
-        android:id="@+id/bt_join"
-        android:backgroundTint="@color/mainColor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:enabled="true"
-        android:text="가입하기"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.67" />
+        <ImageView
+            android:src="@drawable/background_user_register"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"/>
 
-    <EditText
-        android:id="@+id/regi_id"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="아이디를 입력하세요"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.408" />
 
-    <EditText
-        android:id="@+id/regi_pwcheck"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="비밀번호를 확인해주세요"
-        app:layout_constraintBottom_toTopOf="@+id/bt_join"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/regi_pw1" />
+        <LinearLayout
+            android:layout_marginRight="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginBottom="150dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/regi_name"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="이름을 입력해주세요"
-        app:layout_constraintBottom_toTopOf="@+id/regi_id"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+
+                android:id="@+id/regi_name"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="이름을 입력하세요"
+                android:ems="10"
+                android:inputType="textPersonName"
+                style="@style/AuthEditText"/>
+
+
+            <EditText
+                android:id="@+id/regi_id"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="이메일을 입력하세요"
+                android:ems="10"
+                android:inputType="textEmailAddress"
+                style="@style/AuthEditText"/>
+
+
+            <EditText
+                android:id="@+id/regi_pw1"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="비밀번호를 입력하세요"
+                android:ems="10"
+                android:inputType="textPassword"
+                style="@style/AuthEditText"/>
+
+
+            <EditText
+
+                android:id="@+id/regi_pwcheck"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="비밀번호 확인"
+                android:ems="10"
+                android:inputType="textPassword"
+                style="@style/AuthEditText"/>
+
+
+
+
+
+
+
+            <Button
+                android:id="@+id/bt_join"
+                android:layout_margin="50dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="회원가입"
+                android:background="@drawable/radius"/>
+
+
+
+
+
+
+        </LinearLayout>
+
+
+
+
+
+
+    </RelativeLayout>
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

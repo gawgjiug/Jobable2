@@ -46,6 +46,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun checkCredentials(email: String, password: String) {
+
         val userQuery: Query = database.child("users").orderByChild("email").equalTo(email)
         val ceoQuery: Query = database.child("Ceousers").orderByChild("ceoemail").equalTo(email)
 
