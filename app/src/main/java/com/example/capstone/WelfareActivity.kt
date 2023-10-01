@@ -54,6 +54,14 @@ class WelfareActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
+        if (!::webView.isInitialized) {
+            // webView가 초기화되지 않은 경우 초기화
+            webView = WebView(this)
+            webView.settings.javaScriptEnabled = true
+            webView.webViewClient = WebViewClient()
+            setContentView(webView)
+        }
+
         if (webView.canGoBack()) {
             webView.goBack()
         } else {

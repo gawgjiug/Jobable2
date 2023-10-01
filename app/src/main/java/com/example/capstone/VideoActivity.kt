@@ -63,16 +63,21 @@ class VideoActivity : AppCompatActivity() {
         }
 
 
+        webView = WebView(this)
+        webView.settings.javaScriptEnabled = true
+        webView.webViewClient = WebViewClient()
+
+
 
 
 
     }
     private fun showWebView(url: String) {
-        webView = WebView(this)
-        webView.settings.javaScriptEnabled = true
-        webView.webViewClient = WebViewClient()
-        setContentView(webView)
+        // URL 로드
         webView.loadUrl(url)
+
+        // WebView를 현재 Activity에 표시
+        setContentView(webView)
     }
 
     override fun onBackPressed() {
@@ -82,7 +87,6 @@ class VideoActivity : AppCompatActivity() {
             finish()
         }
     }
-
 }
 
 
