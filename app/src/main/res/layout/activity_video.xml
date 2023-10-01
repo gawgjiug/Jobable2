@@ -5,148 +5,83 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".VideoActivity">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/topBar"
+    
+    
+    
+    
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent">
+        
+        
+        
+        <ImageView
+            android:src="@drawable/video_background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"/>
 
         <ImageView
-            android:layout_width="200dp"
-            android:layout_height="40dp"
-            android:layout_margin="10dp"
-            android:src="@drawable/jobable"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:id="@+id/video_cloth"
+            android:layout_width="157dp"
+            android:layout_height="97dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="27dp"
+            android:layout_marginTop="290dp"
+            app:srcCompat="@drawable/video_cloth" />
 
         <ImageView
-            android:id="@+id/setting_btn"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginRight="20dp"
-            android:src="@drawable/main_menu"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:id="@+id/video_office"
+            android:layout_width="158dp"
+            android:layout_height="97dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="226dp"
+            android:layout_marginTop="290dp"
+            app:srcCompat="@drawable/video_office" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageView
+            android:id="@+id/video_library"
+            android:layout_width="161dp"
+            android:layout_height="95dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="459dp"
+            app:srcCompat="@drawable/video_library" />
 
-    <LinearLayout
-        android:layout_marginTop="60dp"
-        android:id="@+id/linearLayout4"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteY="70dp">
+        <ImageView
+            android:id="@+id/video_interview"
+            android:layout_width="158dp"
+            android:layout_height="97dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="226dp"
+            android:layout_marginTop="459dp"
+            app:srcCompat="@drawable/video_interview" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="150dp">
+        <ImageView
+            android:id="@+id/video_bakery"
+            android:layout_width="160dp"
+            android:layout_height="97dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="634dp"
+            app:srcCompat="@drawable/video_bakery" />
 
-            <ImageView
-                android:id="@+id/video_cloth"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:layout_weight="1"
-                android:src="@drawable/cloth"></ImageView>
-
-            <ImageView
-                android:id="@+id/video_office"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:layout_weight="1"
-                android:src="@drawable/office"></ImageView>
-
-            <ImageView
-                android:id="@+id/video_bakery"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:layout_weight="1"
-                android:src="@drawable/baker">
-
-            </ImageView>
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="150dp">
-
-            <ImageView
-                android:id="@+id/video_library"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:layout_weight="1"
-                android:src="@drawable/library"></ImageView>
-            <ImageView
-                android:src="@drawable/video_interview"
-                android:id="@+id/video_interview"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:layout_weight="1">
+        <ImageView
+            android:id="@+id/video_cashier"
+            android:layout_width="158dp"
+            android:layout_height="97dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="226dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="634dp"
+            app:srcCompat="@drawable/video_cashier" />
 
 
-            </ImageView>
-
-            <ImageView
-                android:src="@drawable/video_cashier"
-                android:id="@+id/video_cashier"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:layout_weight="1">
-
-            </ImageView>
-
-
-
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="150dp">
-
-            <ImageView
-                android:layout_weight="1"
-                android:src="@drawable/damoa"
-                android:id="@+id/video_damoa"
-                android:layout_width="200dp"
-                android:layout_height="match_parent">
-
-            </ImageView>
-            <ImageView
-                android:src="@drawable/bodacenter"
-                android:id="@+id/video_bodacenter"
-                android:layout_weight="1"
-                android:layout_width="200dp"
-                android:layout_height="match_parent">
-
-            </ImageView>
-
-
-
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="280dp"
-        app:layout_constraintBottom_toBottomOf="@+id/linearLayout4"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <ImageView
-        android:src="@drawable/video_seoul"
-        android:id="@+id/video_seoul"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        app:layout_constraintBottom_toBottomOf="@+id/linearLayout4"
-        app:layout_constraintStart_toStartOf="parent">
-
-    </ImageView>
-
+    </RelativeLayout>
+    
 </androidx.constraintlayout.widget.ConstraintLayout>

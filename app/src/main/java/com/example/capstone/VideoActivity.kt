@@ -20,16 +20,16 @@ class VideoActivity : AppCompatActivity() {
         binding = ActivityVideoBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val videoMap = mapOf(
-            binding.videoSeoul to " https://www.broso.or.kr/seoul/mainPage.do",
-            binding.videoDamoa to " https://www.damoa.or.kr/main/inner.php?sMenu=A0000&category=%EC%83%9D%ED%99%9C%EC%A0%95%EB%B3%B4",
-            binding.videoBodacenter to " https://xn--2j1bv4q8pej3e.xn--3e0b707e/?menucode=10000&tmenu=wonder"
-        )
-        videoMap.forEach { (imageView, url) ->
-            imageView.setOnClickListener {
-                showWebView(url)
-            }
-        }
+//        val videoMap = mapOf(
+//            binding.videoSeoul to " https://www.broso.or.kr/seoul/mainPage.do",
+//            binding.videoDamoa to " https://www.damoa.or.kr/main/inner.php?sMenu=A0000&category=%EC%83%9D%ED%99%9C%EC%A0%95%EB%B3%B4",
+//            binding.videoBodacenter to " https://xn--2j1bv4q8pej3e.xn--3e0b707e/?menucode=10000&tmenu=wonder"
+//        )
+//        videoMap.forEach { (imageView, url) ->
+//            imageView.setOnClickListener {
+//                showWebView(url)
+//            }
+//        }
 
         val video_cloth = findViewById<ImageView>(R.id.video_cloth)
         video_cloth.setOnClickListener {
