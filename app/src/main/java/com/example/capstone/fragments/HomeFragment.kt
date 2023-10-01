@@ -16,6 +16,7 @@ import com.example.capstone.R
 import com.example.capstone.UserBoardActivity
 import com.example.capstone.VideoActivity
 import com.example.capstone.WelfareActivity
+import com.example.capstone.board.BoardInsideActivity
 import com.example.capstone.board.BoardListLVAdapter
 import com.example.capstone.board.BoardModel
 import com.example.capstone.databinding.FragmentHomeBinding
@@ -59,6 +60,14 @@ class HomeFragment : Fragment() {
 
         boardRVAdapter = BoardListLVAdapter(boardDataList)
         binding.boardList.adapter = boardRVAdapter
+        binding.boardList.setOnItemClickListener { parent, view, position, id ->
+            val intent = Intent(binding.root.context, BoardInsideActivity::class.java)
+            intent.putExtra("key",boardKeyList[position])
+            startActivity(intent)
+
+
+
+        }
 
 
         mediaplayer = MediaPlayer.create(requireContext(),R.raw.search_mp3)
