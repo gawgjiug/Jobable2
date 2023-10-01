@@ -4,12 +4,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".fragments.HomeFragment">
+
 
         <!-- TODO: Update blank fragment layout -->
+    
+    
+
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -73,79 +73,166 @@
             </LinearLayout>
 
 
-            <ImageView
-                android:id="@+id/home_search"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
-                app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.058"
-                app:srcCompat="@drawable/home_search" />
+            
+            <LinearLayout
+                android:layout_marginBottom="66dp"
+                android:layout_marginTop="60dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-            <Button
-                android:id="@+id/searchmp3"
-                android:layout_width="70dp"
-                android:layout_height="50dp"
-                android:backgroundTint="@color/mainColor"
-                android:text="재생"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/home_search"></Button>
 
-            <ImageView
-                android:id="@+id/home_video"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.501"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/home_search"
-                app:layout_constraintVertical_bias="0.128"
-                app:srcCompat="@drawable/home_video" />
 
-            <Button
-                android:id="@+id/quizmp3"
-                android:layout_width="70dp"
-                android:layout_height="50dp"
-                android:backgroundTint="@color/mainColor"
-                android:text="재생"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/home_video"></Button>
+                <LinearLayout
 
-            <ImageView
-                android:id="@+id/home_info"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.501"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/home_video"
-                app:layout_constraintVertical_bias="0.359"
-                app:srcCompat="@drawable/home_info" />
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp">
 
-            <Button
-                android:id="@+id/welfaremp3"
-                android:layout_width="70dp"
-                android:layout_height="50dp"
-                android:backgroundTint="@color/mainColor"
-                android:text="재생"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/home_info">
+                    <ImageView
+                        android:id="@+id/home_search"
+                        android:src="@drawable/home_search"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_weight="1"/>
 
-            </Button>
+                    <ImageView
+                        android:src="@drawable/home_video"
+                        android:id="@+id/home_video"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_weight="1"/>
+
+                    <ImageView
+                        android:src="@drawable/home_info"
+                        android:id="@+id/home_info"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_weight="1"/>
+
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+                    <TextView
+                        android:text="공고 검색"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:layout_weight="1"/>
+                    <TextView
+                        android:text="교육 영상"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:layout_weight="1"/>
+                    <TextView
+                        android:text="복지 정보"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:layout_weight="1"/>
+
+
+
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/home_search_mp3"
+                        android:src="@drawable/home_sound"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"/>
+
+                    <ImageView
+                        android:id="@+id/home_video_mp3"
+                        android:src="@drawable/home_sound"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"/>
+
+                    <ImageView
+                        android:id="@+id/home_info_mp3"
+                        android:src="@drawable/home_sound"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"/>
+
+
+
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+                    <TextView
+                        android:textStyle="bold"
+                        android:text="신규 공고"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"/>
+
+
+
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:id="@+id/board_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:background="@drawable/board_radius"
+                    android:orientation="vertical"
+                    android:layout_margin="5dp">
+
+                    <ListView
+                        android:id="@+id/board_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
+                    
+                    
+
+
+
+
+                    
+                </LinearLayout>
+
+
+
+
+
+
+            </LinearLayout>
+
+
+
+
+
+
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 
-    </FrameLayout>
+
 </layout>
