@@ -101,6 +101,7 @@
 
 
                     <ImageView
+                        android:background="@drawable/board_radius"
                         android:id="@+id/resumeProfile"
                         android:layout_width="100dp"
                         android:layout_height="60dp"
@@ -109,6 +110,7 @@
                         android:src="@drawable/resume_profile" />
 
                     <EditText
+                        android:background="@drawable/board_radius"
                         android:id="@+id/resumeName"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
@@ -120,6 +122,7 @@
 
 
                     <EditText
+                        android:background="@drawable/board_radius"
                         android:id="@+id/resumeSex"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
@@ -130,6 +133,7 @@
                         android:textStyle="bold" />
 
                     <EditText
+                        android:background="@drawable/board_radius"
                         android:id="@+id/resumeAddress"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
@@ -142,6 +146,7 @@
                         android:textStyle="bold" />
 
                     <EditText
+                        android:background="@drawable/board_radius"
                         android:id="@+id/resumeDetail"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
@@ -152,6 +157,7 @@
                         android:textStyle="bold" />
 
                     <EditText
+                        android:background="@drawable/board_radius"
                         android:id="@+id/resumeType"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
@@ -162,6 +168,7 @@
                         android:textStyle="bold" />
 
                     <EditText
+                        android:background="@drawable/board_radius"
                         android:id="@+id/resumeBirth"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
@@ -172,6 +179,7 @@
                         android:textStyle="bold" />
 
                     <EditText
+                        android:background="@drawable/board_radius"
                         android:id="@+id/resumeIntroduce"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
@@ -182,6 +190,7 @@
                         android:textStyle="bold" />
 
                     <EditText
+                        android:background="@drawable/board_radius"
                         android:id="@+id/resumeTel"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
@@ -192,6 +201,7 @@
                         android:textStyle="bold" />
 
                     <Button
+                        android:background="@drawable/board_radius"
                         android:id="@+id/resumeWrite"
                         android:layout_width="100dp"
                         android:layout_height="50dp"
