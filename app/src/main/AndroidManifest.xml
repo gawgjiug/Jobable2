@@ -19,9 +19,7 @@
         android:theme="@style/Theme.Capstone"
         android:usesCleartextTraffic="true"
         tools:targetApi="31" >
-        <activity
-            android:name=".InfoActivity"
-            android:exported="false" />
+
         <activity
             android:name=".LoginActivity"
             android:exported="false" />
@@ -50,6 +48,7 @@
         <activity
             android:name=".applyjob.ResumeDetailActivity"
             android:exported="false" />
+
         <activity
             android:name=".applyjob.ResumecheckActivity"
             android:exported="false" />
@@ -128,8 +127,12 @@
             android:name=".IntroActivity"
             android:exported="false" />
         <activity
+            android:name=".InfoActivity"
+            android:exported="false" />
+        <activity
             android:name=".SplashActivity"
             android:exported="true" >
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

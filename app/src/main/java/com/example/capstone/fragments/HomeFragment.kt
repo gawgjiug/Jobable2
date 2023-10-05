@@ -1,5 +1,6 @@
 package com.example.capstone.fragments
 
+
 import android.content.Intent
 import android.media.MediaPlayer
 import android.os.Bundle
@@ -12,6 +13,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import com.example.capstone.CeoIntroActivity
+import com.example.capstone.InfoActivity
 import com.example.capstone.R
 import com.example.capstone.UserBoardActivity
 import com.example.capstone.VideoActivity
@@ -84,7 +86,7 @@ class HomeFragment : Fragment() {
             startActivity(intent)
         }
         binding.homeInfo.setOnClickListener {
-            val intent = Intent(binding.root.context, WelfareActivity::class.java)
+            val intent = Intent(binding.root.context, InfoActivity::class.java)
             startActivity(intent)
         }
         binding.homeSearch.setOnClickListener {
