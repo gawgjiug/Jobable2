@@ -107,12 +107,61 @@
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="vertical"
+
+        android:id="@+id/local_linear"
+        android:layout_margin="15dp"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="300dp">
 
 
+
+
+      <LinearLayout
+          android:weightSum="3"
+          android:layout_width="match_parent"
+          android:layout_height="100dp">
+
+        <ImageView
+
+            android:scaleType="fitXY"
+            android:src="@drawable/seoul_9"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_weight="1">
+        </ImageView>
+        <ImageView
+
+            android:scaleType="fitXY"
+            android:src="@drawable/seoul_9"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_weight="1">
+        </ImageView>
+        <ImageView
+
+            android:scaleType="fitXY"
+            android:src="@drawable/seoul_9"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_weight="1">
+        </ImageView>
+
+      </LinearLayout>
+
+
+
+
+
+
+
     </LinearLayout>
+
+
+
+
+
+
 
 
 
