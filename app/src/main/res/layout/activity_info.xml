@@ -107,55 +107,119 @@
     </LinearLayout>
 
     <LinearLayout
-
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
         android:id="@+id/local_linear"
-        android:layout_margin="15dp"
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="300dp">
+        android:layout_height="100dp">
 
+      <ImageView
 
+          android:scaleType="fitXY"
+          android:src="@drawable/seoul_1"
+          android:layout_width="0dp"
 
+          android:layout_height="100dp"
+          android:layout_weight="1">
+      </ImageView>
+      <ImageView
 
-      <LinearLayout
-          android:weightSum="3"
-          android:layout_width="match_parent"
-          android:layout_height="100dp">
+          android:scaleType="fitXY"
+          android:src="@drawable/seoul_2"
+          android:layout_width="0dp"
+          android:layout_height="100dp"
+          android:layout_weight="1">
+      </ImageView>
+      <ImageView
 
-        <ImageView
-
-            android:scaleType="fitXY"
-            android:src="@drawable/seoul_9"
-            android:layout_width="0dp"
-            android:layout_height="100dp"
-            android:layout_weight="1">
-        </ImageView>
-        <ImageView
-
-            android:scaleType="fitXY"
-            android:src="@drawable/seoul_9"
-            android:layout_width="0dp"
-            android:layout_height="100dp"
-            android:layout_weight="1">
-        </ImageView>
-        <ImageView
-
-            android:scaleType="fitXY"
-            android:src="@drawable/seoul_9"
-            android:layout_width="0dp"
-            android:layout_height="100dp"
-            android:layout_weight="1">
-        </ImageView>
-
-      </LinearLayout>
-
-
-
-
-
-
+          android:scaleType="fitXY"
+          android:src="@drawable/seoul_3"
+          android:layout_width="0dp"
+          android:layout_height="100dp"
+          android:layout_weight="1">
+      </ImageView>
 
     </LinearLayout>
+
+
+  <LinearLayout
+      android:layout_marginRight="15dp"
+      android:layout_marginLeft="15dp"
+      android:id="@+id/local_linear2"
+      android:orientation="horizontal"
+      android:layout_width="match_parent"
+      android:layout_height="100dp">
+
+    <ImageView
+
+        android:scaleType="fitXY"
+        android:src="@drawable/seoul_4"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_weight="1">
+    </ImageView>
+    <ImageView
+
+        android:scaleType="fitXY"
+        android:src="@drawable/seoul_5"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_weight="1">
+    </ImageView>
+    <ImageView
+
+        android:scaleType="fitXY"
+        android:src="@drawable/seoul_6"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_weight="1">
+    </ImageView>
+
+
+
+
+
+  </LinearLayout>
+
+
+
+  <LinearLayout
+      android:layout_marginRight="15dp"
+      android:layout_marginLeft="15dp"
+      android:id="@+id/local_linear3"
+      android:orientation="horizontal"
+      android:layout_width="match_parent"
+      android:layout_height="100dp">
+
+    <ImageView
+
+        android:scaleType="fitXY"
+        android:src="@drawable/seoul_7"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_weight="1">
+    </ImageView>
+    <ImageView
+
+        android:scaleType="fitXY"
+        android:src="@drawable/seoul_8"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_weight="1">
+    </ImageView>
+    <ImageView
+
+        android:scaleType="fitXY"
+        android:src="@drawable/seoul_9"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_weight="1">
+    </ImageView>
+
+
+
+  </LinearLayout>
 
 
 
