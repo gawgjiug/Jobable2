@@ -79,6 +79,7 @@
         android:weightSum="3">
 
       <ImageView
+          android:background="@drawable/board_radius"
           android:id="@+id/info_seoul"
           android:scaleType="fitXY"
           android:layout_width="0dp"
@@ -88,6 +89,7 @@
       </ImageView>
 
       <ImageView
+          android:background="@drawable/board_radius"
           android:id="@+id/info_gyeongi"
           android:scaleType="fitXY"
           android:layout_width="0dp"
@@ -97,6 +99,7 @@
       </ImageView>
 
       <ImageView
+          android:background="@drawable/board_radius"
           android:id="@+id/info_etc"
           android:scaleType="fitXY"
           android:src="@drawable/info_etc"
@@ -115,7 +118,8 @@
         android:layout_height="100dp">
 
       <ImageView
-
+          android:background="@drawable/board_radius"
+          android:id="@+id/seoul_1"
           android:scaleType="fitXY"
           android:src="@drawable/seoul_1"
           android:layout_width="0dp"
@@ -124,7 +128,8 @@
           android:layout_weight="1">
       </ImageView>
       <ImageView
-
+          android:background="@drawable/board_radius"
+          android:id="@+id/seoul_2"
           android:scaleType="fitXY"
           android:src="@drawable/seoul_2"
           android:layout_width="0dp"
@@ -132,7 +137,8 @@
           android:layout_weight="1">
       </ImageView>
       <ImageView
-
+          android:background="@drawable/board_radius"
+          android:id="@+id/seoul_3"
           android:scaleType="fitXY"
           android:src="@drawable/seoul_3"
           android:layout_width="0dp"
@@ -152,7 +158,8 @@
       android:layout_height="100dp">
 
     <ImageView
-
+        android:background="@drawable/board_radius"
+        android:id="@+id/seoul_4"
         android:scaleType="fitXY"
         android:src="@drawable/seoul_4"
         android:layout_width="0dp"
@@ -160,7 +167,9 @@
         android:layout_weight="1">
     </ImageView>
     <ImageView
+        android:background="@drawable/board_radius"
 
+        android:id="@+id/seoul_5"
         android:scaleType="fitXY"
         android:src="@drawable/seoul_5"
         android:layout_width="0dp"
@@ -168,6 +177,8 @@
         android:layout_weight="1">
     </ImageView>
     <ImageView
+        android:id="@+id/seoul_6"
+        android:background="@drawable/board_radius"
 
         android:scaleType="fitXY"
         android:src="@drawable/seoul_6"
@@ -193,7 +204,9 @@
       android:layout_height="100dp">
 
     <ImageView
+        android:background="@drawable/board_radius"
 
+        android:id="@+id/seoul_7"
         android:scaleType="fitXY"
         android:src="@drawable/seoul_7"
         android:layout_width="0dp"
@@ -201,7 +214,9 @@
         android:layout_weight="1">
     </ImageView>
     <ImageView
+        android:background="@drawable/board_radius"
 
+        android:id="@+id/seoul_8"
         android:scaleType="fitXY"
         android:src="@drawable/seoul_8"
         android:layout_width="0dp"
@@ -209,7 +224,9 @@
         android:layout_weight="1">
     </ImageView>
     <ImageView
+        android:background="@drawable/board_radius"
 
+        android:id="@+id/seoul_9"
         android:scaleType="fitXY"
         android:src="@drawable/seoul_9"
         android:layout_width="0dp"
