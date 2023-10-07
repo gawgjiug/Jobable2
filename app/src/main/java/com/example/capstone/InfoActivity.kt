@@ -1,9 +1,13 @@
 package com.example.capstone;
 
 import android.os.Bundle
+import android.webkit.WebView
+import android.webkit.WebViewClient
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.capstone.R
+import com.example.capstone.databinding.ActivityInfoBinding
+import com.example.capstone.databinding.ActivityWelfareBinding
 
 class InfoActivity : AppCompatActivity() {
 
@@ -28,11 +32,15 @@ class InfoActivity : AppCompatActivity() {
     private lateinit var gyeongi_7 : ImageView
     private lateinit var gyeongi_8 : ImageView
     private lateinit var gyeongi_9 : ImageView
+    private lateinit var binding: ActivityInfoBinding
+    private lateinit var webView: WebView
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_info)
+        binding = ActivityInfoBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         infoGyeongi = findViewById(R.id.info_gyeongi)
         infoSeoul = findViewById(R.id.info_seoul)
@@ -47,6 +55,10 @@ class InfoActivity : AppCompatActivity() {
         seoul7 = findViewById(R.id.seoul_7)
         seoul8 = findViewById(R.id.seoul_8)
         seoul9 = findViewById(R.id.seoul_9)
+
+
+
+
 
 
         infoGyeongi.setOnClickListener {
@@ -92,6 +104,44 @@ class InfoActivity : AppCompatActivity() {
 
 
 
+        val gyeongi_1 = R.drawable.gyeongi_1
+        val infoMap = mapOf(
+            binding.seoul1 to "http://www.sbcil.org/child/sub/activity/",
+//            gyeongi_1 to "https://www.suwonrehab.or.kr/bbs/content.php?co_id=bussiness9"
+        )
 
+        infoMap.forEach{(imageView,url) ->
+            imageView.setOnClickListener {
+                showWebView(url)
+            }
+        }
+
+
+
+
+    }
+
+    private fun showWebView(url: String) {
+        webView = WebView(this)
+        webView.settings.javaScriptEnabled = true
+        webView.webViewClient = WebViewClient()
+        setContentView(webView)
+        webView.loadUrl(url)
+    }
+
+    override fun onBackPressed() {
+        if (!::webView.isInitialized) {
+            // webView가 초기화되지 않은 경우 초기화
+            webView = WebView(this)
+            webView.settings.javaScriptEnabled = true
+            webView.webViewClient = WebViewClient()
+            setContentView(webView)
+        }
+
+        if (webView.canGoBack()) {
+            webView.goBack()
+        } else {
+            finish()
+        }
     }
 }
