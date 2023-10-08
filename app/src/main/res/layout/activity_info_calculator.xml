@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Info_Calculator_Activity">
+
+
+    <LinearLayout
+        android:background="@drawable/linear_radius"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:background="#C5F6C3"
+            android:id="@+id/text_layout"
+            android:layout_width="match_parent"
+            android:layout_height="70dp">
+
+            <TextView
+
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:gravity="center"
+                android:text="근무시간(하루)과 근무일수 (한달)을 입력해주세요"
+                android:layout_width="match_parent"
+                android:layout_height="70dp">
+
+            </TextView>
+
+
+        </LinearLayout>
+
+            
+            <LinearLayout
+                android:layout_margin="3dp"
+                android:background="@drawable/radius_g"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="90dp">
+
+                <TextView
+
+                    android:layout_weight="1"
+                    android:textSize="18dp"
+                    android:text="  시급  : "
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp">
+
+                </TextView>
+
+                <EditText
+                    android:background="@drawable/radius_g"
+                    android:id="@+id/hourly_rate"
+                    android:hint=" 9,620"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp">
+
+
+                </EditText>
+
+            </LinearLayout>
+
+        <LinearLayout
+            android:layout_margin="3dp"
+            android:background="@drawable/radius_g"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:orientation="horizontal">
+
+
+            <TextView
+
+                android:layout_weight="1"
+                android:textSize="18dp"
+                android:text="  근무시간(일)  : "
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+            </TextView>
+
+            <Spinner
+                android:background="@drawable/radius_g"
+                android:id="@+id/time_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_weight="1">
+
+            </Spinner>
+
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_margin="3dp"
+            android:background="@drawable/radius_g"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:orientation="horizontal">
+
+
+            <TextView
+
+                android:layout_weight="1"
+                android:textSize="18dp"
+                android:text="  근무일수(월)  : "
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+            </TextView>
+
+            <Spinner
+                android:background="@drawable/radius_g"
+                android:id="@+id/day_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_weight="1">
+
+            </Spinner>
+
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_margin="3dp"
+            android:background="@drawable/radius_g"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:orientation="horizontal">
+
+
+            <TextView
+
+                android:layout_weight="1"
+                android:textSize="18dp"
+                android:text="  주휴수당(유무)  : "
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+            </TextView>
+
+            <CheckBox
+                android:id="@+id/bonus_check"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+            </CheckBox>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+
+
+            android:layout_margin="3dp"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:orientation="horizontal">
+
+
+        <Button
+            android:id="@+id/rete_btn"
+            android:background="@drawable/radius_g"
+            android:layout_margin="20dp"
+            android:text="계산 하기"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+        </Button>
+
+
+
+
+        </LinearLayout>
+
+    <LinearLayout
+        android:background="#C5F6C3"
+        android:layout_margin="3dp"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal">
+
+
+
+
+
+
+
+
+        <TextView
+            android:id="@+id/rate_btn"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textSize="18sp"
+            android:layout_weight="1"
+            android:text="이번달 월급"
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+
+        </TextView>
+
+
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:background="@drawable/radius_g"
+        android:layout_margin="3dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <TextView
+
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:layout_margin="15dp"
+            android:text="예상 월급 :"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_weight="1">
+
+
+        </TextView>
+
+        <EditText
+            android:id="@+id/rate_result_edtxt"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:layout_margin="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_weight="1"
+            android:hint="9,620 원입니다"
+            >
+
+        </EditText>
+
+
+
+
+    </LinearLayout>
+
+            
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

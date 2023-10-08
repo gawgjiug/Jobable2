@@ -1,5 +1,6 @@
 package com.example.capstone
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.webkit.WebView
@@ -41,6 +42,13 @@ class InfoActivity : AppCompatActivity() {
         val seoulImageViews = seoulImageViewIds.map { findViewById<ImageView>(it) }
         // 모든 경기 이미지뷰 초기화
         val gyeongiImageViews = gyeongiImageViewIds.map { findViewById<ImageView>(it) }
+
+        val calculator = findViewById<ImageView>(R.id.info_calculator)
+
+        calculator.setOnClickListener {
+            val intent = Intent(this,Info_Calculator_Activity::class.java)
+            startActivity(intent)
+        }
 
 
         val seoulUrl = mapOf(
@@ -128,6 +136,7 @@ class InfoActivity : AppCompatActivity() {
     }
 
     private fun showWebView(url: String) {
+
         webView = WebView(this)
         webView.settings.javaScriptEnabled = true
         webView.webViewClient = WebViewClient()

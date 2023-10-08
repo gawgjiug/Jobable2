@@ -8,6 +8,8 @@
     tools:context=".InfoActivity">
 
   <LinearLayout
+      android:background="@drawable/radius_g"
+
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:orientation="vertical">
@@ -17,7 +19,8 @@
         android:layout_height="120dp">
 
       <ImageView
-          android:background="@drawable/linear_radius"
+          android:id="@+id/info_calculator"
+          android:background="@drawable/radius_g"
           android:src="@drawable/info_calculator"
           android:layout_width="80dp"
           android:layout_height="120dp"
@@ -31,7 +34,7 @@
         android:layout_height="wrap_content">
 
       <TextView
-         android:background="@drawable/linear_radius"
+          android:background="@drawable/radius_g"
           android:textStyle="bold"
           android:text="시급 계산기"
           android:layout_width="wrap_content"
@@ -46,7 +49,7 @@
         android:layout_height="wrap_content">
 
       <ImageView
-          android:background="@drawable/linear_radius"
+          android:background="@drawable/radius_g"
           android:id="@+id/info_mp3"
           android:src="@drawable/home_sound"
           android:layout_width="wrap_content"
@@ -56,11 +59,12 @@
     </LinearLayout>
 
     <LinearLayout
-        android:background="@drawable/linear_radius"
+        android:background="@drawable/radius_g"
         android:layout_width="match_parent"
         android:layout_height="40dp">
 
       <TextView
+
           android:textSize="20sp"
           android:layout_marginLeft="10dp"
           android:textStyle="bold"
@@ -80,7 +84,7 @@
         android:weightSum="3">
 
       <ImageView
-          android:background="@drawable/board_radius"
+          android:background="@drawable/radius_g"
           android:id="@+id/info_seoul"
           android:scaleType="fitXY"
           android:layout_width="0dp"
@@ -90,7 +94,7 @@
       </ImageView>
 
       <ImageView
-          android:background="@drawable/board_radius"
+          android:background="@drawable/radius_g"
           android:id="@+id/info_gyeongi"
           android:scaleType="fitXY"
           android:layout_width="0dp"
@@ -100,7 +104,7 @@
       </ImageView>
 
       <ImageView
-          android:background="@drawable/board_radius"
+          android:background="@drawable/radius_g"
           android:id="@+id/info_etc"
           android:scaleType="fitXY"
           android:src="@drawable/info_etc"
