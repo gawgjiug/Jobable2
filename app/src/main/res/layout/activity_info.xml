@@ -71,6 +71,7 @@
     </LinearLayout>
 
     <LinearLayout
+
         android:layout_margin="15dp"
         android:orientation="horizontal"
         android:id="@+id/welfare_layout"
@@ -110,82 +111,350 @@
     </LinearLayout>
 
     <LinearLayout
+
         android:layout_marginRight="15dp"
         android:layout_marginLeft="15dp"
         android:id="@+id/local_linear"
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="100dp">
+        android:layout_height="100dp"
+        android:weightSum="3">
 
-      <ImageView
-          android:background="@drawable/board_radius"
-          android:id="@+id/seoul_1"
-          android:scaleType="fitXY"
-          android:src="@drawable/seoul_1"
-          android:layout_width="0dp"
+      <FrameLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_weight="1">
 
-          android:layout_height="100dp"
+
+        <ImageView
+            android:id="@+id/seoul_1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/seoul_1"
+            android:scaleType="fitXY">
+
+        </ImageView>
+
+
+        <ImageView
+            android:id="@+id/gyeongi_1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/gyeongi_1"
+            android:scaleType="fitXY"
+            android:visibility="invisible">
+
+
+        </ImageView>
+
+
+
+
+
+
+
+      </FrameLayout>
+
+      <FrameLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
           android:layout_weight="1">
-      </ImageView>
-      <ImageView
-          android:background="@drawable/board_radius"
-          android:id="@+id/seoul_2"
-          android:scaleType="fitXY"
-          android:src="@drawable/seoul_2"
-          android:layout_width="0dp"
-          android:layout_height="100dp"
+
+
+        <ImageView
+            android:id="@+id/seoul_2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/seoul_2"
+            android:scaleType="fitXY">
+
+        </ImageView>
+
+        <ImageView
+            android:id="@+id/gyeongi_2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/gyeongi_2"
+            android:scaleType="fitXY"
+            android:visibility="invisible">
+
+
+        </ImageView>
+
+
+
+
+
+      </FrameLayout>
+
+      <FrameLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
           android:layout_weight="1">
-      </ImageView>
-      <ImageView
-          android:background="@drawable/board_radius"
-          android:id="@+id/seoul_3"
-          android:scaleType="fitXY"
-          android:src="@drawable/seoul_3"
-          android:layout_width="0dp"
-          android:layout_height="100dp"
-          android:layout_weight="1">
-      </ImageView>
+
+
+        <ImageView
+            android:id="@+id/seoul_3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/seoul_3"
+            android:scaleType="fitXY">
+
+        </ImageView>
+
+
+        <ImageView
+            android:id="@+id/gyeongi_3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/gyeongi_3"
+            android:scaleType="fitXY"
+            android:visibility="invisible">
+
+
+        </ImageView>
+
+
+
+
+      </FrameLayout>
+
 
     </LinearLayout>
 
 
-  <LinearLayout
-      android:layout_marginRight="15dp"
-      android:layout_marginLeft="15dp"
-      android:id="@+id/local_linear2"
-      android:orientation="horizontal"
-      android:layout_width="match_parent"
-      android:layout_height="100dp">
 
-    <ImageView
-        android:background="@drawable/board_radius"
-        android:id="@+id/seoul_4"
-        android:scaleType="fitXY"
-        android:src="@drawable/seoul_4"
-        android:layout_width="0dp"
-        android:layout_height="100dp"
-        android:layout_weight="1">
-    </ImageView>
-    <ImageView
-        android:background="@drawable/board_radius"
+    <LinearLayout
 
-        android:id="@+id/seoul_5"
-        android:scaleType="fitXY"
-        android:src="@drawable/seoul_5"
-        android:layout_width="0dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
+        android:id="@+id/local_linear2"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:layout_weight="1">
-    </ImageView>
-    <ImageView
-        android:id="@+id/seoul_6"
-        android:background="@drawable/board_radius"
+        android:weightSum="3">
 
-        android:scaleType="fitXY"
-        android:src="@drawable/seoul_6"
-        android:layout_width="0dp"
+      <FrameLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_weight="1">
+
+
+        <ImageView
+            android:id="@+id/seoul_4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/seoul_4"
+            android:scaleType="fitXY">
+
+        </ImageView>
+
+
+        <ImageView
+            android:id="@+id/gyeongi_4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/gyeongi_4"
+            android:scaleType="fitXY"
+            android:visibility="invisible">
+
+
+        </ImageView>
+
+
+
+
+
+
+
+      </FrameLayout>
+
+      <FrameLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_weight="1">
+
+
+        <ImageView
+            android:id="@+id/seoul_5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/seoul_5"
+            android:scaleType="fitXY">
+
+        </ImageView>
+
+        <ImageView
+            android:id="@+id/gyeongi_5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/gyeongi_5"
+            android:scaleType="fitXY"
+            android:visibility="invisible">
+
+
+        </ImageView>
+
+
+
+
+
+      </FrameLayout>
+
+      <FrameLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_weight="1">
+
+
+        <ImageView
+            android:id="@+id/seoul_6"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/seoul_6"
+            android:scaleType="fitXY">
+
+        </ImageView>
+
+
+        <ImageView
+            android:id="@+id/gyeongi_6"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/gyeongi_6"
+            android:scaleType="fitXY"
+            android:visibility="invisible">
+
+
+        </ImageView>
+
+
+
+
+
+      </FrameLayout>
+
+
+
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
+        android:id="@+id/local_linear3"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:layout_weight="1">
-    </ImageView>
+        android:weightSum="3">
+
+      <FrameLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_weight="1">
+
+
+        <ImageView
+            android:id="@+id/seoul_7"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/seoul_7"
+            android:scaleType="fitXY">
+
+        </ImageView>
+
+
+        <ImageView
+            android:id="@+id/gyeongi_7"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/gyeongi_7"
+            android:scaleType="fitXY"
+            android:visibility="invisible">
+
+
+        </ImageView>
+
+
+
+
+
+
+
+      </FrameLayout>
+
+      <FrameLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_weight="1">
+
+
+        <ImageView
+            android:id="@+id/seoul_8"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/seoul_8"
+            android:scaleType="fitXY">
+
+        </ImageView>
+
+        <ImageView
+            android:id="@+id/gyeongi_8"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/gyeongi_8"
+            android:scaleType="fitXY"
+            android:visibility="invisible">
+
+
+        </ImageView>
+
+
+
+
+
+      </FrameLayout>
+
+      <FrameLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_weight="1">
+
+
+        <ImageView
+            android:id="@+id/seoul_9"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/seoul_9"
+            android:scaleType="fitXY">
+
+        </ImageView>
+
+
+        <ImageView
+            android:id="@+id/gyeongi_9"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/gyeongi_9"
+            android:scaleType="fitXY"
+            android:visibility="invisible">
+
+
+        </ImageView>
+
+
+
+
+
+      </FrameLayout>
+
+
+
+
+    </LinearLayout>
 
 
 
@@ -193,59 +462,4 @@
 
   </LinearLayout>
 
-
-
-  <LinearLayout
-      android:layout_marginRight="15dp"
-      android:layout_marginLeft="15dp"
-      android:id="@+id/local_linear3"
-      android:orientation="horizontal"
-      android:layout_width="match_parent"
-      android:layout_height="100dp">
-
-    <ImageView
-        android:background="@drawable/board_radius"
-
-        android:id="@+id/seoul_7"
-        android:scaleType="fitXY"
-        android:src="@drawable/seoul_7"
-        android:layout_width="0dp"
-        android:layout_height="100dp"
-        android:layout_weight="1">
-    </ImageView>
-    <ImageView
-        android:background="@drawable/board_radius"
-
-        android:id="@+id/seoul_8"
-        android:scaleType="fitXY"
-        android:src="@drawable/seoul_8"
-        android:layout_width="0dp"
-        android:layout_height="100dp"
-        android:layout_weight="1">
-    </ImageView>
-    <ImageView
-        android:background="@drawable/board_radius"
-
-        android:id="@+id/seoul_9"
-        android:scaleType="fitXY"
-        android:src="@drawable/seoul_9"
-        android:layout_width="0dp"
-        android:layout_height="100dp"
-        android:layout_weight="1">
-    </ImageView>
-
-
-
-  </LinearLayout>
-
-
-
-
-
-
-
-
-
-
-  </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
