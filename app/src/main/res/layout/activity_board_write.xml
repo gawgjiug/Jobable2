@@ -35,17 +35,55 @@
 
 
             <LinearLayout
+
                 android:layout_width="match_parent"
-                android:layout_height="60dp">
+                android:layout_height="60dp"
+                android:weightSum="2">
                 
                 <Spinner
+
                     android:contentDescription="카테고리 선택"
                     android:id="@+id/board_write_spinner"
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"/>
-                
-                
+                    android:layout_height="60dp"
+                    android:layout_weight="1"/>
+
+                <EditText
+                    android:textStyle="bold"
+                    android:hint=" 시급을 입력하세요"
+                    android:id="@+id/board_write_pay"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_weight="1"/>
+
+
             </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:weightSum="2">
+
+                    <Spinner
+
+                        android:contentDescription="카테고리 선택"
+                        android:id="@+id/write_day_spinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"/>
+
+                    <EditText
+                        android:textStyle="bold"
+                        android:hint=" 시간을 입력하세요"
+                        android:id="@+id/board_write_time"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"/>
+
+
+
+
+                </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -84,6 +122,7 @@
                 android:background="#000000"/>
 
             <ImageView
+
                 android:id="@+id/imageArea"
                 android:src="@drawable/ceo_plusbtn"
                 android:layout_marginTop="20dp"

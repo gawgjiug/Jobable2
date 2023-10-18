@@ -30,6 +30,30 @@ class BoardWriteActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_board_write)
 
+        val dayList = listOf(
+            " 주 5일제"," 주 4일제", " 주 3일제"," 주 2일제", " 주 1일제", " 만나서 협의"
+        )
+        val dayadapter = ArrayAdapter(this,android.R.layout.simple_spinner_item,dayList)
+        dayadapter.setDropDownViewResource(android.R.layout.simple_spinner_item)
+        binding.writeDaySpinner.adapter = dayadapter
+
+        binding.writeDaySpinner.onItemSelectedListener =
+            object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(
+                    parent: AdapterView<*>?, view: View?, position: Int, id: Long
+                ) {
+                    if (position != 0) {
+                        val selectedItem = dayList[position]
+                        Toast.makeText(
+                            this@BoardWriteActivity, selectedItem, Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>?) {
+                }
+            }
+
         val categoryList = listOf(
             "직무를 선택하세요", "사무보조", "편의점", "도서관 사서", "의류 매장 보조", "빵집 보조"
         )
@@ -61,12 +85,16 @@ class BoardWriteActivity : AppCompatActivity() {
             val uid = FBAuth.getUid()
             val time = FBAuth.getTime()
             val job = binding.boardWriteSpinner.selectedItem as String // 사용자가 선택한 직무
+            val pay = binding.boardWritePay.text.toString()
+            val day = binding.writeDaySpinner.selectedItem as String
+            val worktime = binding.boardWriteTime.text.toString()
+
 
             val key = FBRef.boardRef.push().key.toString()
 
             FBRef.boardRef
                 .child(key)
-                .setValue(BoardModel(title, content, uid, time, job)) // 'job' 필드 추가
+                .setValue(BoardModel(title, content, uid, time, job,pay,day,worktime)) // 'job' 필드 추가
 
             Toast.makeText(this, "게시글 입력 완료", Toast.LENGTH_LONG).show()
 

@@ -39,6 +39,36 @@ class BoardEditActivity : AppCompatActivity() {
             editBoardData(key)
         }
 
+        //day spinner
+        val dayList = listOf(
+            " 주 5일제"," 주 4일제", " 주 3일제"," 주 2일제", " 주 1일제", " 만나서 협의"
+        )
+        val dayadapter = ArrayAdapter(this,android.R.layout.simple_spinner_item,dayList)
+        dayadapter.setDropDownViewResource(android.R.layout.simple_spinner_item)
+        binding.editDaySpinner.adapter = dayadapter
+
+        binding.editDaySpinner.onItemSelectedListener =
+            object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(
+                    parent: AdapterView<*>?, view: View?, position: Int, id: Long
+                ) {
+                    if (position != 0) {
+                        val selectedItem = dayList[position]
+                        Toast.makeText(
+                            this@BoardEditActivity, selectedItem, Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>?) {
+                }
+            }
+
+
+        //day spinner
+
+
+
         //Spinner 부분 코드
 
         val categoryList = listOf(
@@ -77,7 +107,13 @@ class BoardEditActivity : AppCompatActivity() {
     private fun editBoardData(key:String){
         FBRef.boardRef
             .child(key)
-            .setValue(BoardModel(binding.boardTitle.text.toString(), binding.boardContents.text.toString(),writerUid,FBAuth.getTime(), binding.boardEditSpinner.selectedItem as String
+            .setValue(BoardModel(binding.boardTitle.text.toString(),
+                binding.boardContents.text.toString(),
+                writerUid,FBAuth.getTime(),
+                binding.boardEditSpinner.selectedItem as String,
+                binding.boardEditPay.text.toString(),
+                binding.editDaySpinner.selectedItem as String,
+                binding.boardEditTime.text.toString()
             ))
         Toast.makeText(this,"수정완료",Toast.LENGTH_SHORT).show()
         finish()
@@ -110,6 +146,8 @@ class BoardEditActivity : AppCompatActivity() {
                 binding.boardTitle.setText(dataModel?.title)
                 binding.boardContents.setText(dataModel?.content)
                 writerUid = dataModel!!.uid
+                binding.boardEditPay.setText(dataModel?.pay)
+                binding.boardEditTime.setText(dataModel?.worktime)
 
             }
             override fun onCancelled(databaseError: DatabaseError) {
