@@ -4,38 +4,58 @@
     android:id="@+id/itemView"
     android:layout_width="match_parent"
     android:layout_height="150dp"
-    android:orientation="vertical"
-    >
+    android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/titleArea"
-        android:text="title"
-        android:textSize="20sp"
+    <LinearLayout
         android:layout_margin="15dp"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-    <TextView
-        android:id="@+id/contentArea"
-        android:text="content"
-        android:textColor="@color/black"
-        android:textSize="15sp"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-    <TextView
-        android:id="@+id/timeArea"
-        android:text="time"
-        android:textColor="#999999"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="5dp"
-        android:textSize="10sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_width="90dp"
+        android:layout_height="match_parent">
 
+        <ImageView
+            android:src="@drawable/board_default"
+            android:id="@+id/imageArea"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </ImageView>
 
+    </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
+        <TextView
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_margin="15dp"
+            android:id="@+id/titleArea"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="title"/>
+
+        <TextView
+            android:id="@+id/contentArea"
+            android:text="content"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+        <TextView
+            android:id="@+id/timeArea"
+            android:text="time"
+            android:textColor="#999999"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:textSize="10sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+    </LinearLayout>
 </LinearLayout>
