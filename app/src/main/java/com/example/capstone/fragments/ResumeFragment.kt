@@ -61,6 +61,9 @@ class ResumeFragment : Fragment() {
             it.findNavController().navigate(R.id.action_resumeFragment_to_myLocationFragment)
         }
 
+
+
+
         binding.resumeWrite.setOnClickListener {
             val name = binding.resumeName.text.toString()
             val address = binding.resumeAddress.text.toString()
@@ -70,6 +73,12 @@ class ResumeFragment : Fragment() {
             val sex = binding.resumeSex.text.toString()
             val type = binding.resumeType.text.toString()
             val tel = binding.resumeTel.text.toString() // 이 부분이 누락되어 있었습니다.
+
+
+
+
+
+
 
 
             if (name.isEmpty() || address.isEmpty() || detail.isEmpty() || sex.isEmpty() ||
