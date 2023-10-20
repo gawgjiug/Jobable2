@@ -178,6 +178,9 @@ class BoardInsideActivity : AppCompatActivity() {
                     binding.textAread.text = dataModel!!.content
 //                    binding.timeArea.text = dataModel!!.time
                     binding.payArea.text = dataModel!!.pay + " 원"
+                    binding.timeArea.text = dataModel!!.worktime
+                    binding.dayArea.text = dataModel!!.day
+                    binding.categoryArea.text = dataModel!!.job
 
                     val myUid = FBAuth.getUid()
                     val writerUid = dataModel.uid
