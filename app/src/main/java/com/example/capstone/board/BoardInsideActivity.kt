@@ -4,6 +4,7 @@ import android.content.Intent
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.speech.tts.TextToSpeech
 import android.util.Log
 import android.view.LayoutInflater
 import android.widget.Toast
@@ -29,6 +30,7 @@ import com.google.firebase.database.Query
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
+import java.util.Locale
 
 class BoardInsideActivity : AppCompatActivity() {
 
@@ -36,6 +38,7 @@ class BoardInsideActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityBoardInsideBinding
     private lateinit var key: String
+    private var tts: TextToSpeech? = null
     private lateinit var database: DatabaseReference
     private lateinit var auth: FirebaseAuth
     private var resumewrite = true
@@ -54,6 +57,21 @@ class BoardInsideActivity : AppCompatActivity() {
         }
 
         auth = FirebaseAuth.getInstance()
+
+
+        // TextToSpeech 엔진 초기화
+        tts = TextToSpeech(applicationContext) { status ->
+            if (status == TextToSpeech.SUCCESS) {
+                // TTS 엔진이 초기화 성공한 경우
+                tts?.language = Locale.KOREAN
+                tts?.setSpeechRate(0.7f) // 2배 빠른 속도
+
+
+            } else {
+                // TTS 초기화에 실패한 경우 처리
+            }
+        }
+
 
 
 
@@ -131,8 +149,17 @@ class BoardInsideActivity : AppCompatActivity() {
             })
         }
 
+//        binding.boardMp3Btn.setOnClickListener {
+//            checkJobField()
+//        }
+
         binding.boardMp3Btn.setOnClickListener {
-            checkJobField()
+            val pay = binding.payArea.text.toString()
+            val job = binding.categoryArea.text.toString()
+            val worktime = binding.timeArea.text.toString()
+            val day = binding.dayArea.text.toString()
+            val textToSpeak = "보고 계신 회사는 지금  $job 로 일해줄 사람을 구하고 있습니다, 또한 이 회사의 시급은 $pay  이고, 이 회사는 $day 로 일해야 하고, 하루에 $worktime 시간 일하는 일꾼을 구하고 있습니다. 옆에 지원 접수버튼을 눌러서 이 회사의 일꾼이 되어보세요 "
+            tts?.speak(textToSpeak, TextToSpeech.QUEUE_FLUSH, null, null)
         }
 
         // (기존 코드와 동일)
