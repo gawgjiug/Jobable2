@@ -18,6 +18,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import com.example.capstone.R
 import com.example.capstone.databinding.FragmentMyLocationBinding
 
@@ -30,6 +31,10 @@ import com.google.android.gms.maps.model.LatLngBounds
 import com.google.android.gms.maps.model.MarkerOptions
 import retrofit2.*
 import retrofit2.converter.gson.GsonConverterFactory
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+
 
 class MyLocationFragment : Fragment(), OnMapReadyCallback {
 
@@ -105,88 +110,97 @@ class MyLocationFragment : Fragment(), OnMapReadyCallback {
     @SuppressLint("MissingPermission")
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
-        fusedLocationClient =
-            LocationServices.getFusedLocationProviderClient(requireContext())
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireContext())
 
-// Inside onMapReady function
+        // 마커 클릭 시 동작
         mMap.setOnMarkerClickListener { marker ->
-            // 마커 클릭 시 실행할 동작 구현
+            // 마커 클릭 시 마커의 이름을 InfoWindow에 표시
             val zoomLevel = 17f // 원하는 줌 레벨 설정
             val cameraUpdate = CameraUpdateFactory.newLatLngZoom(marker.position, zoomLevel)
             mMap.animateCamera(cameraUpdate)
+            marker.showInfoWindow() // 마커의 이름을 표시
             true // 이벤트 처리를 완료했음을 반환
         }
-
-
 
         loadLibraries()
     }
 
 
     fun loadLibraries() {
-        val retrofit = Retrofit.Builder()
-            .baseUrl(SeoulOpenApi.DOMAIN)
-            .addConverterFactory(GsonConverterFactory.create()) // Gson 변환기 추가
-            .build()
-        val service = retrofit.create(SeoulOpenService::class.java)
-        service.getLibraries(SeoulOpenApi.APIKEY,200)
-            .enqueue(object  : Callback<Rehab>{
-                override fun onResponse(
-                    call: Call<Rehab>,
-                    response: Response<Rehab>
-                ) {
+        lifecycleScope.launch {
+            val retrofit = Retrofit.Builder()
+                .baseUrl(SeoulOpenApi.DOMAIN)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+            val service = retrofit.create(SeoulOpenService::class.java)
+
+            try {
+                val response = withContext(Dispatchers.IO) {
+                    service.getLibraries(SeoulOpenApi.APIKEY, 200).execute()
+                }
+
+                if (response.isSuccessful) {
                     val result = response.body()
                     showLibraries(result)
+                } else {
+                    Toast.makeText(requireContext(), "데이터를 가져올 수 없습니다", Toast.LENGTH_SHORT).show()
                 }
-
-                override fun onFailure(call: Call<Rehab>, t: Throwable) {
-                    Toast.makeText(requireContext(),"데이터를 가져올 수 없습니다",Toast.LENGTH_SHORT).show()
-                }
-
-            })
+            } catch (e: Exception) {
+                Toast.makeText(requireContext(), "데이터를 가져올 수 없습니다", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
+
 
     fun showLibraries(result: Rehab?) {
         result?.let {
             val latlngbounds = LatLngBounds.builder()
             val geocoder = Geocoder(requireContext())
 
-            for (rehab in it.fcltOpenInfo_OWSI.row) {
-                val address = rehab.FCLT_ADDR
+            lifecycleScope.launch(Dispatchers.IO) {
+                for (rehab in it.fcltOpenInfo_OWSI.row) {
+                    val address = rehab.FCLT_ADDR
 
-                try {
-                    val locationList = geocoder.getFromLocationName(address, 1)
+                    try {
+                        val locationList = geocoder.getFromLocationName(address, 1)
 
-                    if (locationList != null && locationList.isNotEmpty()) {
-                        val location = locationList[0]
-                        val latitude = location.latitude
-                        val longitude = location.longitude
+                        if (locationList != null && locationList.isNotEmpty()) {
+                            val location = locationList[0]
+                            val latitude = location.latitude
+                            val longitude = location.longitude
 
-                        val marker = MarkerOptions()
-                            .position(LatLng(latitude, longitude))
-                            .title(rehab.FCLT_NM)
+                            val marker = MarkerOptions()
+                                .position(LatLng(latitude, longitude))
+                                .title(rehab.FCLT_NM)
 
-                        mMap.addMarker(marker)
+                            // UI 스레드에서 마커 추가
+                            withContext(Dispatchers.Main) {
+                                mMap.addMarker(marker)
 
-                        // 마커 위치를 영역에 포함
-                        latlngbounds.include(LatLng(latitude, longitude))
-                    } else {
-                        // 주소를 찾을 수 없는 경우 처리
-                        Log.d("Geocoder", "No location found for address: $address")
+                                // 마커 위치를 영역에 포함
+                                latlngbounds.include(LatLng(latitude, longitude))
+                            }
+                        } else {
+                            // 주소를 찾을 수 없는 경우 처리
+                            Log.d("Geocoder", "No location found for address: $address")
+                        }
+                    } catch (e: Exception) {
+                        Log.e("Geocoder", "Error converting address to coordinates: $address", e)
                     }
-                } catch (e: Exception) {
-                    Log.e("Geocoder", "Error converting address to coordinates: $address", e)
+                }
+
+                val padding = 0
+                // 카메라를 조정하여 모든 마커가 영역 내에 표시되도록 합니다.
+                val cameraUpdate = CameraUpdateFactory.newLatLngBounds(latlngbounds.build(), padding)
+
+                // UI 스레드에서 카메라 이동
+                withContext(Dispatchers.Main) {
+                    mMap.moveCamera(cameraUpdate)
                 }
             }
-
-            val bound = latlngbounds.build()
-            val padding = 0
-            // 카메라를 조정하여 모든 마커가 영역 내에 표시되도록 합니다.
-            val cameraUpdate = CameraUpdateFactory.newLatLngBounds(latlngbounds.build(), padding)
-
-            mMap.moveCamera(cameraUpdate)
         }
     }
+
 
 
     override fun onRequestPermissionsResult(
