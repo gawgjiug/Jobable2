@@ -108,6 +108,14 @@ class MyLocationFragment : Fragment(), OnMapReadyCallback {
         fusedLocationClient =
             LocationServices.getFusedLocationProviderClient(requireContext())
 
+// Inside onMapReady function
+        mMap.setOnMarkerClickListener { marker ->
+            // 마커 클릭 시 실행할 동작 구현
+            val zoomLevel = 17f // 원하는 줌 레벨 설정
+            val cameraUpdate = CameraUpdateFactory.newLatLngZoom(marker.position, zoomLevel)
+            mMap.animateCamera(cameraUpdate)
+            true // 이벤트 처리를 완료했음을 반환
+        }
 
 
 
