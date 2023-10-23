@@ -28,7 +28,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:layout_marginLeft="27dp"
-            android:layout_marginTop="255dp"
+            android:layout_marginTop="290dp"
             app:srcCompat="@drawable/video_cloth" />
 
         <ImageView
@@ -38,7 +38,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:layout_marginLeft="226dp"
-            android:layout_marginTop="255dp"
+            android:layout_marginTop="290dp"
             app:srcCompat="@drawable/video_office" />
 
         <ImageView
@@ -48,7 +48,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:layout_marginLeft="24dp"
-            android:layout_marginTop="424dp"
+            android:layout_marginTop="465dp"
             app:srcCompat="@drawable/video_library" />
 
         <ImageView
@@ -58,7 +58,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:layout_marginLeft="226dp"
-            android:layout_marginTop="424dp"
+            android:layout_marginTop="465dp"
             app:srcCompat="@drawable/video_interview" />
 
         <ImageView
@@ -68,7 +68,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:layout_marginLeft="24dp"
-            android:layout_marginTop="580dp"
+            android:layout_marginTop="635dp"
             app:srcCompat="@drawable/video_bakery" />
 
         <ImageView
@@ -78,7 +78,7 @@
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="226dp"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="580dp"
+            android:layout_marginTop="635dp"
             app:srcCompat="@drawable/video_cashier" />
 
 

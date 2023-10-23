@@ -75,6 +75,9 @@ class MyLocationFragment : Fragment(), OnMapReadyCallback {
             locationPermission.launch(permission)
         }
 
+
+
+
         return rootView
     }
 
@@ -106,21 +109,7 @@ class MyLocationFragment : Fragment(), OnMapReadyCallback {
             LocationServices.getFusedLocationProviderClient(requireContext())
 
 
-//        setUpdateLocationListener()
 
-        // 내 위치로 카메라 이동
-//        fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? ->
-//            location?.let {
-//                val myLocation = LatLng(location.latitude, location.longitude)
-//                val cameraOption = CameraPosition.builder()
-//                    .target(myLocation)
-//                    .zoom(15.0f)
-//                    .build()
-//
-//                val camera = CameraUpdateFactory.newCameraPosition(cameraOption)
-//                mMap.moveCamera(camera)
-//            }
-//        }
 
         loadLibraries()
     }
@@ -191,53 +180,6 @@ class MyLocationFragment : Fragment(), OnMapReadyCallback {
         }
     }
 
-
-
-
-
-
-    // 내 위치를 가져오는 코드
-    @SuppressLint("MissingPermission")
-    private fun setUpdateLocationListener() {
-        val locationRequest = LocationRequest.create().apply {
-            priority = LocationRequest.PRIORITY_HIGH_ACCURACY
-            interval = 1000 // 1초에 한 번씩 좌표 값을 가져옴
-        }
-        locationCallback = object : LocationCallback() {
-            override fun onLocationResult(locationResult: LocationResult?) {
-                locationResult?.let {
-                    for ((i, location) in it.locations.withIndex()) {
-                        Log.d("로케이션", "$i ${location.latitude},${location.longitude}")
-                        setLastLocation(location)
-                    }
-
-                }
-            }
-        }
-
-        // 로케이션 요청 함수 호출 (locationRequest , locationCallback)
-        fusedLocationClient.requestLocationUpdates(locationRequest,locationCallback,Looper.myLooper())
-    }
-
-    fun setLastLocation(location : Location){
-        val myLocation = LatLng(location.latitude,location.longitude)
-        val marker = MarkerOptions()
-            .position(myLocation)
-            .title("im here!")
-        val cameraOption = CameraPosition.builder()
-            .target(myLocation)
-            .zoom(15.0f)
-            .build()
-
-
-        val camera = CameraUpdateFactory.newCameraPosition(cameraOption)
-        mMap.clear()
-
-        mMap.addMarker(marker)
-        mMap.moveCamera(camera)
-
-
-    }
 
     override fun onRequestPermissionsResult(
         requestCode: Int,
