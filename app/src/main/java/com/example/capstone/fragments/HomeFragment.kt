@@ -14,6 +14,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import com.example.capstone.CeoIntroActivity
 import com.example.capstone.InfoActivity
+import com.example.capstone.Job_Center.Job_Center_Activity
 import com.example.capstone.R
 import com.example.capstone.UserBoardActivity
 import com.example.capstone.VideoActivity
@@ -75,7 +76,8 @@ class HomeFragment : Fragment() {
         mediaplayer = MediaPlayer.create(requireContext(),R.raw.search_mp3)
 
         binding.locationTap.setOnClickListener {
-            it.findNavController().navigate(R.id.action_homeFragment_to_myLocationFragment)
+            val intent = Intent(binding.root.context, Job_Center_Activity::class.java)
+            startActivity(intent)
         }
 
         binding.resumeTap.setOnClickListener{

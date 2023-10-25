@@ -43,6 +43,7 @@ class BoardListLVAdapter(val boardlist: MutableList<BoardModel>) : BaseAdapter()
 
         if (boardlist[position].uid == FBAuth.getUid()) {
             itemLinearLayoutView?.setBackgroundColor(Color.parseColor("#f5f5dc"))
+
         }
 
         // 'job' 값을 기반으로 이미지 설정

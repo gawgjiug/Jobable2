@@ -19,15 +19,7 @@
         android:theme="@style/Theme.Capstone"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
-        <activity
-            android:name=".Info_Calculator_Activity"
-            android:exported="false" />
-        <activity
-            android:name=".LoginActivity"
-            android:exported="false" />
-        <activity
-            android:name=".video_quiz.QuizResultActivity"
-            android:exported="false" />
+
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
 
@@ -41,7 +33,20 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyD7g4HOg08_6D9NR6xH4TF2nsDB7uY6IEA" />
+            android:value="YOUR_API_KEY" />
+
+        <activity
+            android:name=".Job_Center.Job_Center_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".Info_Calculator_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".video_quiz.QuizResultActivity"
+            android:exported="false" />
 
         <uses-library
             android:name="com.google.android.maps"
