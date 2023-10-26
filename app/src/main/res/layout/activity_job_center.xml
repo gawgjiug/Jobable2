@@ -39,13 +39,38 @@
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/Job_Center_ListView"
+        android:weightSum="2">
+
+        <Spinner
+            android:id="@+id/Job_center_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_weight="1">
+
+        </Spinner>
+        <SearchView
+            android:id="@+id/Job_center_search"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_weight="1">
+
+        </SearchView>
+
+
+    </LinearLayout>
+
 
 
     <ListView
         android:id="@+id/Job_Center_ListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="120dp"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,10 +8,10 @@ data class Row(
     val FCLT_NM: String, //건물 이름
     val FCLT_TEL_NO: String, // 전화번호
     val FCLT_ZIPCD: String,
-    val INMT_GRDN_CNT: Double, //정원
+    val INMT_GRDN_CNT: Int, //정원
     val JRSD_SGG_CD: String,
     val JRSD_SGG_NM: String,
     val JRSD_SGG_SE: String,
-    val LVLH_NMPR: Double, //현 인원
+    val LVLH_NMPR: Int, //현 인원
     val RPRSNTV: String
 )

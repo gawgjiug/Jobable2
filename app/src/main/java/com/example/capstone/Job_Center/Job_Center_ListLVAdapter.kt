@@ -36,6 +36,7 @@ class Job_Center_ListLVAdapter(private val context: Context, private val data: L
             viewHolder.maxPeopleTextView = view.findViewById(R.id.maximum_people)
             viewHolder.currentPeopleTextView = view.findViewById(R.id.current_people)
             viewHolder.telTextView = view.findViewById(R.id.tel_Area)
+            viewHolder.addressTextView = view.findViewById(R.id.address_Area)
             view.tag = viewHolder
         } else {
             view = convertView
@@ -46,7 +47,9 @@ class Job_Center_ListLVAdapter(private val context: Context, private val data: L
         viewHolder.nameTextView.text = item.FCLT_NM
         viewHolder.maxPeopleTextView.text = "정원: " + item.INMT_GRDN_CNT.toString()
         viewHolder.currentPeopleTextView.text = "현재 인원: " + item.LVLH_NMPR.toString()
-        viewHolder.telTextView.text = item.FCLT_TEL_NO.toString()
+        viewHolder.telTextView.text = "연락처: "+ item.FCLT_TEL_NO.toString()
+        viewHolder.addressTextView.text = "주소 : " + item.FCLT_ADDR.toString()
+
 
         return view
     }
@@ -56,6 +59,7 @@ class Job_Center_ListLVAdapter(private val context: Context, private val data: L
         lateinit var maxPeopleTextView: TextView
         lateinit var currentPeopleTextView: TextView
         lateinit var telTextView: TextView
+        lateinit var addressTextView: TextView
     }
 }
 
