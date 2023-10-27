@@ -44,15 +44,9 @@
         android:layout_height="60dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/Job_Center_ListView"
-        android:weightSum="2">
+        android:weightSum="1">
 
-        <Spinner
-            android:id="@+id/Job_center_spinner"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_weight="1">
 
-        </Spinner>
         <androidx.appcompat.widget.SearchView
             android:id="@+id/job_center_search"
             android:layout_width="match_parent"
@@ -60,7 +54,8 @@
             app:queryHint="검색어를 입력하세요.."
             app:iconifiedByDefault="false"
             app:queryBackground="@android:color/transparent"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            />
 
 
     </LinearLayout>

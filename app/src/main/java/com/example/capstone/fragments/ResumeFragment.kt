@@ -17,6 +17,7 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import com.bumptech.glide.Glide
+import com.example.capstone.Job_Center.Job_Center_Activity
 import com.example.capstone.R
 import com.example.capstone.databinding.FragmentResumeBinding
 import com.google.android.gms.tasks.OnFailureListener
@@ -58,7 +59,8 @@ class ResumeFragment : Fragment() {
             it.findNavController().navigate(R.id.action_resumeFragment_to_homeFragment)
         }
         binding.locationTap.setOnClickListener {
-            it.findNavController().navigate(R.id.action_resumeFragment_to_myLocationFragment)
+            val intent = Intent(binding.root.context, Job_Center_Activity::class.java)
+            startActivity(intent)
         }
 
 

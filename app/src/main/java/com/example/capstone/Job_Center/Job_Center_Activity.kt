@@ -56,6 +56,8 @@ class Job_Center_Activity : AppCompatActivity() {
                 return false
             }
 
+
+
             override fun onQueryTextChange(newText: String?): Boolean {
                 if (newText != null) {
                     filterBoardData(newText.toLowerCase(Locale.getDefault()))
