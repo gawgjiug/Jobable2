@@ -10,7 +10,15 @@ import com.example.capstone.R
 import com.example.capstone.fragments.data.FcltOpenInfoOWSI
 import com.example.capstone.fragments.data.Row
 
-class Job_Center_ListLVAdapter(private val context: Context, private val data: List<Row>) : BaseAdapter() {
+class Job_Center_ListLVAdapter(private val context: Context, private var data: List<Row>) : BaseAdapter() {
+
+
+
+    fun setData(data: List<Row>) {
+        this.data = data
+        notifyDataSetChanged()
+    }
+
 
     override fun getCount(): Int {
         return data.size

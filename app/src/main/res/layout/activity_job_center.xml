@@ -53,13 +53,14 @@
             android:layout_weight="1">
 
         </Spinner>
-        <SearchView
-            android:id="@+id/Job_center_search"
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/job_center_search"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_weight="1">
-
-        </SearchView>
+            app:queryHint="검색어를 입력하세요.."
+            app:iconifiedByDefault="false"
+            app:queryBackground="@android:color/transparent"
+            android:layout_weight="1"/>
 
 
     </LinearLayout>
