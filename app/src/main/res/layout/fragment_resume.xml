@@ -178,7 +178,7 @@
                         android:textSize="15sp"
                         android:textStyle="bold" />
 
-                    <EditText
+                    <TextView
                         android:background="@drawable/board_radius"
                         android:id="@+id/resumeIntroduce"
                         android:layout_width="match_parent"

@@ -5,6 +5,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -21,7 +25,7 @@
 
                 <ImageView
                     android:background="@drawable/radius_g"
-                    android:id="@+id/introduce_정리"
+                    android:id="@+id/introduce_organize"
                     android:src="@drawable/intro_1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -29,7 +33,7 @@
 
                 <ImageView
                     android:background="@drawable/radius_g"
-                    android:id="@+id/introduce_협동"
+                    android:id="@+id/introduce_collaboration"
                     android:src="@drawable/intro_2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -37,7 +41,7 @@
 
                 <ImageView
                     android:background="@drawable/radius_g"
-                    android:id="@+id/introduce_성실"
+                    android:id="@+id/introduce_sincerity"
                     android:src="@drawable/intro_3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -120,7 +124,7 @@
 
                 <ImageView
                     android:background="@drawable/radius_g"
-                    android:id="@+id/introduce_지각"
+                    android:id="@+id/introduce_keeptime"
                     android:src="@drawable/intro_4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -128,7 +132,7 @@
 
                 <ImageView
                     android:background="@drawable/radius_g"
-                    android:id="@+id/introduce_미소"
+                    android:id="@+id/introduce_smile"
                     android:src="@drawable/intro_5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -136,7 +140,7 @@
 
                 <ImageView
                     android:background="@drawable/radius_g"
-                    android:id="@+id/introduce_힘"
+                    android:id="@+id/introduce_strong"
                     android:src="@drawable/intro_6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -171,7 +175,7 @@
                 <TextView
                     android:background="@drawable/radius_g"
                     android:textStyle="bold"
-                    android:text="무거운 물건"
+                    android:text="힘이 세요"
                     android:textSize="17sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -219,13 +223,30 @@
                 android:layout_height="70dp"
                 android:layout_margin="30dp">
 
-                <TextView
+                <EditText
                     android:id="@+id/introduce_result"
                     android:textSize="17sp"
                     android:text=" 자기소개."
                     android:textStyle="bold"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="match_parent"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="17sp"
+                    android:textStyle="bold"
+                    android:text="이미지 3개를 선택하세요"
+                    android:gravity="center">
+
+                </TextView>
+
 
             </LinearLayout>
 
@@ -256,5 +277,7 @@
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
 
 </LinearLayout>

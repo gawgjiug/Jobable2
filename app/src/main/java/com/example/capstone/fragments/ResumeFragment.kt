@@ -20,6 +20,7 @@ import com.bumptech.glide.Glide
 import com.example.capstone.Job_Center.Job_Center_Activity
 import com.example.capstone.R
 import com.example.capstone.databinding.FragmentResumeBinding
+import com.example.capstone.dialog.Introduce_Dialog
 import com.google.android.gms.tasks.OnFailureListener
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.auth.FirebaseAuth
@@ -61,6 +62,12 @@ class ResumeFragment : Fragment() {
         binding.locationTap.setOnClickListener {
             val intent = Intent(binding.root.context, Job_Center_Activity::class.java)
             startActivity(intent)
+        }
+
+
+        binding.resumeIntroduce.setOnClickListener {
+            val introduceDialog = Introduce_Dialog()
+            introduceDialog.show(childFragmentManager, "IntroduceDialog")
         }
 
 
