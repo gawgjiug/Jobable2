@@ -1,6 +1,357 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:layout_margin="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp">
+
+
+
+
+                <ImageView
+                    android:background="@drawable/radius_g"
+                    android:id="@+id/introduce_정리"
+                    android:src="@drawable/intro_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                </ImageView>
+                <ImageView
+                    android:background="@drawable/radius_g"
+                    android:id="@+id/introduce_협동"
+                    android:src="@drawable/intro_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                </ImageView>
+                <ImageView
+                    android:background="@drawable/radius_g"
+                    android:id="@+id/introduce_성실"
+                    android:src="@drawable/intro_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                </ImageView>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:background="@drawable/radius_g"
+                    android:textStyle="bold"
+                    android:text="정리정돈"
+                    android:textSize="17sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                </TextView>
+                <TextView
+                    android:background="@drawable/radius_g"
+                    android:textStyle="bold"
+                    android:text="협동"
+                    android:textSize="17sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                </TextView>
+                <TextView
+                    android:background="@drawable/radius_g"
+
+                    android:textStyle="bold"
+                    android:text="성실"
+                    android:textSize="17sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                </TextView>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <ImageView
+                    android:background="@drawable/radius_g"
+                    android:id="@+id/introduce_sound1"
+                    android:src="@drawable/home_sound"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center">
+                </ImageView>
+                <ImageView
+                    android:background="@drawable/radius_g"
+                    android:id="@+id/introduce_sound2"
+                    android:src="@drawable/home_sound"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center">
+                </ImageView>
+                <ImageView
+                    android:background="@drawable/radius_g"
+                    android:id="@+id/introduce_sound3"
+                    android:src="@drawable/home_sound"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center">
+                </ImageView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp">
+
+
+
+
+                <ImageView
+                    android:background="@drawable/radius_g"
+                    android:id="@+id/introduce_지각"
+                    android:src="@drawable/intro_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                </ImageView>
+                <ImageView
+                    android:background="@drawable/radius_g"
+                    android:id="@+id/introduce_미소"
+                    android:src="@drawable/intro_5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                </ImageView>
+                <ImageView
+                    android:background="@drawable/radius_g"
+                    android:id="@+id/introduce_힘"
+                    android:src="@drawable/intro_6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                </ImageView>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:background="@drawable/radius_g"
+                    android:textStyle="bold"
+                    android:text="시간 약속"
+                    android:textSize="17sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                </TextView>
+                <TextView
+                    android:background="@drawable/radius_g"
+                    android:textStyle="bold"
+                    android:text="밝은 미소"
+                    android:textSize="17sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                </TextView>
+                <TextView
+                    android:background="@drawable/radius_g"
+                    android:textStyle="bold"
+                    android:text="무거운 물건"
+                    android:textSize="17sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                </TextView>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <ImageView
+                    android:background="@drawable/radius_g"
+                    android:id="@+id/introduce_sound4"
+                    android:src="@drawable/home_sound"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center">
+                </ImageView>
+                <ImageView
+                    android:background="@drawable/radius_g"
+                    android:id="@+id/introduce_sound5"
+                    android:src="@drawable/home_sound"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center">
+                </ImageView>
+                <ImageView
+                    android:background="@drawable/radius_g"
+                    android:id="@+id/introduce_sound6"
+                    android:src="@drawable/home_sound"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center">
+                </ImageView>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:background="@drawable/radius_g"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_margin="30dp">
+
+                <TextView
+                    android:id="@+id/introduce_result"
+                    android:textSize="17sp"
+                    android:text=" 자기소개."
+                    android:textStyle="bold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                </TextView>
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_margin="20dp"
+                android:orientation="horizontal">
+
+
+                <Button
+                    android:id="@+id/introduce_mp3_btn"
+                    android:text="설명듣기"
+                    android:layout_margin="3dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                </Button>
+
+                <Button
+                    android:id="@+id/introduce_apply_btn"
+                    android:text="작성하기"
+                    android:layout_margin="3dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                </Button>
+
+            </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+
+    </layout>
+
+
