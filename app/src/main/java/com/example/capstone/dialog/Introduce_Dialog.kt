@@ -51,6 +51,10 @@ class Introduce_Dialog : DialogFragment() {
             binding.introduceCollaboration.setImageResource(R.drawable.introduce_color_2)
             selectedImages.add("introduce_color_2")
         }
+        binding.introduceKeeptime.setOnClickListener {
+            binding.introduceKeeptime.setImageResource(R.drawable.introduce_color_4)
+            selectedImages.add("introduce_color_4")
+        }
 
 
     }
