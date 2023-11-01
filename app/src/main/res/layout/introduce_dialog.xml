@@ -21,9 +21,15 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="100dp">
+                android:layout_height="100dp"
+                android:weightSum="3">
 
-                <ImageView
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <ImageView
                     android:background="@drawable/radius_g"
                     android:id="@+id/introduce_organize"
                     android:src="@drawable/intro_1"
@@ -31,13 +37,47 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"/>
 
-                <ImageView
+                    <ImageView
+                        android:background="@drawable/radius_g"
+                        android:id="@+id/introduce_organize_color"
+                        android:src="@drawable/introduce_color_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:visibility="invisible"/>
+
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <ImageView
                     android:background="@drawable/radius_g"
                     android:id="@+id/introduce_collaboration"
                     android:src="@drawable/intro_2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"/>
+
+                    <ImageView
+                        android:background="@drawable/radius_g"
+                        android:id="@+id/introduce_collaboration_color"
+                        android:src="@drawable/introduce_color_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:visibility="invisible"/>
+
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
 
                 <ImageView
                     android:background="@drawable/radius_g"
@@ -46,6 +86,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"/>
+
+                    <ImageView
+                        android:background="@drawable/radius_g"
+                        android:id="@+id/introduce_sincerity_color"
+                        android:src="@drawable/introduce_color_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:visibility="invisible"/>
+
+
+                </FrameLayout>
 
             </LinearLayout>
 
@@ -120,7 +172,17 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="100dp">
+                android:layout_height="100dp"
+                android:weightSum="3">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+
+
+
 
                 <ImageView
                     android:background="@drawable/radius_g"
@@ -130,6 +192,27 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"/>
 
+                    <ImageView
+                        android:background="@drawable/radius_g"
+                        android:id="@+id/introduce_keeptime_color"
+                        android:src="@drawable/introduce_color_4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:visibility="invisible"/>
+
+
+
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+
+
                 <ImageView
                     android:background="@drawable/radius_g"
                     android:id="@+id/introduce_smile"
@@ -138,6 +221,24 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"/>
 
+                    <ImageView
+                        android:background="@drawable/radius_g"
+                        android:id="@+id/introduce_smile_color"
+                        android:src="@drawable/introduce_color_5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:visibility="invisible"/>
+
+            </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+
+
                 <ImageView
                     android:background="@drawable/radius_g"
                     android:id="@+id/introduce_strong"
@@ -145,6 +246,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"/>
+
+                    <ImageView
+                        android:background="@drawable/radius_g"
+                        android:id="@+id/introduce_strong_color"
+                        android:src="@drawable/introduce_color_6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:visibility="invisible"/>
+
+                </FrameLayout>
 
             </LinearLayout>
 
