@@ -1,6 +1,7 @@
 package com.example.capstone.dialog
 
 import android.os.Bundle
+import android.text.Editable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,10 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.DialogFragment
 import com.example.capstone.R
 import com.example.capstone.databinding.IntroduceDialogBinding
+
+
+
+
 
 class Introduce_Dialog : DialogFragment() {
 
@@ -28,6 +33,8 @@ class Introduce_Dialog : DialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
 
 
 
@@ -64,11 +71,18 @@ class Introduce_Dialog : DialogFragment() {
         binding.introduceApplyBtn.setOnClickListener {
             if (selectedImages.size < 3 || selectedImages.size > 3) {
                 Toast.makeText(requireContext(), "이미지를 3개 선택해주세요", Toast.LENGTH_SHORT).show()
-            } else {
-                // 이미지가 3개 선택된 경우에 대한 추가 로직
-                // 예를 들어, 선택된 이미지들에 대한 다음 단계로 진행하는 로직 등을 추가할 수 있습니다.
+            } else if (selectedImages.containsAll(listOf("introduce_color_2", "introduce_color_4", "introduce_color_1"))) {
+
+
+                binding.introduceResult.text = ("안녕하세요 저는 일을 할 때 주변 정리정돈을 잘합니다, 뿐만 아니라 " +
+                        "저는 친화력이 좋기 때문에 같이 일하는 동료와 항상 좋은 관계를 유지할 수 있으며, " +
+                        "항상 약속된 시간을 지키는 것을 중시하기 때문에 출근 시간에 맞춰 늦지 않도록 노력하는 사람입니다.").toEditable()
+
+
             }
         }
+
+
 
 
 
@@ -77,6 +91,7 @@ class Introduce_Dialog : DialogFragment() {
     }
 
 
+    fun String.toEditable(): Editable = Editable.Factory.getInstance().newEditable(this)
 
     override fun onDestroyView() {
         super.onDestroyView()
