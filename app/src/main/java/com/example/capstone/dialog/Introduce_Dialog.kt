@@ -55,6 +55,22 @@ class Introduce_Dialog : DialogFragment() {
             binding.introduceKeeptime.setImageResource(R.drawable.introduce_color_4)
             selectedImages.add("introduce_color_4")
         }
+        binding.introduceOrganize.setOnClickListener {
+            binding.introduceOrganize.setImageResource(R.drawable.introduce_color_1)
+            selectedImages.add("introduce_color_1")
+        }
+        binding.introduceSmile.setOnClickListener {
+            binding.introduceSmile.setImageResource(R.drawable.introduce_color_5)
+            selectedImages.add("introduce_color_5")
+        }
+        binding.introduceSincerity.setOnClickListener {
+            binding.introduceSincerity.setImageResource(R.drawable.introduce_color_3)
+            selectedImages.add("introduce_color_3")
+        }
+        binding.introduceStrong.setOnClickListener {
+            binding.introduceStrong.setImageResource(R.drawable.introduce_color_6)
+            selectedImages.add("introduce_color_6")
+        }
 
 
     }
