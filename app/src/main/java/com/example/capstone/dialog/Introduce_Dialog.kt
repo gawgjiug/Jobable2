@@ -83,7 +83,7 @@ class Introduce_Dialog : DialogFragment() {
         binding.introduceApplyBtn.setOnClickListener {
             if (selectedImages.size < 3 || selectedImages.size > 3) {
                 Toast.makeText(requireContext(), "이미지를 3개 선택해주세요", Toast.LENGTH_SHORT).show()
-            } else if (selectedImages.containsAll(listOf("introduce_color_2", "introduce_color_4", "introduce_color_1"))) {
+            } else if (selectedImages.containsAll(listOf("introduce_color_1", "introduce_color_2", "introduce_color_4"))) {
 
                 val text = "안녕하세요 저는 일을 할 때 주변 정리정돈을 잘합니다, 뿐만 아니라 저는 친화력이 좋기 때문에 " +
                         "같이 일하는 동료와 항상 좋은 관계를 유지할 수 있으며 항상 약속된 시간을 지키는 것을 중시하기 때문에 " +
@@ -93,9 +93,141 @@ class Introduce_Dialog : DialogFragment() {
                 listener?.onIntroduceTextSelected(text)
                 Toast.makeText(requireContext(),"간단 이력서 작성이 완료되었습니다.",Toast.LENGTH_SHORT).show()
                 dialog!!.dismiss()
-
-
             }
+            else if (selectedImages.containsAll(listOf("introduce_color_1", "introduce_color_2", "introduce_color_3"))) {
+                val text = "안녕하세요 저는 곽지욱입니다 1 "
+                listener?.onIntroduceTextSelected(text)
+                Toast.makeText(requireContext(),"간단 이력서 작성이 완료되었습니다.",Toast.LENGTH_SHORT).show()
+                dialog!!.dismiss()
+            }
+            else if (selectedImages.containsAll(listOf("introduce_color_1", "introduce_color_2", "introduce_color_5"))) {
+                val text = "안녕하세요 저는 곽지욱입니다 2 "
+                listener?.onIntroduceTextSelected(text)
+                Toast.makeText(requireContext(),"간단 이력서 작성이 완료되었습니다.",Toast.LENGTH_SHORT).show()
+                dialog!!.dismiss()
+            }
+
+            else if (selectedImages.containsAll(listOf("introduce_color_1", "introduce_color_2", "introduce_color_6"))) {
+                val text = "안녕하세요 저는 곽지욱입니다 3 "
+                listener?.onIntroduceTextSelected(text)
+                Toast.makeText(requireContext(),"간단 이력서 작성이 완료되었습니다.",Toast.LENGTH_SHORT).show()
+                dialog!!.dismiss()
+            }
+
+            else if (selectedImages.containsAll(listOf("introduce_color_1", "introduce_color_3", "introduce_color_4"))) {
+                val text = "안녕하세요 저는 곽지욱입니다 4 "
+                listener?.onIntroduceTextSelected(text)
+                Toast.makeText(requireContext(),"간단 이력서 작성이 완료되었습니다.",Toast.LENGTH_SHORT).show()
+                dialog!!.dismiss()
+            }
+
+            else if (selectedImages.containsAll(listOf("introduce_color_1", "introduce_color_3", "introduce_color_5"))) {
+                val text = "안녕하세요 저는 곽지욱입니다 5"
+                listener?.onIntroduceTextSelected(text)
+                Toast.makeText(requireContext(),"간단 이력서 작성이 완료되었습니다.",Toast.LENGTH_SHORT).show()
+                dialog!!.dismiss()
+            }
+
+            else if (selectedImages.containsAll(listOf("introduce_color_1", "introduce_color_3", "introduce_color_6"))) {
+                val text = "안녕하세요 저는 곽지욱입니다 6 "
+                listener?.onIntroduceTextSelected(text)
+                Toast.makeText(requireContext(),"간단 이력서 작성이 완료되었습니다.",Toast.LENGTH_SHORT).show()
+                dialog!!.dismiss()
+            }
+
+            else if (selectedImages.containsAll(listOf("introduce_color_1", "introduce_color_4", "introduce_color_5"))) {
+                val text = "안녕하세요 저는 곽지욱입니다 7 "
+                listener?.onIntroduceTextSelected(text)
+                Toast.makeText(requireContext(),"간단 이력서 작성이 완료되었습니다.",Toast.LENGTH_SHORT).show()
+                dialog!!.dismiss()
+            }
+
+
+            else if (selectedImages.containsAll(listOf("introduce_color_1", "introduce_color_4", "introduce_color_6"))) {
+                val text = "안녕하세요 저는 곽지욱입니다 8 "
+                listener?.onIntroduceTextSelected(text)
+                Toast.makeText(requireContext(),"간단 이력서 작성이 완료되었습니다.",Toast.LENGTH_SHORT).show()
+                dialog!!.dismiss()
+            }
+
+
+            else if (selectedImages.containsAll(listOf("introduce_color_1", "introduce_color_5", "introduce_color_6"))) {
+                val text = "안녕하세요 저는 곽지욱입니다 9 "
+                listener?.onIntroduceTextSelected(text)
+                Toast.makeText(requireContext(),"간단 이력서 작성이 완료되었습니다.",Toast.LENGTH_SHORT).show()
+                dialog!!.dismiss()
+            }
+
+
+            else if (selectedImages.containsAll(listOf("introduce_color_2", "introduce_color_3", "introduce_color_4"))) {
+                val text = "안녕하세요 저는 곽지욱입니다 10 "
+                listener?.onIntroduceTextSelected(text)
+                Toast.makeText(requireContext(),"간단 이력서 작성이 완료되었습니다.",Toast.LENGTH_SHORT).show()
+                dialog!!.dismiss()
+            }
+
+
+            else if (selectedImages.containsAll(listOf("introduce_color_2", "introduce_color_3", "introduce_color_5"))) {
+                val text = "안녕하세요 저는 곽지욱입니다 11 "
+                listener?.onIntroduceTextSelected(text)
+                Toast.makeText(requireContext(),"간단 이력서 작성이 완료되었습니다.",Toast.LENGTH_SHORT).show()
+                dialog!!.dismiss()
+            }
+
+            else if (selectedImages.containsAll(listOf("introduce_color_2", "introduce_color_3", "introduce_color_6"))) {
+                val text = "안녕하세요 저는 곽지욱입니다 12 "
+                listener?.onIntroduceTextSelected(text)
+                Toast.makeText(requireContext(),"간단 이력서 작성이 완료되었습니다.",Toast.LENGTH_SHORT).show()
+                dialog!!.dismiss()
+            }
+
+            else if (selectedImages.containsAll(listOf("introduce_color_2", "introduce_color_4", "introduce_color_5"))) {
+                val text = "안녕하세요 저는 곽지욱입니다 13 "
+                listener?.onIntroduceTextSelected(text)
+                Toast.makeText(requireContext(),"간단 이력서 작성이 완료되었습니다.",Toast.LENGTH_SHORT).show()
+                dialog!!.dismiss()
+            }
+
+            else if (selectedImages.containsAll(listOf("introduce_color_2", "introduce_color_4", "introduce_color_6"))) {
+                val text = "안녕하세요 저는 곽지욱입니다 14 "
+                listener?.onIntroduceTextSelected(text)
+                Toast.makeText(requireContext(),"간단 이력서 작성이 완료되었습니다.",Toast.LENGTH_SHORT).show()
+                dialog!!.dismiss()
+            }
+
+            else if (selectedImages.containsAll(listOf("introduce_color_2", "introduce_color_5", "introduce_color_6"))) {
+                val text = "안녕하세요 저는 곽지욱입니다 15 "
+                listener?.onIntroduceTextSelected(text)
+                Toast.makeText(requireContext(),"간단 이력서 작성이 완료되었습니다.",Toast.LENGTH_SHORT).show()
+                dialog!!.dismiss()
+            }
+
+            else if (selectedImages.containsAll(listOf("introduce_color_3", "introduce_color_4", "introduce_color_5"))) {
+                val text = "안녕하세요 저는 곽지욱입니다 16 "
+                listener?.onIntroduceTextSelected(text)
+                Toast.makeText(requireContext(),"간단 이력서 작성이 완료되었습니다.",Toast.LENGTH_SHORT).show()
+                dialog!!.dismiss()
+            }
+            else if (selectedImages.containsAll(listOf("introduce_color_3", "introduce_color_4", "introduce_color_6"))) {
+                val text = "안녕하세요 저는 곽지욱입니다 17 "
+                listener?.onIntroduceTextSelected(text)
+                Toast.makeText(requireContext(),"간단 이력서 작성이 완료되었습니다.",Toast.LENGTH_SHORT).show()
+                dialog!!.dismiss()
+            }
+            else if (selectedImages.containsAll(listOf("introduce_color_3", "introduce_color_5", "introduce_color_6"))) {
+                val text = "안녕하세요 저는 곽지욱입니다 18 "
+                listener?.onIntroduceTextSelected(text)
+                Toast.makeText(requireContext(),"간단 이력서 작성이 완료되었습니다.",Toast.LENGTH_SHORT).show()
+                dialog!!.dismiss()
+            }
+
+            else if (selectedImages.containsAll(listOf("introduce_color_4", "introduce_color_5", "introduce_color_6"))) {
+                val text = "안녕하세요 저는 곽지욱입니다 19 "
+                listener?.onIntroduceTextSelected(text)
+                Toast.makeText(requireContext(),"간단 이력서 작성이 완료되었습니다.",Toast.LENGTH_SHORT).show()
+                dialog!!.dismiss()
+            }
+
         }
 
 
