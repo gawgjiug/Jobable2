@@ -2,24 +2,24 @@ package com.example.capstone.fragments
 
 import android.app.Activity
 import android.content.Intent
-import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.graphics.ImageDecoder
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.bumptech.glide.Glide
 import com.example.capstone.Job_Center.Job_Center_Activity
 import com.example.capstone.R
 import com.example.capstone.databinding.FragmentResumeBinding
+import com.example.capstone.dialog.IntroduceDialogListener
 import com.example.capstone.dialog.Introduce_Dialog
 import com.google.android.gms.tasks.OnFailureListener
 import com.google.android.gms.tasks.OnSuccessListener
@@ -30,11 +30,10 @@ import com.google.firebase.storage.StorageReference
 import java.io.ByteArrayOutputStream
 import java.io.IOException
 
-class ResumeFragment : Fragment() {
+class ResumeFragment : Fragment(), IntroduceDialogListener {
 
     private lateinit var binding: FragmentResumeBinding
     private lateinit var database: DatabaseReference
-    private lateinit var sharedPreferences: SharedPreferences
     private lateinit var auth: FirebaseAuth
     private lateinit var storageReference: StorageReference
     private val PICK_IMAGE_REQUEST = 1
@@ -44,29 +43,31 @@ class ResumeFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         database = FirebaseDatabase.getInstance().reference
-        sharedPreferences = requireActivity().getSharedPreferences("ResumeData", 0)
         auth = FirebaseAuth.getInstance()
         storageReference = FirebaseStorage.getInstance().reference
     }
+
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_resume, container, false)
 
         binding.homeTap.setOnClickListener {
             it.findNavController().navigate(R.id.action_resumeFragment_to_homeFragment)
+
         }
         binding.locationTap.setOnClickListener {
             val intent = Intent(binding.root.context, Job_Center_Activity::class.java)
             startActivity(intent)
         }
 
-
         binding.resumeIntroduce.setOnClickListener {
             val introduceDialog = Introduce_Dialog()
+            introduceDialog.setIntroduceDialogListener(this)
             introduceDialog.show(childFragmentManager, "IntroduceDialog")
         }
 
@@ -175,6 +176,9 @@ class ResumeFragment : Fragment() {
 
         return binding.root
     }
+    override fun onIntroduceTextSelected(text: String) {
+        binding.resumeIntroduce.setText(text)
+    }
 
     private fun openGallery() {
         val intent = Intent()
@@ -211,15 +215,11 @@ class ResumeFragment : Fragment() {
         uploadTask.addOnSuccessListener(OnSuccessListener {
             imageRef.downloadUrl.addOnSuccessListener { uri ->
                 val imageURL = uri.toString()
-                // Save the imageURL in the database
                 database.child("resume").child(auth.currentUser?.uid ?: "").child("profileImageURL")
                     .setValue(imageURL)
                     .addOnSuccessListener {
                         Toast.makeText(requireContext(), "프로필 사진이 업로드되었습니다.", Toast.LENGTH_SHORT).show()
-                        // Load and display the uploaded profile image
-                        Glide.with(requireContext())
-                            .load(imageURL)
-                            .into(binding.resumeProfile)
+                        Glide.with(requireContext()).load(imageURL).into(binding.resumeProfile)
                     }
                     .addOnFailureListener {
                         Toast.makeText(requireContext(), "프로필 사진 업로드에 실패했습니다.", Toast.LENGTH_SHORT).show()

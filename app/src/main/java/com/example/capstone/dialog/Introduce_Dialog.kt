@@ -14,13 +14,25 @@ import com.example.capstone.databinding.IntroduceDialogBinding
 
 
 
+interface IntroduceDialogListener {
+    fun onIntroduceTextSelected(text: String)
+}
 
 
 class Introduce_Dialog : DialogFragment() {
 
+
+
     private var _binding: IntroduceDialogBinding? = null
     private val binding get() = _binding!!
     private val selectedImages = mutableListOf<String>()
+
+    private var listener: IntroduceDialogListener? = null
+
+    // 리스너 설정
+    fun setIntroduceDialogListener(listener: IntroduceDialogListener) {
+        this.listener = listener
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -73,10 +85,14 @@ class Introduce_Dialog : DialogFragment() {
                 Toast.makeText(requireContext(), "이미지를 3개 선택해주세요", Toast.LENGTH_SHORT).show()
             } else if (selectedImages.containsAll(listOf("introduce_color_2", "introduce_color_4", "introduce_color_1"))) {
 
+                val text = "안녕하세요 저는 일을 할 때 주변 정리정돈을 잘합니다, 뿐만 아니라 저는 친화력이 좋기 때문에 " +
+                        "같이 일하는 동료와 항상 좋은 관계를 유지할 수 있으며 항상 약속된 시간을 지키는 것을 중시하기 때문에 " +
+                        "출근 시간에 맞춰 늦지 않도록 노력하는 사람입니다"
 
-                binding.introduceResult.text = ("안녕하세요 저는 일을 할 때 주변 정리정돈을 잘합니다, 뿐만 아니라 " +
-                        "저는 친화력이 좋기 때문에 같이 일하는 동료와 항상 좋은 관계를 유지할 수 있으며, " +
-                        "항상 약속된 시간을 지키는 것을 중시하기 때문에 출근 시간에 맞춰 늦지 않도록 노력하는 사람입니다.").toEditable()
+                // 리스너가 설정되어 있는지 확인하고 텍스트 전송
+                listener?.onIntroduceTextSelected(text)
+                Toast.makeText(requireContext(),"간단 이력서 작성이 완료되었습니다.",Toast.LENGTH_SHORT).show()
+                dialog!!.dismiss()
 
 
             }
