@@ -54,7 +54,7 @@ class Introduce_Dialog : DialogFragment() {
             if (status == TextToSpeech.SUCCESS) {
                 // TTS 엔진이 초기화 성공한 경우
                 tts?.language = Locale.KOREAN
-                tts?.setSpeechRate(0.7f) // 2배 빠른 속도
+                tts?.setSpeechRate(0.6f) // 2배 빠른 속도
 
 
             } else {
@@ -64,12 +64,29 @@ class Introduce_Dialog : DialogFragment() {
 
         binding.introduceOrganizeSound.setOnClickListener {
 
-            val textToSpeak = "어질러진 물건을 잘 정리하고 많은 물건을 가지런히 정돈하는 것에 자신 있으시다면 " +
-                    "위 이미지를 클릭해서 사장님에게 회원님의 장점에 대해 소개할 수 있어요"
+            val textToSpeak = "평소에 어질러진 물건을 잘 정리하고 정돈하는 것에 자신 있으시다면 " +
+                    "위 이미지를 클릭해서 사장님에게 회원님의 장점에 대해 소개할 수 있습니다"
 
             tts?.speak(textToSpeak, TextToSpeech.QUEUE_FLUSH,null,null)
 
         }
+        binding.introduceCollaborationSound.setOnClickListener {
+
+            val textToSpeak = "평소에 친구들과 사이좋게 지내는 거나 주변 동료들과 협동하는 것에 자신 있으시다면" +
+                    "위 이미지를 클릭해서 사장님에게 회원님의 장점에 대해 소개할 수 있습니다"
+
+            tts?.speak(textToSpeak, TextToSpeech.QUEUE_FLUSH,null,null)
+        }
+        binding.introduceSinceritySound.setOnClickListener {
+
+            val textToSpeak = "평소에 맡은 일을 성실하게 해내는 것에 자신 있으시다면 " +
+                    "위 이미지를 클릭해서 사장님에게 회원님의 성실함에 대해 소개할 수 있습니다"
+
+            tts?.speak(textToSpeak, TextToSpeech.QUEUE_FLUSH,null,null)
+        }
+
+
+
 
 
 

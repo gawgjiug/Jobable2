@@ -152,7 +152,7 @@
 
                 <ImageView
                     android:background="@drawable/radius_g"
-                    android:id="@+id/introduce_sound2"
+                    android:id="@+id/introduce_collaboration_sound"
                     android:src="@drawable/home_sound"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -161,7 +161,7 @@
 
                 <ImageView
                     android:background="@drawable/radius_g"
-                    android:id="@+id/introduce_sound3"
+                    android:id="@+id/introduce_sincerity_sound"
                     android:src="@drawable/home_sound"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
