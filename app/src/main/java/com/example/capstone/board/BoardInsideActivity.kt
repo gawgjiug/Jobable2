@@ -159,7 +159,10 @@ class BoardInsideActivity : AppCompatActivity() {
             val worktime = binding.timeArea.text.toString()
             val day = binding.dayArea.text.toString()
 
-            val textToSpeak = "보고 계신 회사는 지금  $job 로 일해줄 사람을 구하고 있습니다, 또한 이 회사의 시급은 $pay  이고, 이 회사는 $day 로 일해야 하고, 하루에 $worktime 시간 일하는 일꾼을 구하고 있습니다. 옆에 지원 접수버튼을 눌러서 이 회사의 일꾼이 되어보세요 "
+            val textToSpeak = "보고 계신 회사는 지금  $job 로 일해줄 사람을 구하고 있습니다, " +
+                    "또한 이 회사의 시급은 $pay  이고, 이 회사는 $day 로 일해야 하고, " +
+                    "하루에 $worktime 시간 일하는 일꾼을 구하고 있습니다. " +
+                    "옆에 지원 접수버튼을 눌러서 이 회사의 일꾼이 되어보세요 "
             tts?.speak(textToSpeak, TextToSpeech.QUEUE_FLUSH, null, null)
         }
 

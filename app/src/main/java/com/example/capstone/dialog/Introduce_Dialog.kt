@@ -1,6 +1,7 @@
 package com.example.capstone.dialog
 
 import android.os.Bundle
+import android.speech.tts.TextToSpeech
 import android.text.Editable
 import android.view.LayoutInflater
 import android.view.View
@@ -11,7 +12,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.DialogFragment
 import com.example.capstone.R
 import com.example.capstone.databinding.IntroduceDialogBinding
-
+import java.util.Locale
 
 
 interface IntroduceDialogListener {
@@ -28,6 +29,8 @@ class Introduce_Dialog : DialogFragment() {
     private val selectedImages = mutableListOf<String>()
 
     private var listener: IntroduceDialogListener? = null
+    private var tts: TextToSpeech? = null
+
 
     // 리스너 설정
     fun setIntroduceDialogListener(listener: IntroduceDialogListener) {
@@ -45,6 +48,28 @@ class Introduce_Dialog : DialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
+        tts = TextToSpeech(requireContext()) { status ->
+            if (status == TextToSpeech.SUCCESS) {
+                // TTS 엔진이 초기화 성공한 경우
+                tts?.language = Locale.KOREAN
+                tts?.setSpeechRate(0.7f) // 2배 빠른 속도
+
+
+            } else {
+                // TTS 초기화에 실패한 경우 처리
+            }
+        }
+
+        binding.introduceOrganizeSound.setOnClickListener {
+
+            val textToSpeak = "어질러진 물건을 잘 정리하고 많은 물건을 가지런히 정돈하는 것에 자신 있으시다면 " +
+                    "위 이미지를 클릭해서 사장님에게 회원님의 장점에 대해 소개할 수 있어요"
+
+            tts?.speak(textToSpeak, TextToSpeech.QUEUE_FLUSH,null,null)
+
+        }
 
 
 
