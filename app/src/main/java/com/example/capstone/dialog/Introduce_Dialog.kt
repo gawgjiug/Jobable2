@@ -164,22 +164,26 @@ class Introduce_Dialog : DialogFragment() {
                 dialog!!.dismiss()
             }
             else if (selectedImages.containsAll(listOf("introduce_color_1", "introduce_color_2", "introduce_color_3"))) {
-                val text = "안녕하세요 저는 일을 할때 주변 잘 수행할 수 있습니다,  뿐만 아니라 저는 친화력이 좋기 때문에 같이 일하는 " +
-                        "동료 또는 손님들과 항상 좋은 관계를 유지해왔으며, 누구에게도 뒤쳐지지 않는 성실함을 가지고 있기 때문에 주어진 업무를" +
+                val text = "안녕하세요 저는 일을 할때 주변 정리를 잘 수행할 수 있습니다,  뿐만 아니라 저는 친화력이 좋기 때문에 같이 일하는 " +
+                        "동료 또는 손님들과 항상 좋은 관계를 유지해왔으며, 또한  누구에게도 뒤쳐지지 않는 성실함을 가지고 있기 때문에 주어진 업무를" +
                         "끝까지 책임질 수 있는 사람입니다. "
                 listener?.onIntroduceTextSelected(text)
                 Toast.makeText(requireContext(),"간단 이력서 작성이 완료되었습니다.",Toast.LENGTH_SHORT).show()
                 dialog!!.dismiss()
             }
             else if (selectedImages.containsAll(listOf("introduce_color_1", "introduce_color_2", "introduce_color_5"))) {
-                val text = "안녕하세요 저는 곽지욱입니다 2 "
+                val text = "안녕하세요 저는 일을 할 때 주변 정리를 잘 수행할 수 있습니다, 뿐만 아니라 저는 친화력이 좋기 때문에 같이 일하는 동료와 항상 좋은 " +
+                        "관계를 유지 할 수 있었습니다, 또, 저는 항상 모두에게 밝은 미소로 응대하거나 인사하는 습관을 가지고 있기 때문에 " +
+                        "손님들에게 항상 좋은 인상을 남길 수 있었습니다."
                 listener?.onIntroduceTextSelected(text)
                 Toast.makeText(requireContext(),"간단 이력서 작성이 완료되었습니다.",Toast.LENGTH_SHORT).show()
                 dialog!!.dismiss()
             }
 
             else if (selectedImages.containsAll(listOf("introduce_color_1", "introduce_color_2", "introduce_color_6"))) {
-                val text = "안녕하세요 저는 곽지욱입니다 3 "
+                val text = "안녕하세요 저는 일을 할 때 주변 정리를 잘 수행하고 항상 주변을 깔끔하게 유지할 수 있습니다 , 뿐만 아니라 저는 친화력이 좋기 때문에" +
+                        "같이 일하는 동료 또는 손님들과 항상 좋은 관계를 유지할 수 있었으며, 또 저는 무거운 물건을 들거나 오래 서있거나 강한 힘을 요구하는 작업도" +
+                        "무리없이 수행할 수 있는 장점을 가지고 있습니다. "
                 listener?.onIntroduceTextSelected(text)
                 Toast.makeText(requireContext(),"간단 이력서 작성이 완료되었습니다.",Toast.LENGTH_SHORT).show()
                 dialog!!.dismiss()
