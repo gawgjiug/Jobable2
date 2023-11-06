@@ -164,7 +164,9 @@ class Introduce_Dialog : DialogFragment() {
                 dialog!!.dismiss()
             }
             else if (selectedImages.containsAll(listOf("introduce_color_1", "introduce_color_2", "introduce_color_3"))) {
-                val text = "안녕하세요 저는 곽지욱입니다 1 "
+                val text = "안녕하세요 저는 일을 할때 주변 잘 수행할 수 있습니다,  뿐만 아니라 저는 친화력이 좋기 때문에 같이 일하는 " +
+                        "동료 또는 손님들과 항상 좋은 관계를 유지해왔으며, 누구에게도 뒤쳐지지 않는 성실함을 가지고 있기 때문에 주어진 업무를" +
+                        "끝까지 책임질 수 있는 사람입니다. "
                 listener?.onIntroduceTextSelected(text)
                 Toast.makeText(requireContext(),"간단 이력서 작성이 완료되었습니다.",Toast.LENGTH_SHORT).show()
                 dialog!!.dismiss()
