@@ -12,6 +12,13 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.DialogFragment
 import com.example.capstone.R
 import com.example.capstone.databinding.IntroduceDialogBinding
+import com.example.capstone.fragments.ResumeFragment
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import java.util.Locale
 
 
@@ -30,6 +37,10 @@ class Introduce_Dialog : DialogFragment() {
 
     private var listener: IntroduceDialogListener? = null
     private var tts: TextToSpeech? = null
+    private lateinit var database: DatabaseReference
+    private lateinit var auth: FirebaseAuth
+    private var User_name: String = "" // 선언 및 초기화
+    private var User_type: String = "" // 선언 및 초기화
 
 
     // 리스너 설정
@@ -48,6 +59,11 @@ class Introduce_Dialog : DialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
+        database = FirebaseDatabase.getInstance().reference
+        auth = FirebaseAuth.getInstance()
+
 
 
         tts = TextToSpeech(requireContext()) { status ->
@@ -150,11 +166,34 @@ class Introduce_Dialog : DialogFragment() {
         }
 
         binding.introduceApplyBtn.setOnClickListener {
+
+            val resumeRef = database.child("resume").child(auth.currentUser?.uid ?: "")
+            resumeRef.addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if (snapshot.exists()) {
+                        val resume = snapshot.getValue(ResumeFragment.Resume::class.java)
+                        resume?.let {
+
+                            val User_name = it.name
+                            val User_type = it.type
+
+
+                        }
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    // Handle error
+                }
+            })
+
+
+
             if (selectedImages.size < 3 || selectedImages.size > 3) {
                 Toast.makeText(requireContext(), "이미지를 3개 선택해주세요", Toast.LENGTH_SHORT).show()
             } else if (selectedImages.containsAll(listOf("introduce_color_1", "introduce_color_2", "introduce_color_4"))) {
 
-                val text = "안녕하세요 저는 일을 할 때 주변 정리정돈을 잘합니다, 뿐만 아니라 저는 친화력이 좋기 때문에 " +
+                val text = "안녕하세요 저의 이름은  $User_name 이고 일을 할 때 주변 정리정돈을 잘합니다, 뿐만 아니라 저는 친화력이 좋기 때문에 " +
                         "같이 일하는 동료와 항상 좋은 관계를 유지할 수 있으며 항상 약속된 시간을 지키는 것을 중시하기 때문에 " +
                         "출근 시간에 맞춰 늦지 않도록 노력하는 사람입니다"
 
@@ -190,28 +229,35 @@ class Introduce_Dialog : DialogFragment() {
             }
 
             else if (selectedImages.containsAll(listOf("introduce_color_1", "introduce_color_3", "introduce_color_4"))) {
-                val text = "안녕하세요 저는 곽지욱입니다 4 "
+                val text = "안녕하세요 저는 일을 할 때 주변 정리를 잘하고 , 항상 주변을 깔끔하게 정리할 수 있습니다, 뿐만 아니라 저는 항상 맡은 일을" +
+                        "미루지 않고 성실하게 처리하는 편이며, 또한 저는 근무지에 지각하는일 없이 항상 시간약속을 철저하게 지킬 수 있는 사람입니다. "
                 listener?.onIntroduceTextSelected(text)
                 Toast.makeText(requireContext(),"간단 이력서 작성이 완료되었습니다.",Toast.LENGTH_SHORT).show()
                 dialog!!.dismiss()
             }
 
             else if (selectedImages.containsAll(listOf("introduce_color_1", "introduce_color_3", "introduce_color_5"))) {
-                val text = "안녕하세요 저는 곽지욱입니다 5"
+                val text = "안녕하세요 저는 일을 할 때 주변 정리를 잘하고, 항상 주변을 깔끔하게 정리할 수 있습니다 ,  뿐만 아니라 저는 항상 맡은 일을 " +
+                        "미루지 않고 성실하게 수행하는 편이며 , 또한 저는 항상 손님이나 동료를 대할 때 밝게 웃으면서 대화하기 때문에 손님 또는 동료와 " +
+                        "항상 친밀한 관계를 유지할 수 있습니다."
                 listener?.onIntroduceTextSelected(text)
                 Toast.makeText(requireContext(),"간단 이력서 작성이 완료되었습니다.",Toast.LENGTH_SHORT).show()
                 dialog!!.dismiss()
             }
 
             else if (selectedImages.containsAll(listOf("introduce_color_1", "introduce_color_3", "introduce_color_6"))) {
-                val text = "안녕하세요 저는 곽지욱입니다 6 "
+                val text = "안녕하세요 저는 일을 할 때 주변 정리를 잘하고 항상 주변을 깔끔하게 정리정돈 할 수 있습니다 , 뿐만 아니라 저는 항상 맡은 일을 " +
+                        "미루지 않고 주어진 시간내에 성실하게 수행하는 편이며 , 또한 저는 무거운 물건을 들거나 , 오래 서있는 작업을 할때 문제 되지 않는 " +
+                        "체력을 가지고 있습니다. "
                 listener?.onIntroduceTextSelected(text)
                 Toast.makeText(requireContext(),"간단 이력서 작성이 완료되었습니다.",Toast.LENGTH_SHORT).show()
                 dialog!!.dismiss()
             }
 
             else if (selectedImages.containsAll(listOf("introduce_color_1", "introduce_color_4", "introduce_color_5"))) {
-                val text = "안녕하세요 저는 곽지욱입니다 7 "
+                val text = "안녕하세요 저는 일을 할 때 주변 정리를 잘하며, 항상 제 주변을 깔끔하게 정리정돈 할 수 있습니다 , 뿐만 아니라 저는 항상 지각하는 일 없이 " +
+                        "근무시간을 철저하게 지키며 , 업무를 할 때 주어진 시간내에 업무를 완수하는 것을 중요시 합니다 . 또한 저는 손님 혹은 동료들에게 항상 밝게 웃으며 " +
+                        "인사하는 습관을 가지고 있기 때문에 손님 , 동료 들과 항상 좋은 관계를 유지할 수 있습니다."
                 listener?.onIntroduceTextSelected(text)
                 Toast.makeText(requireContext(),"간단 이력서 작성이 완료되었습니다.",Toast.LENGTH_SHORT).show()
                 dialog!!.dismiss()
@@ -219,7 +265,9 @@ class Introduce_Dialog : DialogFragment() {
 
 
             else if (selectedImages.containsAll(listOf("introduce_color_1", "introduce_color_4", "introduce_color_6"))) {
-                val text = "안녕하세요 저는 곽지욱입니다 8 "
+                val text = "안녕하세요 저는 일을 할 때 항상 주변 정리를 잘하며 , 제 주변을 깔끔하게 정돈 된 상태로 유지할 수 있습니다 . 뿐만 아니라 저는 지각하는 일 없이" +
+                        "항상 근무시간을 철저하게 지키며 업무를 할 때 주어진 시간내에 업무를 처리하는 것을 중요시 합니다 , 또한 저는 무거운 물건이나 신체적인 능력을 요구하는 업무도" +
+                        "무리없이 소화할 수 있는 능력을 가지고 있습니다  "
                 listener?.onIntroduceTextSelected(text)
                 Toast.makeText(requireContext(),"간단 이력서 작성이 완료되었습니다.",Toast.LENGTH_SHORT).show()
                 dialog!!.dismiss()
@@ -227,7 +275,9 @@ class Introduce_Dialog : DialogFragment() {
 
 
             else if (selectedImages.containsAll(listOf("introduce_color_1", "introduce_color_5", "introduce_color_6"))) {
-                val text = "안녕하세요 저는 곽지욱입니다 9 "
+                val text = "안녕하세요 저는 일을 할때 항상 주변 정리를 잘하며 , 제 주변을 깔끔하게 정돈 된 상태로 유지할 수 있습니다  뿐만 아니라 저는 손님을 응대할 때나" +
+                        "동료와 소통할 때 항상 밝게 웃으면서 상대방을 존중하기 때문에 손님 혹은 동료들과 좋은 관계를 유지할 수 있었습니다 , 또한 저는 무거운 물건이나 신체적인 능력을 " +
+                        "요구하는 업무도 무리없이 소화할 수 있는 능력을 가지고 있습니다 "
                 listener?.onIntroduceTextSelected(text)
                 Toast.makeText(requireContext(),"간단 이력서 작성이 완료되었습니다.",Toast.LENGTH_SHORT).show()
                 dialog!!.dismiss()
