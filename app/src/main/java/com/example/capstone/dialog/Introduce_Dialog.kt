@@ -54,7 +54,7 @@ class Introduce_Dialog : DialogFragment() {
             if (status == TextToSpeech.SUCCESS) {
                 // TTS 엔진이 초기화 성공한 경우
                 tts?.language = Locale.KOREAN
-                tts?.setSpeechRate(0.6f) // 2배 빠른 속도
+                tts?.setSpeechRate(0.5f) // 2배 빠른 속도
 
 
             } else {
@@ -81,6 +81,33 @@ class Introduce_Dialog : DialogFragment() {
 
             val textToSpeak = "평소에 맡은 일을 성실하게 해내는 것에 자신 있으시다면 " +
                     "위 이미지를 클릭해서 사장님에게 회원님의 성실함에 대해 소개할 수 있습니다"
+
+            tts?.speak(textToSpeak, TextToSpeech.QUEUE_FLUSH,null,null)
+        }
+
+        binding.introduceKeeptimeSound.setOnClickListener {
+            val textToSpeak = "평소에 시간약속을 잘 지키고 지각을 하지 않는 장점을 가지고 계시면 " +
+                    "위 이미지를 클릭해서 사장님에게 회원님의 장점에 대해 소개할 수 있습니다"
+
+            tts?.speak(textToSpeak, TextToSpeech.QUEUE_FLUSH,null,null)
+        }
+        binding.introduceSmileSound.setOnClickListener {
+            val textToSpeak = "평소에 모든 손님들에게 밝게 웃으며 응대하거나, 밝은 모습으로 인사할 수 있다면 " +
+                    "위 이미지를 클릭해서 사장님에게 회원님의 장점에 대해 소개할 수 있습니다"
+
+            tts?.speak(textToSpeak, TextToSpeech.QUEUE_FLUSH,null,null)
+        }
+
+        binding.introduceStrongSound.setOnClickListener {
+            val textToSpeak = "평소에 무거운 것을 잘 들고 오래 서 있는 것에 자신 있다면 " +
+                    "위 이미지클 클릭해서 사장님에게 회원님의 장점에 대해 소개할 수 있습니다 "
+
+            tts?.speak(textToSpeak, TextToSpeech.QUEUE_FLUSH,null,null)
+        }
+
+        binding.introduceMp3Btn.setOnClickListener {
+            val textToSpeak = "위 6개의 이미지 중에서 회원님이 사장님에게 소개하고 싶은 3가지 장점을 클릭하시고 " +
+                    "작성하기 버튼을 누르시면 선택 된 3가지 장점과 관련된 자기소개서를 작성하실 수 있습니다  "
 
             tts?.speak(textToSpeak, TextToSpeech.QUEUE_FLUSH,null,null)
         }

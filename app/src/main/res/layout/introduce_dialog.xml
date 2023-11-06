@@ -302,7 +302,7 @@
 
                 <ImageView
                     android:background="@drawable/radius_g"
-                    android:id="@+id/introduce_sound4"
+                    android:id="@+id/introduce_keeptime_sound"
                     android:src="@drawable/home_sound"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -311,7 +311,7 @@
 
                 <ImageView
                     android:background="@drawable/radius_g"
-                    android:id="@+id/introduce_sound5"
+                    android:id="@+id/introduce_smile_sound"
                     android:src="@drawable/home_sound"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -320,7 +320,7 @@
 
                 <ImageView
                     android:background="@drawable/radius_g"
-                    android:id="@+id/introduce_sound6"
+                    android:id="@+id/introduce_strong_sound"
                     android:src="@drawable/home_sound"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
