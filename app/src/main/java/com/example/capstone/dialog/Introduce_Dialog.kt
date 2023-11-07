@@ -285,7 +285,8 @@ class Introduce_Dialog : DialogFragment() {
 
 
             else if (selectedImages.containsAll(listOf("introduce_color_2", "introduce_color_3", "introduce_color_4"))) {
-                val text = "안녕하세요 저는 곽지욱입니다 10 "
+                val text = "안녕하세요 저는 일을 할 때 항상 맡은 업무를 성실하게 수행하며 기한 안에 처리하는 능력을 가지고 있습니다 , 뿐만 아니라 저는 늘 동료들 혹은 타인들과 좋은 관계를 유지하며 " +
+                        "협동 능력이 필요한 업무를 능숙히 수행할 수 있습니다 , 또한 저는 시간약속을 중요시 하기 때문에 출근시간 또는 업무 기한을 철저히 지킬 수 있는 장점을 가지고 있습니다. "
                 listener?.onIntroduceTextSelected(text)
                 Toast.makeText(requireContext(),"간단 이력서 작성이 완료되었습니다.",Toast.LENGTH_SHORT).show()
                 dialog!!.dismiss()
@@ -293,21 +294,25 @@ class Introduce_Dialog : DialogFragment() {
 
 
             else if (selectedImages.containsAll(listOf("introduce_color_2", "introduce_color_3", "introduce_color_5"))) {
-                val text = "안녕하세요 저는 곽지욱입니다 11 "
+                val text = "안녕하세요 저는 일을 할때 항상 주변 동료 혹은 타인들과 좋은 관계를 유지하고, 협동하는 능력을 가지고 있습니다 , 뿐만 아니라 저는 맡은 업무를 뒤로 미루는 일 없이" +
+                        "책임감있고 성실하게 수행하는 자세를 가지고 있습니다 , 또한 손님 응대 혹은 동료와 소통할 때 항상 밝게 먼저 인사를 하기에 좋은 관계를 유지할 수 있었습니다. "
                 listener?.onIntroduceTextSelected(text)
                 Toast.makeText(requireContext(),"간단 이력서 작성이 완료되었습니다.",Toast.LENGTH_SHORT).show()
                 dialog!!.dismiss()
             }
 
             else if (selectedImages.containsAll(listOf("introduce_color_2", "introduce_color_3", "introduce_color_6"))) {
-                val text = "안녕하세요 저는 곽지욱입니다 12 "
+                val text = "안녕하세요 저는 업무를 수행할 때 주변 동료들과 좋은 관계를 유지하고 협동이 필요한 업무를 할 시에 적극적으로 임하는 자세를 가지고 있습니다 , 뿐만 아니라 저는 업무를 수행할 때" +
+                        "뒤로 미루는 일 없이 정해진 기한내에 성실하게 수행할 수 있으며 , 무거운 물건을 들거나 많은 체력을 요구하는 업무도 능숙하게 수행할 수 있는 체력을 가지고 있습니다. "
                 listener?.onIntroduceTextSelected(text)
                 Toast.makeText(requireContext(),"간단 이력서 작성이 완료되었습니다.",Toast.LENGTH_SHORT).show()
                 dialog!!.dismiss()
             }
 
             else if (selectedImages.containsAll(listOf("introduce_color_2", "introduce_color_4", "introduce_color_5"))) {
-                val text = "안녕하세요 저는 곽지욱입니다 13 "
+                val text = "안녕하세요 저는 업무를 수행할 때 주변 동료들과 항상 좋은 관계를 유지하고 ,  협업이 필요한 업무를 할 때 적극적으로 임하는 자세를 가지고 있습니다 , 뿐만 아니라 " +
+                        "저는 시간약속을 중요시 하기에 지각이나 , 업무 기한을 어기는 일 없이 항상 정해진 시간을 지키기 위해 노력하며 실천합니다 또, 저는 손님이나 동료를 대할 때 " +
+                        "항상 밝게 웃으며 먼저 인사하고 말을 건내는 장점을 가지고 있습니다. "
                 listener?.onIntroduceTextSelected(text)
                 Toast.makeText(requireContext(),"간단 이력서 작성이 완료되었습니다.",Toast.LENGTH_SHORT).show()
                 dialog!!.dismiss()
