@@ -319,7 +319,9 @@ class Introduce_Dialog : DialogFragment() {
             }
 
             else if (selectedImages.containsAll(listOf("introduce_color_2", "introduce_color_4", "introduce_color_6"))) {
-                val text = "안녕하세요 저는 곽지욱입니다 14 "
+                val text = "안녕하세요 저는 업무를 수행할 때 주변 동료들과 항상 좋은 관계를 유지하고, 협업이 필요한 업무를 할 때 적극적으로 임하는 자세를 가지고 있습니다 , 또한 저는" +
+                        "시간 약속을 중요시 하기 때문에 업무시간이나 기한을 철저하게 지킨다는 장점을 가지고 있습니다 뿐만 아니라 저는 무거운 물건을 들거나 체력을 요구하는 업무 또한 " +
+                        "능숙하게 수행할 수 있는 체력을 가지고 있습니다. "
                 listener?.onIntroduceTextSelected(text)
                 Toast.makeText(requireContext(),"간단 이력서 작성이 완료되었습니다.",Toast.LENGTH_SHORT).show()
                 dialog!!.dismiss()
