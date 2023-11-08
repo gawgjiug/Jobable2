@@ -70,7 +70,7 @@ class Introduce_Dialog : DialogFragment() {
             if (status == TextToSpeech.SUCCESS) {
                 // TTS 엔진이 초기화 성공한 경우
                 tts?.language = Locale.KOREAN
-                tts?.setSpeechRate(0.5f) // 2배 빠른 속도
+                tts?.setSpeechRate(0.6f) // 2배 빠른 속도
 
 
             } else {
@@ -88,8 +88,8 @@ class Introduce_Dialog : DialogFragment() {
         }
         binding.introduceCollaborationSound.setOnClickListener {
 
-            val textToSpeak = "평소에 친구들과 사이좋게 지내는 거나 주변 동료들과 협동하는 것에 자신 있으시다면" +
-                    "위 이미지를 클릭해서 사장님에게 회원님의 장점에 대해 소개할 수 있습니다"
+            val textToSpeak = "평소에 친구들과 사이좋게 지내는 거나 주변 동료들과 협동하는 것에 자신 있으시다면 " +
+                    " 위 이미지를 클릭해서 사장님에게 회원님의 장점에 대해 소개할 수 있습니다"
 
             tts?.speak(textToSpeak, TextToSpeech.QUEUE_FLUSH,null,null)
         }
@@ -328,33 +328,40 @@ class Introduce_Dialog : DialogFragment() {
             }
 
             else if (selectedImages.containsAll(listOf("introduce_color_2", "introduce_color_5", "introduce_color_6"))) {
-                val text = "안녕하세요 저는 곽지욱입니다 15 "
+                val text = "안녕하세요 저는 업무를 수행할 때 주변 동료들 또는 손님들에게 먼저 웃으며 인사하는 습관을 가지고 있으며, 동료들과 적극적으로 소통하며 " +
+                        "항상 좋은 관계를 유지할 수 있습니다 또, 협업이 필요한 업무를 할 때 적극적으로 임하는 자세를 가지고 있습니다," +
+                        "뿐만 아니라 저는 무거운 물건을 들거나 강한 체력을 요구하는 업무도 능숙히 수행할 수 있는 체력을 보유하고 있습니다.  "
                 listener?.onIntroduceTextSelected(text)
                 Toast.makeText(requireContext(),"간단 이력서 작성이 완료되었습니다.",Toast.LENGTH_SHORT).show()
                 dialog!!.dismiss()
             }
 
             else if (selectedImages.containsAll(listOf("introduce_color_3", "introduce_color_4", "introduce_color_5"))) {
-                val text = "안녕하세요 저는 곽지욱입니다 16 "
+                val text = "안녕하세요 저는 시간약속을 중요시하고 항상 맡은 업무를 성실하게 기한내에 처리할 수 있는 장점을 가지고 있습니다. 뿐만 아니라 " +
+                        "저는 손님이나 동료를 대할 때 항상 밝게 먼저 인사하고 긍정적인 모습을 보여줌 으로 써, 그들과 좋은 관계를 유지할 수 있습니다 "
                 listener?.onIntroduceTextSelected(text)
                 Toast.makeText(requireContext(),"간단 이력서 작성이 완료되었습니다.",Toast.LENGTH_SHORT).show()
                 dialog!!.dismiss()
             }
             else if (selectedImages.containsAll(listOf("introduce_color_3", "introduce_color_4", "introduce_color_6"))) {
-                val text = "안녕하세요 저는 곽지욱입니다 17 "
+                val text = "안녕하세요 저는 시간약속을 중요시하고 항상 맡은 업무를 성실하게 정해진 기한안에 처리할 수 있는 장점을 가지고 있습니다 , " +
+                        "뿐만 아니라 저는 무거운 물건을 들거나하는 강한 체력을 요구하는 업무 또한 능숙히 처리할 수 있는 체력과 힘을 가지고 있습니다. "
                 listener?.onIntroduceTextSelected(text)
                 Toast.makeText(requireContext(),"간단 이력서 작성이 완료되었습니다.",Toast.LENGTH_SHORT).show()
                 dialog!!.dismiss()
             }
             else if (selectedImages.containsAll(listOf("introduce_color_3", "introduce_color_5", "introduce_color_6"))) {
-                val text = "안녕하세요 저는 곽지욱입니다 18 "
+                val text = "안녕하세요 저는 손님이나 동료들에게 항상 밝게 인사하며 웃으며 좋은 관계를 유지할 수 있는 장점을 가지고 있으며 , 업무시간에 주어진 업무에만 집중하고 성실하게 수행할 수 있다는 장점을" +
+                        "가지고 있으며 , 무거운 물건을 들거나 오래 서 있어야 하는 강한 체력을 요구하는 업무 또한 문제없이 수행할 수 있는 체력과 힘을 가지고 있습니다. "
                 listener?.onIntroduceTextSelected(text)
                 Toast.makeText(requireContext(),"간단 이력서 작성이 완료되었습니다.",Toast.LENGTH_SHORT).show()
                 dialog!!.dismiss()
             }
 
             else if (selectedImages.containsAll(listOf("introduce_color_4", "introduce_color_5", "introduce_color_6"))) {
-                val text = "안녕하세요 저는 곽지욱입니다 19 "
+                val text = "안녕하세요 저는 항상 손님이나 동료들에게 밝게 웃으며 인사하면서 상대방에게 긍정적인 에너지를 전달할 수 있습니다. 뿐만 아니라 저는 시간약속을 중요시 하기 때문에" +
+                        "지각을 하거나 주어진 시간안에 업무를 수행하지 못하는 일이 없도록 모든 업무에 대해서 최선을 다해 집중할 수 있으며 , 무거운 물건을 들거나 강한 근력을 요구하는 업무도 " +
+                        "문제없이 수행할 수 있는 강한 체력과 근력을 가지고 있습니다.  "
                 listener?.onIntroduceTextSelected(text)
                 Toast.makeText(requireContext(),"간단 이력서 작성이 완료되었습니다.",Toast.LENGTH_SHORT).show()
                 dialog!!.dismiss()
