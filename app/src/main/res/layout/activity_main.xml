@@ -53,7 +53,7 @@
             android:id="@+id/check_Ceoregi"
             android:layout_width="50dp"
             android:layout_height="48dp"
-            android:layout_marginTop="782dp"
+            android:layout_marginTop="780dp"
             android:layout_marginLeft="80dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

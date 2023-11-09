@@ -115,7 +115,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:layout_margin="10dp"
-                        android:hint="이름"
+                        android:hint=" 이름"
                         android:textColor="@color/black"
                         android:textSize="15sp"
                         android:textStyle="bold" />
@@ -127,7 +127,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:layout_margin="10dp"
-                        android:hint="성별"
+                        android:hint=" 성별"
                         android:textColor="@color/black"
                         android:textSize="15sp"
                         android:textStyle="bold" />
@@ -139,7 +139,7 @@
                         android:layout_height="50dp"
                         android:layout_margin="10dp"
                         android:focusable="true"
-                        android:hint="주소"
+                        android:hint=" 주소"
                         android:textColor="@color/black"
                         android:textSize="15sp"
 
@@ -151,7 +151,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:layout_margin="10dp"
-                        android:hint="상세주소"
+                        android:hint=" 상세주소"
                         android:textColor="@color/black"
                         android:textSize="15sp"
                         android:textStyle="bold" />
@@ -162,7 +162,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:layout_margin="10dp"
-                        android:hint="장애 유형"
+                        android:hint=" 장애 유형"
                         android:textColor="@color/black"
                         android:textSize="15sp"
                         android:textStyle="bold" />
@@ -173,7 +173,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:layout_margin="10dp"
-                        android:hint="생년월일"
+                        android:hint=" 생년월일"
                         android:textColor="@color/black"
                         android:textSize="15sp"
                         android:textStyle="bold" />
@@ -182,9 +182,9 @@
                         android:background="@drawable/board_radius"
                         android:id="@+id/resumeIntroduce"
                         android:layout_width="match_parent"
-                        android:layout_height="50dp"
+                        android:layout_height="70dp"
                         android:layout_margin="10dp"
-                        android:hint="소개"
+                        android:hint=" 소개 "
                         android:textColor="@color/black"
                         android:textSize="15sp"
                         android:textStyle="bold" />
@@ -195,7 +195,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:layout_margin="10dp"
-                        android:hint="전화번호"
+                        android:hint=" 전화번호"
                         android:textColor="@color/black"
                         android:textSize="15sp"
                         android:textStyle="bold" />
@@ -206,7 +206,7 @@
                         android:layout_width="100dp"
                         android:layout_height="50dp"
                         android:layout_gravity="center"
-                        android:backgroundTint="@color/mainColor"
+                        android:backgroundTint="#6C63FF"
                         android:text="입력하기" />
 
 

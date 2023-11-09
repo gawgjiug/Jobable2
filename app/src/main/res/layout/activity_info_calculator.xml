@@ -15,7 +15,7 @@
 
 
         <LinearLayout
-            android:background="#C5F6C3"
+            android:background="@drawable/radius_g"
             android:id="@+id/text_layout"
             android:layout_width="match_parent"
             android:layout_height="70dp">
@@ -183,7 +183,7 @@
         </LinearLayout>
 
     <LinearLayout
-        android:background="#C5F6C3"
+
         android:layout_margin="3dp"
         android:layout_width="match_parent"
         android:layout_height="40dp"
@@ -197,6 +197,7 @@
 
 
         <TextView
+            android:background="@drawable/radius_g"
             android:id="@+id/rate_btn"
             android:textStyle="bold"
             android:gravity="center"

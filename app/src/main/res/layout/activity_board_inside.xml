@@ -60,6 +60,7 @@
 
 
         <LinearLayout
+            android:layout_marginTop="30dp"
             android:background="@drawable/radius_g"
             android:layout_width="match_parent"
             android:layout_height="80dp"
@@ -247,11 +248,13 @@
             android:id="@+id/textAread"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:text="내용 영역"
-            android:layout_margin="20dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="70dp"
+            android:background="@drawable/radius_g"
             android:padding="10dp"
-            android:background="@drawable/radius"
-            android:textColor="@color/black"/>
+            android:text="내용 영역"
+            android:textColor="@color/black" />
 
         <ImageView
             android:layout_marginLeft="20dp"
@@ -269,7 +272,7 @@
         <Button
             android:id="@+id/board_mp3_btn"
             android:text="설명 듣기"
-            android:backgroundTint="@color/mainColor"
+            android:background="@drawable/radius"
             android:layout_width="300dp"
             android:layout_height="60dp"
             android:layout_weight="1"
@@ -282,7 +285,7 @@
             android:layout_margin="15dp"
             android:visibility="invisible"
             android:text="지원 접수"
-            android:backgroundTint="@color/mainColor"
+            android:background="@drawable/radius"
             android:id="@+id/applyjobBtn"
             android:layout_width="300dp"
             android:layout_height="60dp"
