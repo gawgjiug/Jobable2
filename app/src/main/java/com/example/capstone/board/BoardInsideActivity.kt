@@ -46,6 +46,13 @@ class BoardInsideActivity : AppCompatActivity() {
     private lateinit var boardid: String
 
     private var mediaPlayer: MediaPlayer? = null
+    private val textQueue: MutableList<String> = mutableListOf()
+
+
+    private fun speakText(text: String) {
+        tts?.speak(text, TextToSpeech.QUEUE_FLUSH, null, null)
+    }
+
 
 
 
@@ -65,6 +72,7 @@ class BoardInsideActivity : AppCompatActivity() {
                 // TTS 엔진이 초기화 성공한 경우
                 tts?.language = Locale.KOREAN
                 tts?.setSpeechRate(0.7f) // 2배 빠른 속도
+
 
 
             } else {
@@ -160,10 +168,20 @@ class BoardInsideActivity : AppCompatActivity() {
             val day = binding.dayArea.text.toString()
 
             val textToSpeak = "보고 계신 회사는 지금  $job 로 일해줄 사람을 구하고 있습니다, " +
-                    "또한 이 회사의 시급은 $pay  이고, 이 회사는 $day 로 일해야 하고, " +
-                    "하루에 $worktime 시간 일하는 일꾼을 구하고 있습니다. " +
-                    "옆에 지원 접수버튼을 눌러서 이 회사의 일꾼이 되어보세요 "
-            tts?.speak(textToSpeak, TextToSpeech.QUEUE_FLUSH, null, null)
+                    "또한 이 회사의 시급은 $pay  이고, 이 회사는 $day 로 일해야 하고 하루에 $worktime 시간 일하는 일꾼을 구하고 있습니다.  "
+
+
+            if (tts?.isSpeaking == true) {
+                // TTS가 현재 말하고 있는 경우, 텍스트를 큐에 추가
+                textQueue.add(textToSpeak)
+            } else {
+                // TTS가 말하지 않는 경우, 텍스트를 말하고 큐를 확인
+                speakText(textToSpeak)
+                if (textQueue.isNotEmpty()) {
+                    val nextText = textQueue.removeAt(0) // 큐의 첫 번째 아이템 가져오기
+                    speakText(nextText) // 큐의 다음 텍스트 말하기
+                }
+            }
         }
 
         // (기존 코드와 동일)

@@ -70,7 +70,7 @@ class Introduce_Dialog : DialogFragment() {
             if (status == TextToSpeech.SUCCESS) {
                 // TTS 엔진이 초기화 성공한 경우
                 tts?.language = Locale.KOREAN
-                tts?.setSpeechRate(0.6f) // 2배 빠른 속도
+                tts?.setSpeechRate(0.5f) // 2배 빠른 속도
 
 
             } else {
