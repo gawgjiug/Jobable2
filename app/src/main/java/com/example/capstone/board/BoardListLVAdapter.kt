@@ -58,7 +58,7 @@ class BoardListLVAdapter(val boardlist: MutableList<BoardModel>) : BaseAdapter()
         return when (job) {
             "직무를 선택하세요" -> R.drawable.board_default // 적절한 기본 이미지 설정
             "사무보조" -> R.drawable.video_office
-            "편의점" -> R.drawable.video_cashier
+            "편의점 직원" -> R.drawable.video_cashier
             "도서관 사서" -> R.drawable.video_library
             "의류 매장 보조" -> R.drawable.video_cloth
             "빵집 보조" -> R.drawable.video_bakery

@@ -55,7 +55,7 @@ class BoardWriteActivity : AppCompatActivity() {
             }
 
         val categoryList = listOf(
-            "직무를 선택하세요", "사무보조", "편의점", "도서관 사서", "의류 매장 보조", "빵집 보조"
+            "직무를 선택하세요", "사무보조", "편의점 직원", "도서관 사서", "의류 매장 보조", "빵집 보조"
         )
 
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, categoryList)
