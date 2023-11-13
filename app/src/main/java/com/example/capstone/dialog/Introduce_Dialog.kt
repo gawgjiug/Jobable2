@@ -1,5 +1,6 @@
 package com.example.capstone.dialog
 
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.speech.tts.TextToSpeech
 import android.text.Editable
@@ -41,6 +42,8 @@ class Introduce_Dialog : DialogFragment() {
     private lateinit var auth: FirebaseAuth
     private var User_name: String = "" // 선언 및 초기화
     private var User_type: String = "" // 선언 및 초기화
+    private var mediaplayer : MediaPlayer?= null
+
 
 
     // 리스너 설정
@@ -63,6 +66,9 @@ class Introduce_Dialog : DialogFragment() {
 
         database = FirebaseDatabase.getInstance().reference
         auth = FirebaseAuth.getInstance()
+
+        mediaplayer = MediaPlayer.create(requireContext(),R.raw.search_mp3)
+
 
 
 
@@ -122,10 +128,8 @@ class Introduce_Dialog : DialogFragment() {
         }
 
         binding.introduceMp3Btn.setOnClickListener {
-            val textToSpeak = "위 6개의 이미지 중에서 회원님이 사장님에게 소개하고 싶은 3가지 장점을 클릭하시고 " +
-                    "작성하기 버튼을 누르시면 선택 된 3가지 장점과 관련된 자기소개서를 작성하실 수 있습니다  "
-
-            tts?.speak(textToSpeak, TextToSpeech.QUEUE_FLUSH,null,null)
+            val mediaPlayer = MediaPlayer.create(requireContext(),R.raw.resume_introduce_mp3)
+            mediaPlayer.start()
         }
 
 
