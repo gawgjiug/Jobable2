@@ -86,10 +86,8 @@ class Introduce_Dialog : DialogFragment() {
 
         binding.introduceOrganizeSound.setOnClickListener {
 
-            val textToSpeak = "평소에 어질러진 물건을 잘 정리하고 정돈하는 것에 자신 있으시다면 " +
-                    "위 이미지를 클릭해서 사장님에게 회원님의 장점에 대해 소개할 수 있습니다"
-
-            tts?.speak(textToSpeak, TextToSpeech.QUEUE_FLUSH,null,null)
+            val mediaPlayer = MediaPlayer.create(requireContext(),R.raw.introduceorganize_mp3)
+            mediaPlayer.start()
 
         }
         binding.introduceCollaborationSound.setOnClickListener {
@@ -108,16 +106,15 @@ class Introduce_Dialog : DialogFragment() {
         }
 
         binding.introduceKeeptimeSound.setOnClickListener {
-            val textToSpeak = "평소에 시간약속을 잘 지키고 지각을 하지 않는 장점을 가지고 계시면 " +
-                    "위 이미지를 클릭해서 사장님에게 회원님의 장점에 대해 소개할 수 있습니다"
 
-            tts?.speak(textToSpeak, TextToSpeech.QUEUE_FLUSH,null,null)
+            val mediaPlayer = MediaPlayer.create(requireContext(),R.raw.introducekeeptime_mp3)
+            mediaPlayer.start()
+
+
         }
         binding.introduceSmileSound.setOnClickListener {
-            val textToSpeak = "평소에 모든 손님들에게 밝게 웃으며 응대하거나, 밝은 모습으로 인사할 수 있다면 " +
-                    "위 이미지를 클릭해서 사장님에게 회원님의 장점에 대해 소개할 수 있습니다"
-
-            tts?.speak(textToSpeak, TextToSpeech.QUEUE_FLUSH,null,null)
+            val mediaPlayer = MediaPlayer.create(requireContext(),R.raw.introducesmile_mp3)
+            mediaPlayer.start()
         }
 
         binding.introduceStrongSound.setOnClickListener {
